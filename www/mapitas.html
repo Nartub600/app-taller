@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="js/gpstaller.js"></script>
+        <script type="text/javascript">
+        function onError(error) {
+            alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+        }
+
+        document.addEventListener("deviceready", function() {
+
+            var onSuccess = function(position) {
+                GPSTaller.search(position.coords.latitude, position.coords.longitude, function(data) {
+                    if(data != null) {
+                        var points = [];
+                        for(i = 0; i < data.length; i++) {
+                            points.push(new plugin.google.maps.LatLng(data[i].lat, data[i].lng));
+                        }
+                        var location = new plugin.google.maps.LatLngBounds(points);
+                        GPSTaller.showMap(location.getCenter());
+                        map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
+                            GPSTaller.addMarkers(data);
+                            map.animateCamera({
+                                'target': location,
+                                'duration': 500
+                            });
+                        });
+                    } else {
+                        alert('No hay talleres cerca');
+                    }
+                });
+            };
+
+            navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+        }, false);
+
+        $(function(){
+            $('#btn_search').on('click', function(e){
+                e.preventDefault();
+
+                var request = {
+                    'address': $("#txt_search").val()
+                };
+
+                plugin.google.maps.Geocoder.geocode(request, function(results) {
+                    if (results.length) {
+                        var result = results[0];
+                        var position = result.position;
+
+                        GPSTaller.search(position.lat, position.lng, function(data) {
+                            if(data != null) {
+                                var points = [];
+                                for(i = 0; i < data.length; i++) {
+                                    points.push(new plugin.google.maps.LatLng(data[i].lat, data[i].lng));
+                                }
+                                var location = new plugin.google.maps.LatLngBounds(points);
+                                map.clear();
+                                // GPSTaller.showMap(location.getCenter());
+                                // map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
+                                    GPSTaller.addMarkers(data);
+                                    map.animateCamera({
+                                        'target': location,
+                                        'duration': 500
+                                    });
+                                // });
+                            } else {
+                                alert('No hay talleres cerca');
+                            }
+                        });
+                    } else {
+                        alert('No se encuentra');
+                    }
+                });
+
+            });
+        });
+
+        </script>
+    </head>
+    <body>
+        <div style="width:100%; height:400px" id="map_canvas">
+            <input type="text" id="txt_search" />
+            <input type="submit" id="btn_search" value="Search" />
+        </div>
+        <!-- <button id="button">Full Screen</button> -->
+    </body>
+</html>
