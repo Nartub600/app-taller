@@ -26,7 +26,7 @@ GPSTaller = {
     addMarkers: function (points) {
         for(i = 0; i < points.length; i++) {
             var point = new plugin.google.maps.LatLng(points[i].lat, points[i].lng);
-            map.addMarker({
+            GPSTaller.map.addMarker({
                 'position': point,
                 'title': points[i].nombre
             }, function(marker) {
@@ -36,7 +36,7 @@ GPSTaller = {
     },
 
     showMap: function (location) {
-        map = plugin.google.maps.Map.getMap(map_canvas, {
+        GPSTaller.map = plugin.google.maps.Map.getMap(GPSTaller.map_canvas, {
             'backgroundColor': 'white',
             'mapType': plugin.google.maps.MapTypeId.ROADMAP,
             'controls': {
