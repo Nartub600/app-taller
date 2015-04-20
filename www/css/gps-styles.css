@@ -33,6 +33,7 @@ p{
 .content-menu-home{
       position: relative;
     margin: 25px auto 34px;
+      padding: 0 5%;
 }
 .content-menu-home a{
     display: table;
@@ -102,7 +103,10 @@ footer p{
     text-align: center;
     letter-spacing: -0.1px;
 }
-
+.row.footer-home{
+    position: fixed;
+    bottom: 0;
+}
 @media (max-width: 1024px) {
     footer p{
       margin: 2% 3%;
