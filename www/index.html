@@ -20,13 +20,6 @@
             $(function(){
                 GPSTaller.map_canvas = document.getElementById("map_canvas");
 
-                $('body').on('click', '[nav]', function(e){
-                    e.preventDefault();
-
-                    $('[page]').hide();
-                    $('#' + $(this).attr('nav')).show();
-                });
-
                 function onError(error) {
                     alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
                 }
@@ -101,6 +94,13 @@
                     }
                 });
 
+                $('body').on('click', '[nav]', function(e){
+                    e.preventDefault();
+
+                    $('[page]').hide();
+                    $('#' + $(this).attr('nav')).show().css('opacity', '1');
+                });
+
             });
         </script>
     </head>
@@ -140,7 +140,7 @@
 
                 </div>
 
-                <div id="search-map" style="display: none;" page>
+                <div id="search-map" style="opacity: 0;" page>
 
                     <div class="row">
                         <div class="content-search col-lg-6">
@@ -159,7 +159,7 @@
 
                 </div>
 
-                <div id="demo-textos" style="display: none;" page>
+                <div id="demo-textos" style="opacity: 0;" page>
 
                     <div class="row" style="padding: 0 5%;">
                         <h1>Título</h1>
