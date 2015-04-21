@@ -97,8 +97,8 @@
                 $('body').on('click', '[nav]', function(e){
                     e.preventDefault();
 
-                    $('[page]').hide();
-                    $('#' + $(this).attr('nav')).show().css('opacity', '1');
+                    $('[page]:visible').hide();
+                    $('[page][id="' + $(this).attr('nav') + '"]').show();
                 });
 
             });
@@ -140,7 +140,7 @@
 
                 </div>
 
-                <div id="search-map" style="opacity: 0;" page>
+                <div id="search-map" page style="display: none;">
 
                     <div class="row">
                         <div class="content-search col-lg-6">
@@ -159,7 +159,7 @@
 
                 </div>
 
-                <div id="demo-textos" style="opacity: 0;" page>
+                <div id="demo-textos" page style="display: none;">
 
                     <div class="row" style="padding: 0 5%;">
                         <h1>Título</h1>
@@ -177,7 +177,9 @@
                     </div>
 
                 </div>
+
             </div>
+
         </div>
     </body>
 </html>
