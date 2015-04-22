@@ -4,6 +4,7 @@
 ***********************/
 .fakeloader{
     display: none ; 
+    background: rgba(255,255,255,.7) !important;
 }
 .spinner1 {
   width: 40px;
@@ -56,7 +57,7 @@
 .container1 > div, .container2 > div, .container3 > div {
   width: 6px;
   height: 6px;
-  background-color: #fff;
+  background-color: #222;
 
   border-radius: 100%;
   position: absolute;
@@ -172,7 +173,7 @@
   display: inline-block;
   position: absolute;
   top: 0;
-  background-color: #fff;
+  background-color: #222;
   border-radius: 100%;
   
   -webkit-animation: bounce 2.0s infinite ease-in-out;
