@@ -11,6 +11,7 @@ function talleresCercanos()
     }
 
     var onSuccess = function(position) {
+        $('#img_gps').attr('src', 'img/con-gps.png');
         GPSTaller.search(position.coords.latitude, position.coords.longitude, function(data) {
             if(data != null) {
                 var points = [];
