@@ -1,9 +1,3 @@
-// document.addEventListener("deviceready", function() {
-
-//     map_canvas = document.getElementById("map_canvas");
-
-// }, false);
-
 GPSTaller = {
 
     search: function (lat, lng, callback) {
@@ -50,18 +44,3 @@ GPSTaller = {
     }
 
 };
-
-// $(function(){
-    // $('body').on('click', '[show]', function(e){
-    //     e.preventDefault();
-    //     $.ajax({
-    //         url: $(this).attr('href'),
-    //         type: 'get',
-    //         dataType: 'html',
-    //         crossDomain: true,
-    //         success: function(data) {
-    //             $('#container').html(data);
-    //         }
-    //     });
-    // });
-// });

@@ -31,13 +31,13 @@
                             }
                             var location = new plugin.google.maps.LatLngBounds(points);
                             GPSTaller.showMap(location.getCenter());
-                            map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
-                                GPSTaller.addMarkers(data);
-                                map.animateCamera({
-                                    'target': location,
-                                    'duration': 500
-                                });
-                            });
+                            // GPSTaller.map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
+                            //     GPSTaller.addMarkers(data);
+                            //     GPSTaller.map.animateCamera({
+                            //         'target': location,
+                            //         'duration': 500
+                            //     });
+                            // });
                         } else {
                             alert('No hay talleres cerca');
                         }
@@ -65,11 +65,11 @@
                                         points.push(new plugin.google.maps.LatLng(data[i].lat, data[i].lng));
                                     }
                                     var location = new plugin.google.maps.LatLngBounds(points);
-                                    map.clear();
+                                    GPSTaller.map.clear();
                                     // GPSTaller.showMap(location.getCenter());
                                     // map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
                                         GPSTaller.addMarkers(data);
-                                        map.animateCamera({
+                                        GPSTaller.map.animateCamera({
                                             'target': location,
                                             'duration': 500
                                         });
