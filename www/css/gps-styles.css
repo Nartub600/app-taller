@@ -89,11 +89,22 @@ footer {
 }
 
 .content-search .input-group {
-    width: 100%;
+    width: 80%;
     padding: 11px 0px;
     position: relative;
+    margin: 0 10%;
 }
-
+.gps-estado{
+    position: absolute;
+  z-index: 9000;
+  height: 90%;
+  width: auto;
+  top: 5%;
+}
+.gps-estado img{
+    height: 100%;
+  width: auto;
+}
 .content-search .input-group-btn{
     position: absolute;
     left: 1px;
