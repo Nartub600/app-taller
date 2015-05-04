@@ -26,22 +26,22 @@ p {
 
 .logo {
     display: table;
-    margin: 65px auto 60px;
+      margin: 15px auto 15px;
     width: 67%;
     max-width: 300px;
 }
 
 .line-01 {
-    height: 2px;
+    height: 4px;
     position: relative;
     width: 100%;
-    background-color: #e6e6e6;
+    background-color: #919395;
 }
 
 .content-menu-home {
     position: relative;
     margin: 25px auto 34px;
-    padding: 0 5%;
+    padding: 0 10%;
 }
 .content-menu-home a {
     display: table;
@@ -59,7 +59,6 @@ header {
     background-size: cover;
     background-repeat: repeat;
     float: left;
-    background-image: url(../img/background-logo.png);
 }
 
 footer {
@@ -100,21 +99,51 @@ footer {
     z-index: 9000;
     height: 90%;
     width: auto;
-    top: 5%;
+      top: 14px;
+    left: 10px;
 }
 
 .gps-estado img {
-    height: 100%;
-    width: auto;
+      height: 30px;
+  width: 30px;
 }
-
+.settings-icon{
+     position: absolute;
+    z-index: 9000;
+    height: 90%;
+    width: auto;
+      top: 14px;
+    right: 8px;
+}
+.settings-icon img{
+    height: 30px;
+  width: 30px;
+}
 .content-search .input-group-btn{
     position: absolute;
     left: 1px;
     top: 13px;
     z-index: 10;
 }
+.content-search .form-control{
+    margin: 0;
+}
+.input-group-btn2{
+    position: absolute;
+    background: transparent;
+    width: 40px;
+    z-index: 9000;
+    left: -6px;
+    top: 0;
 
+}
+.content-search .ui-btn{
+    border: 0;
+    background: transparent;
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+}
 .btn-search {
     background: none;
     border:0;
@@ -135,8 +164,22 @@ footer p {
     position: fixed;
     bottom: 0;
 }
-
-@media (max-width: 1024px) {
+#settings {}
+#settings .wrapper{
+    max-width: 555px;
+    position: relative;
+    margin: 0 auto;
+}
+.mostrar-check{
+    background-color: #c3c2c2;
+    -webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+}
+.mostrar-check .ui-checkbox .ui-btn-icon-left .ui-icon, .mostrar-check .ui-radio .ui-btn-icon-left .ui-icon{
+    left: 80%;
+}
+@media (max-width: 1024px) and (min-width: 992px){
     footer p {
         margin: 2% 3%;
     }
@@ -144,11 +187,27 @@ footer p {
     .content-mapa {
         height: 490px;
     }
+    .content-search .input-group {
+        width: 90%;
+        margin: 0 5%;
+      }
+    .settings-icon {
+        right: 17px;
+      }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) and (min-width: 640px){
+    
     .content-mapa {
         height: 750px;
+    }
+    .settings-icon {
+        right: 9px;
+      }
+      
+    .content-search .input-group {
+        width: 90%;
+        margin: 0 5%;
     }
 }
 
@@ -174,4 +233,13 @@ footer p {
     .content-mapa {
         height: 320px;
     }
+}
+
+@media (min-height: 480px) {
+    footer {
+        position: fixed;
+        bottom: 0;
+    }
+
+   
 }
