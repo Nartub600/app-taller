@@ -3,14 +3,14 @@ function talleresCercanos()
     if(GPSTaller.map) {
         GPSTaller.map.clear();
     }
-    $(".fakeloader").fadeIn();
+    $(".loader").fadeIn();
 
     GPSTaller.map_canvas = document.getElementById("map_canvas");
 
     function onError(error) {
         alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
         // alert('Error en la geolocalización');
-        $(".fakeloader").fadeOut();
+        $(".loader").fadeOut();
     }
 
     var onSuccess = function(position) {
@@ -22,7 +22,7 @@ function talleresCercanos()
                     points.push(new plugin.google.maps.LatLng(data[i].lat, data[i].lng));
                 }
                 GPSTaller.location = new plugin.google.maps.LatLngBounds(points);
-                $(".fakeloader").fadeOut();
+                $(".loader").fadeOut();
                 GPSTaller.showMap(GPSTaller.location.getCenter());
                 GPSTaller.map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
                     GPSTaller.addMarkers(data);
@@ -34,7 +34,7 @@ function talleresCercanos()
                 });
             } else {
                 alert('No hay talleres cerca');
-                $(".fakeloader").fadeOut();
+                $(".loader").fadeOut();
             }
         });
     };
@@ -52,7 +52,7 @@ $(function(){
         e.preventDefault();
         e.stopImmediatePropagation();
 
-        $(".fakeloader").fadeIn();
+        $(".loader").fadeIn();
 
         var request = {
             'address': $("#txt_search").val()
@@ -70,7 +70,7 @@ $(function(){
                             points.push(new plugin.google.maps.LatLng(data[i].lat, data[i].lng));
                         }
                         GPSTaller.location = new plugin.google.maps.LatLngBounds(points);
-                        $(".fakeloader").fadeOut();
+                        $(".loader").fadeOut();
                         GPSTaller.map.clear();
                         // GPSTaller.showMap(location.getCenter());
                         // GPSTaller.map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
@@ -82,12 +82,12 @@ $(function(){
                         // });
                     } else {
                         alert('No hay talleres cerca');
-                        $(".fakeloader").fadeOut();
+                        $(".loader").fadeOut();
                     }
                 });
             } else {
                 alert('No se encuentra dirección');
-                $(".fakeloader").fadeOut();
+                $(".loader").fadeOut();
             }
         });
     });
