@@ -150,8 +150,8 @@ footer {
     background: transparent;
     width: 40px;
     z-index: 9000;
-    left: -6px;
-    top: 0;
+      left: -2px;
+  top: 6px;
 }
 
 .content-search .ui-btn {
@@ -161,7 +161,14 @@ footer {
     -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
 }
-
+.content-search .ui-input-text{
+    margin: 0;
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+    background: transparent;
+    border: 0;
+}
 .btn-search {
     background: none;
     border: 0;
@@ -220,8 +227,8 @@ footer p {
     border-style: solid;
 }
 
-.mostrar-check .ui-icon-checkbox-on{
-    background-size: 772px 17px;
+.mostrar-check .ui-icon-check:after, .mostrar-check .ui-btn.ui-checkbox-on.ui-checkbox-on:after{
+    background-size: cover;
     background-color: red;
 }
 
@@ -254,7 +261,13 @@ footer p {
     padding: 0px 11px 0;
     margin: 0;
 }
-
+#settings .ui-btn-icon-left:after {
+  left: 28.5625em;
+  border-radius: 0;
+    border-width: 3px;
+    border-color: #000;
+    border-style: solid;
+}
 .mostrar-check  .ui-checkbox .ui-btn-icon-left .ui-btn-inner, .mostrar-check .ui-radio .ui-btn-icon-left .ui-btn-inner {
     background: none;
     border: 0;
@@ -267,8 +280,8 @@ footer p {
 
 #settings input.ui-slider-input, #settings .ui-field-contain input.ui-slider-input {
     position: absolute;
-    top: -39px;
-    right: 44px;
+      top: -50px;
+    right: -44px;
     border: 0;
     background: none;
     -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
@@ -292,7 +305,16 @@ footer p {
     border-color: #000;
     background: rgba(0,0,0,1);
 }
-
+#settings .ui-slider-track{
+      margin: 0;
+  top: -6px;
+  padding: 0;
+  background: transparent;
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+    border: 0;
+}
 #settings a.ui-btn.ui-slider-handle .ui-btn-inner {
     background-image: url(../img/slider-bolita.png);
     background-size: cover;
@@ -313,6 +335,17 @@ footer p {
     margin: -14px 0 0 -15px;
     outline: 0;
     border: 0;
+    
+    background-image: url(../img/slider-bolita.png);
+    background-size: cover;
+    background-position: 0 0px;
+    border: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: 0;
+      -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
 }
 
 .btn-guardar {
@@ -333,6 +366,8 @@ footer p {
     border: 0;
     text-shadow: 0px 0px 0px rgba(150, 150, 150, 0);
     font-family: 'Open Sans', sans-serif;
+      display: block;
+      font-weight: bold;
 }
 
 .btn-guardar .ui-btn-inner {
@@ -348,7 +383,7 @@ footer p {
     }
 
     .content-mapa {
-        height: 490px;
+          height: 583px;
     }
 
     .content-search .input-group {
@@ -363,7 +398,7 @@ footer p {
 
 @media (max-width: 768px) and (min-width: 640px) {
     .content-mapa {
-        height: 750px;
+        height: 838px;
     }
 
     .settings-icon {
@@ -396,7 +431,14 @@ footer p {
     }
 
     .content-mapa {
-        height: 320px;
+        height: 380px;
+    }
+}
+@media (min-height: 560px) {
+    
+
+    .content-mapa {
+        height: 406px;
     }
 }
 
