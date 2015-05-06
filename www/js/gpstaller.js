@@ -2,14 +2,15 @@ GPSTaller = {
 
     search: function (lat, lng, callback) {
         $.ajax({
-            url: 'https://www.gpstaller.com.ar/dev200814/api/views/talleres.json.php',
+            url: 'https://www.gpstaller.com.ar/dev_v1/api/views/talleres.json.php',
             type: 'get',
             dataType: 'json',
             data: {
                 latitud: lat,
                 longitud: lng,
-                cantidad: 10,
-                categoria: 1
+                cantidad: $('#input_cantidad').val() ? $('#input_cantidad').val() : '10',
+                categoria: ($('#chk_taller').is(':checked') && $('#chk_gomeria').is(':checked') ? '0' : ($('#chk_taller').is(':checked') ? '1' : ($('#chk_gomeria').is(':checked') ? '2' : '0' ))),
+                radio: $('#input_distancia').val() ? $('#input_distancia').val() : '50'
             },
             success: function(data) {
                 callback(data);
