@@ -109,9 +109,9 @@
                 <div id="settings" page style="display: none;">
                     <div class="wrapper">
                         <div class="row">
-                        <div class="media">
+                        <div class="media top-settings">
                             <div class="media-left">
-                                <a href="#">
+                                <a href="#" nav="search-map">
                                     <img class="media-object" src="img/icon-volver.png" alt="">
                                 </a>
                             </div>
@@ -121,7 +121,11 @@
                         </div>
                     </div>
                         <div class="row">
+                            <p class="titulo">Mostrar:</p>
+                        </div>
+                        <div class="row">
                             <div class="mostrar-check">
+                                
                                 <div class="checkbox">
 
                                     <label>Taller<input type="checkbox"> </label>
@@ -137,18 +141,34 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label for="slider-1">Distancia:</label>
-                            <input type="range" name="slider-1" id="slider-1" value="250" min="1" max="500" />
-                            <div class="row">
-                                <label for="slider-1">Cantidad:</label>
-                                <input type="range" name="slider-2" id="slider-1" value="20" min="5" max="100" />
-                            </div>
+                            <p class="titulo">Distancia:</p>
                         </div>
                         <div class="row">
-                            <button class="btn btn-guardar">Guardar</button>
+                            <div class="content-slider">
+                                <label for="slider-1"></label>
+                            <input type="range" name="slider-1" id="slider-1" value="250" min="1" max="500" />
+                            </div>
+                            
+                            
+                        </div>
+                        <div class="row">
+                            <p class="titulo">Cantidad:</p>
+                        </div>
+                        <div class="row">
+                            <div class="content-slider">
+                                 <label for="slider-1"></label>
+                                <input type="range" name="slider-2" id="slider-1" value="20" min="5" max="100" />
+                            </div>
+                               
+                            </div>
+                        <div class="row">
+                            <div class="btn-guardar">
+                                <button class="btn ">Guardar</button>
+                            </div>
+                            
                         </div>
                     
-
+                    </div>
                     <div class="row">
                         <footer>
                             <div class="line-01"></div>
@@ -156,6 +176,7 @@
                         </footer>
                     </div>
 
+                
                 </div> <!-- #settings -->
                 
                 <div id="demo-textos" page style="display: none;">

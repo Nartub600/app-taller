@@ -1,7 +1,15 @@
 body {
     font-family: 'Open Sans', sans-serif;
 }
-
+p, h1, h2, h3, h4, label, button, span{
+    font-family: 'Open Sans', sans-serif;
+  text-shadow: 0px 0px 0px rgba(150, 150, 150, 0);
+}
+input {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+-moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+}
 h1 {
     font-size: 40px;
     font-weight: bold;
@@ -165,19 +173,144 @@ footer p {
     bottom: 0;
 }
 #settings {}
+#settings .row{
+    position: relative;
+}
 #settings .wrapper{
     max-width: 555px;
     position: relative;
     margin: 0 auto;
 }
-.mostrar-check{
-    background-color: #c3c2c2;
+#settings .top-settings{
+      margin-bottom: 3px;
+}
+.mostrar-check, .content-slider{
+    
+    background: rgba(195, 194, 194, .6);
     -webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
+  margin: 0 45px 12px;
+  padding: 3px 0;
+}
+.mostrar-check .checkbox{
+      margin: 6px 0 0 0;
 }
 .mostrar-check .ui-checkbox .ui-btn-icon-left .ui-icon, .mostrar-check .ui-radio .ui-btn-icon-left .ui-icon{
-    left: 80%;
+    left: 88%;
+      border-radius: 0;
+  border-width: 3px;
+  border-color: #000;
+  border-style: solid;
+}
+.mostrar-check .ui-icon-checkbox-on{
+   background-size: 772px 17px;
+     background-color: red;
+}
+.top-settings img{
+      width: 21px;
+  padding: 25px 0;
+  margin-left: 27px;
+}
+.top-settings h4{
+       text-align: center;
+  padding: 28px 57px 0 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+#settings .titulo{
+     font-size: 15px;
+  padding: 3px 48px;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+.mostrar-check .ui-checkbox .ui-btn, .mostrar-check .ui-radio .ui-btn{
+    background: transparent;
+      border: 0;
+      -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+-moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  padding: 0px 11px 0;
+  margin: 0;
+}
+.mostrar-check  .ui-checkbox .ui-btn-icon-left .ui-btn-inner, .mostrar-check .ui-radio .ui-btn-icon-left .ui-btn-inner{
+    background: none;
+    border: 0;
+    padding: 0;
+}
+.mostrar-check .radio input[type="radio"], .mostrar-check .radio-inline input[type="radio"], .mostrar-check .checkbox input[type="checkbox"], .mostrar-check .checkbox-inline input[type="checkbox"]{
+    display: none;
+}
+#settings input.ui-slider-input, #settings .ui-field-contain input.ui-slider-input{
+    position: absolute;
+    top: -39px;
+  right: 44px;
+    border: 0;
+  background: none;
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+-moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  padding: 7px 0;
+  text-align: right;
+}
+#settings div.ui-slider {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+  height: 2px;
+  padding: 0;
+  margin: 10px 10%;
+  top: 0;
+    width: 80%;
+  border-radius: 0;
+  /* background-color: #000; */
+  border-color: #000;
+  background: rgba(0,0,0,1);
+}
+#settings a.ui-btn.ui-slider-handle .ui-btn-inner{
+      background-image: url(../img/slider-bolita.png);
+  background-size: cover;
+  background-position: 0 0px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-position: 0;
+}
+#settings .ui-controlgroup a.ui-slider-handle, #settings a.ui-btn.ui-slider-handle {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  width: 25px;
+  height: 25px;
+  margin: -14px 0 0 -15px;
+  outline: 0;
+  border: 0;
+}
+.btn-guardar{
+    margin-top: 10px;
+}
+.btn-guardar .ui-btn{
+    width: 200px;
+    background: rgba(204, 55, 50, 1);
+    color:#fff;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    margin: 0 auto;
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+    border: 0;
+    text-shadow: 0px 0px 0px rgba(150, 150, 150, 0);
+    font-family: 'Open Sans', sans-serif;
+}
+.btn-guardar .ui-btn-inner{
+    border: 0;
+}
+.btn-guardar button{
+    font-family: 'Open Sans', sans-serif;
+    
 }
 @media (max-width: 1024px) and (min-width: 992px){
     footer p {
