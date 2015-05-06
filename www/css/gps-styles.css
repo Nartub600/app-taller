@@ -488,7 +488,7 @@ footer p {
     }
     
 }
-@media (max-height: 480px) {
+@media (max-height: 550px) {
     
     footer.nofix {
         position: relative;
