@@ -1,5 +1,8 @@
 function talleresCercanos()
 {
+    if(GPSTaller.map) {
+        GPSTaller.map.clear();
+    }
     $(".fakeloader").fadeIn();
 
     GPSTaller.map_canvas = document.getElementById("map_canvas");
@@ -27,6 +30,7 @@ function talleresCercanos()
                         'target': GPSTaller.location,
                         'duration': 500
                     });
+                    GPSTaller.map.off();
                 });
             } else {
                 alert('No hay talleres cerca');
@@ -35,7 +39,14 @@ function talleresCercanos()
         });
     };
 
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    if($('#txt_search').val() != '') {
+        $('#btn_search').trigger('click');
+    } else {
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }
+}
+
+$(function(){
 
     $('#btn_search').on('click', function(e){
         e.preventDefault();
@@ -90,4 +101,5 @@ function talleresCercanos()
             $('#txt_search').trigger('blur');
         }
     });
-}
+
+});

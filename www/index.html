@@ -104,7 +104,7 @@
                         <div class="row">
                         <div class="media top-settings">
                             <div class="media-left">
-                                <a href="#" nav="search-map">
+                                <a id="btn_volver" href="#" nav="search-map">
                                     <img class="media-object" src="img/icon-volver.png" alt="" />
                                 </a>
                             </div>
@@ -119,10 +119,10 @@
                         <div class="row">
                             <div class="mostrar-check">
                                 <div class="checkbox">
-                                    <label>Taller<input name="chk_taller" value="1" type="checkbox"></label>
+                                    <label>Taller<input id="chk_taller" value="1" type="checkbox"></label>
                                 </div>
                                 <div class="checkbox">
-                                    <label>Gomería<input name="chk_gomeria" value="2" type="checkbox"></label>
+                                    <label>Gomería<input id="chk_gomeria" value="2" type="checkbox"></label>
                                 </div>
                             </div>
                         </div>
@@ -132,7 +132,7 @@
                         <div class="row">
                             <div class="content-slider">
                                 <label for="slider-1"></label>
-                                <input id="input_distancia" type="range" name="slider-1" id="slider-1" value="250" min="1" max="500" />
+                                <input id="input_distancia" type="range" name="slider-1" id="slider-1" value="50" min="1" max="500" />
                             </div>
                         </div>
                         <div class="row">
@@ -141,12 +141,12 @@
                         <div class="row">
                             <div class="content-slider">
                                 <label for="slider-1"></label>
-                                <input id="input_cantidad" type="range" name="slider-2" id="slider-1" value="20" min="5" max="100" />
+                                <input id="input_cantidad" type="range" name="slider-2" id="slider-1" value="10" min="1" max="100" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="btn-guardar">
-                                <button class="btn">Guardar</button>
+                                <button id="btn_guardar" class="btn">Guardar</button>
                             </div>
                         </div>
                     </div>

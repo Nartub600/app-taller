@@ -8,9 +8,9 @@ GPSTaller = {
             data: {
                 latitud: lat,
                 longitud: lng,
-                cantidad: $('#input_cantidad').val() ? $('#input_cantidad').val() : '10',
+                cantidad: $('#input_cantidad').val(),
                 categoria: ($('#chk_taller').is(':checked') && $('#chk_gomeria').is(':checked') ? '0' : ($('#chk_taller').is(':checked') ? '1' : ($('#chk_gomeria').is(':checked') ? '2' : '0' ))),
-                radio: $('#input_distancia').val() ? $('#input_distancia').val() : '50'
+                radio: $('#input_distancia').val()
             },
             success: function(data) {
                 callback(data);
