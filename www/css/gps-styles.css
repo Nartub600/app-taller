@@ -187,9 +187,9 @@ footer {
 }
 .content-search .ui-input-text{
     margin: 0;
-    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
     background: transparent;
     border: 0;
 }
@@ -279,9 +279,9 @@ footer p {
 .mostrar-check .ui-checkbox .ui-btn, .mostrar-check .ui-radio .ui-btn {
     background: transparent;
     border: 0;
-    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
-    -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
     padding: 0px 11px 0;
     margin: 0;
 }
@@ -308,9 +308,9 @@ footer p {
     right: -44px;
     border: 0;
     background: none;
-    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
-    -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
     padding: 7px 0;
     text-align: right;
 }
@@ -334,9 +334,9 @@ footer p {
   top: -6px;
   padding: 0;
   background: transparent;
-  -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
-    -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
     border: 0;
 }
 #settings a.ui-btn.ui-slider-handle .ui-btn-inner {
@@ -360,6 +360,7 @@ footer p {
     outline: 0;
     border: 0;
     
+    background: transparent;
     background-image: url(../img/slider-bolita.png);
     background-size: cover;
     background-position: 0 0px;
@@ -374,7 +375,7 @@ footer p {
 
 .btn-guardar {
     margin-top: 10px;
-    margin-bottom: 75px;
+    margin-bottom: 20px;
 }
 
 .btn-guardar .ui-btn {
@@ -385,9 +386,10 @@ footer p {
     -moz-border-radius: 0px;
     border-radius: 0px;
     margin: 0 auto;
-    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
-    -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    
     border: 0;
     text-shadow: 0px 0px 0px rgba(150, 150, 150, 0);
     font-family: 'Open Sans', sans-serif;
@@ -470,6 +472,10 @@ footer p {
 @media (min-height: 480px) {
     footer {
         position: fixed;
+        bottom: 0;
+    }
+    footer.nofix {
+        position: relative;
         bottom: 0;
     }
 }
