@@ -434,7 +434,7 @@ footer p {
         height: 380px;
     }
 }
-@media (min-height: 560px) {
+@media (max-width: 375px) and (min-height: 560px) {
     
 
     .content-mapa {
