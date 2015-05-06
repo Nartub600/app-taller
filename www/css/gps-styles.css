@@ -20,6 +20,16 @@ input {
     height: 100%;
     display: none;
 }
+.loader p{
+    width: 100%;
+    text-align: center;
+    left: 0%;
+    position: absolute;
+    top: 50%;
+    margin: -6px 0 0 0;
+    font-size: 15px;
+    color: #666;
+}
 .loader img{
       width: 80px;
   left: 50%;
@@ -364,6 +374,7 @@ footer p {
 
 .btn-guardar {
     margin-top: 10px;
+    margin-bottom: 75px;
 }
 
 .btn-guardar .ui-btn {
