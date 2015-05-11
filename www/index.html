@@ -7,9 +7,10 @@
         <title>GPS | Taller</title>
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+        <!--<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">-->
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
         <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
+        <link rel="stylesheet" href="css/gps-elements.css">
         <link rel="stylesheet" href="css/gps-styles.css">
 
         <script type="text/javascript" src="cordova.js"></script>
@@ -43,12 +44,84 @@
                 <header>
                     <a href="#" style="display: block;" nav="index"><img class="logo" src="img/logo.png" /></a>
                     <div class="line-01"></div>
+                    <div class="dropdown pull-right menu-drop">
+                        <button class="btn btn-default dropdown-toggle btn-nav-icon" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                            <img class="nav-icon" src="img/nav-icon.png"/>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" nav="login">Login</a></li>
+                            
+                        </ul>
+                    </div>
+
                 </header>
             </div>
 
             <div id="content">
 
-                <div id="index" page>
+                <div id="login" page style="display: none;">
+
+                    <div class="row">
+                        <div class="content-menu-login social">
+                            <div class="row">
+                                <a href="#"><img src="img/login-fb.png"/></a>
+                            </div>
+                            <div class="row">
+                                <a href="#"><img src="img/login-google.png"/></a>
+                            </div>
+                            
+                        </div>
+                        <div class="content-menu-login texto">
+                             <div class="row">
+                                 <div class="media">
+                                     <div class="media-left media-middle">
+                                         <label for="user"><img width="25" src="img/user.png"/></label>
+                                     </div>
+                                     <div class="media-body">
+                                         <input id="user" name="user" type="email"/>
+                                     </div>
+                                 </div>                                 
+                            </div>
+                             <div class="row">
+                                 <div class="media">
+                                     <div class="media-left media-middle">
+                                         <label for="password"><img width="25" src="img/password.png"/></label>
+                                     </div>
+                                     <div class="media-body">
+                                         <input id="password" name="password" type="password"/>
+                                     </div>
+                                 </div>                                 
+                            </div>
+                             
+                        </div>
+                        <div class="content-menu-login texto">
+                            <div class="row">
+                                <div class="col-xs-1"></div>
+                                <div class="col-xs-5">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Recordarme
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-xs-5"><button class="btn btn-gps center-block">Login</button></div>
+                                <div class="col-xs-1"></div>
+                            </div>
+                            
+                            <div class="row links">                                
+                                <a href="#">Regístrate por primera vez</a>
+                            </div>
+                            <div class="row links">                                
+                                <a href="#">Recuperar Contraseña</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                </div> <!-- #login -->
+                
+                <div id="index" page >
 
                     <div class="row">
                         <div class="content-menu-home">
@@ -64,12 +137,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <footer>
-                            <div class="line-01"></div>
-                            <p>La red de talleres mecánicos que te acompaña en todo el país</p>
-                        </footer>
-                    </div>
+                    
 
                 </div> <!-- #index -->
 
@@ -151,12 +219,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <footer class="nofix">
-                            <div class="line-01"></div>
-                            <p>La red de talleres mecánicos que te acompaña en todo el país</p>
-                        </footer>
-                    </div>
+                    
 
                 </div> <!-- #settings -->
 
@@ -170,17 +233,17 @@
                         <p>Lorem Ipsum es <strong>simplemente el texto de</strong> relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos.</p>
                     </div>
 
-                    <div class="row">
-                        <footer>
-                            <div class="line-01"></div>
-                            <p>La red de talleres mecánicos que te acompaña en todo el país</p>
-                        </footer>
-                    </div>
+                    
 
                 </div> <!-- #demo-textos -->
 
             </div> <!-- #content -->
-
+            <div class="row">
+                        <footer class="nofix">
+                            <div class="line-01"></div>
+                            <p>La red de talleres mecánicos que te acompaña en todo el país</p>
+                        </footer>
+                    </div>
         </div> <!-- #container -->
     </body>
 </html>
