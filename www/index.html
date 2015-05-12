@@ -50,6 +50,8 @@
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <li role="presentation"><a role="menuitem" tabindex="-1" nav="login">Login</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" nav="registro">Registro</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" nav="solicitarcontrasenia">Solicitar contraseña</a></li>
                             
                         </ul>
                     </div>
@@ -59,6 +61,75 @@
 
             <div id="content">
 
+                <div id="solicitarcontrasenia" page style="display: none;">
+
+                    <div class="row">
+                        <h1><br>SOLICITAR NUEVA CONTRASEÑA</h1>
+                        <h4>Le enviaremos instrucciones para obtener una nueva contraseña por email.</h4>    
+                        <p class="ingrese-mail">Ingrese su email<span class="rojo">*</span></p>
+                    </div>
+                    <div class="row">
+                        <div class="content-registro recuperar">
+                            <form>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Email">
+                                </div>                                
+                            </form>
+                        </div>                       
+                    </div>
+                    
+                    
+                    <div class="row">
+                        <button class="btn btn-gps center-block">Enviar Solicitud</button>
+                    </div>
+                    
+
+                </div> <!-- #solicitarcontrasenia -->
+                <div id="registro" page style="display: none;">
+
+                    <div class="row">
+                        <h1>REGISTRARME</h1>
+                        <h4>Regístrate con tu dirección de correo electrónico</h4>                        
+                    </div>
+                    <div class="row">
+                        <div class="content-registro">
+                            <form>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Nombre">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Apellido">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Contraseña">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Repetir Contraseña">
+                                </div>
+                            </form>
+                        </div>                       
+                    </div>
+                    <div class="row">
+                        <div class="registro-texto">
+                            <p><strong>GPSTaller Terminos y Condiciones</strong><br><br>Versión 5 de Febrero de 2015<br><br><strong>Le damos la bienvenida a GPS Taller</strong><br><br>Le agradecemos que use los servicios de GPS Taller. La utilización de los servicios ofrecidos en la web <br>GPSTaller de CONDISTELEC SA implican la aceptación de estos términos y condiciones.<br><br><strong>¿Qué es GPS Taller?</strong><br><br>Es un servicio gratuito que se ofrece a todo automovilista que circule dentro de la Republica Argentina, si tiene un desperfecto en su vehículo, podrá encontrar el taller </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="checkbox aceptoterminos">
+                            <label>
+                                <input type="checkbox"> <span class="rojo">*</span> Acepto los términos y condiciones
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-gps center-block btn-registrarme">Registrarme</button>
+                    </div>
+                    
+
+                </div> <!-- #registro -->
                 <div id="login" page style="display: none;">
 
                     <div class="row">
