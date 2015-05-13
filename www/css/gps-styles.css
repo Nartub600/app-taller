@@ -18,7 +18,7 @@ input {
 }
 
 #content {
-    margin-bottom: 50px;
+    margin-bottom: 0;
 }
 
 .menu-drop {
@@ -107,6 +107,14 @@ p {
     position: relative;
     width: 100%;
     background-color: #919395;
+}
+.line-02 {
+    height: 0px;
+    position: relative;
+    width: 100%;
+    border-width: 1px 0 0 0;
+    border-style: dotted;
+    border-color: #000;
 }
 
 .content-menu-home {
@@ -570,7 +578,94 @@ footer p {
     margin: 23px 0;
 }
 /* EDN REGISTRO */
+/* COMENTARIOS */
+.detalle-taller-content{
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.detalle-taller-content p{
+    font-size: 15px;
+    font-weight: bold;
+}
+.detalle-taller-content .img-rating{
+    width: 129px;
+    top: -2px;
+    position: relative;
+    margin-left: 10px;
+}
+.titulo-descripcion{
+      margin: 11px 0 6px;
+}
+.texto-descripcion{
+    font-size: 12px !important;
+}
+.como-llego{
+    font-size: 12px !important;
+      color: #337ab7;
+  text-decoration: none;
+    margin: 0 10px;
+}
+.ver-comentarios{
+    text-align: center;
+  width: 100%;
+  display: block;
+  text-decoration: underline;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.comentario{}
+.comentario .titulo-comentario{
+      font-size: 12px;
+  margin-bottom: 3px;
+}
 
+.comentario .datos-usuario-comentario{
+    font-size: 9px;
+}
+.comentario .img-rating-comentario{
+    height: 19px;
+  top: -3px;
+  position: relative;
+  margin: 0 10px;
+}
+.detalle-taller-content textarea{
+      width: 100%;
+  font-size: 12px;
+  margin: 10px 0 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  resize: none;
+  padding: 4px 5px;
+  height: 50px;
+}
+.content-estrellas{
+    max-width: 190px;
+}
+.content-estrellas p{
+      font-size: 8px;
+  font-weight: normal;
+  margin: 2px 0;
+}
+.detalle-taller-content .col-xs-6{
+    margin: 0;
+}
+.detalle-taller-content .col-xs-6 .col-xs-2{
+    
+  padding: 0;
+}
+.content-estrellas .content-estrella img{
+      width: 100%;
+  max-width: 27px;
+  padding: 0 2px;
+}
+.bajada-comentarios{
+      font-size: 9px !important;
+  text-align: center;
+  margin: 10px 0 15px;
+}
+/* END COMENTARIOS */
 @media (max-width: 1024px) and (min-width: 992px) {
     footer p {
         margin: 2% 3%;
