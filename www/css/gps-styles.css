@@ -12,6 +12,9 @@ input {
     -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
     box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
 }
+.rojo{
+    color:#eb2026;
+}
 #content{
     margin-bottom: 50px;
 }
@@ -58,8 +61,9 @@ input {
 }
 
 h1 {
-    font-size: 40px;
     font-weight: bold;
+    text-align: center;
+    font-size: 18px;
 }
 
 h2 {
@@ -70,7 +74,11 @@ h3 {
     font-size: 16px;
     font-style: italic;
 }
-
+h4 {
+    font-weight: regular;
+    text-align: center;
+    font-size: 12px;
+}
 p {
     font-size: 13px;
 }
@@ -492,6 +500,54 @@ footer p {
     text-decoration: underline;
 }
 
+/* REGISTRO */
+.btn-registrarme{
+    margin-bottom: 15px;
+}
+.content-registro{
+    width: 90%;
+    margin: 0 auto;
+    max-width: 320px;
+}
+.content-registro input{
+    font-size: 11px;
+    color: #000;
+}
+.content-registro.recuperar input{
+    text-align: center;
+    margin: 0 0 23px;
+}
+.registro-texto{
+     width: 90%;
+    margin: 0 auto;
+    border-color: #929497;
+    border-width: 1px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border-style: solid;
+      padding: 7px 7px;
+        max-width: 320px;
+}
+.registro-texto p{
+    font-size: 10px;
+    line-height: 11px;
+}
+.checkbox.aceptoterminos {
+    text-align: center;
+    width: 195px;
+    margin: 10px auto;
+    font-size: 10px;
+    line-height: 21px;
+      
+}
+.ingrese-mail{
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 23px 0;
+}
+/* EDN REGISTRO */
 
 @media (max-width: 1024px) and (min-width: 992px) {
     footer p {
