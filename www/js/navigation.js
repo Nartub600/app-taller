@@ -1,7 +1,7 @@
 GPSTaller.visited = ['index'];
 
-// $(function(){
-document.addEventListener("deviceready", function() {
+// document.addEventListener("deviceready", function() {
+$(function(){
 
     $('body').on('click', '[nav]', function(e){
         e.preventDefault();

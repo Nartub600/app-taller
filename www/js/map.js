@@ -1,15 +1,9 @@
 function talleresCercanos()
 {
-    if(GPSTaller.map) {
-        GPSTaller.map.clear();
-    }
     $(".loader").fadeIn();
-
-    GPSTaller.map_canvas = document.getElementById("map_canvas");
 
     function onError(error) {
         alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
-        // alert('Error en la geolocalización');
         $(".loader").fadeOut();
     }
 
@@ -19,19 +13,10 @@ function talleresCercanos()
             if(data != null) {
                 var points = [];
                 for(i = 0; i < data.length; i++) {
-                    points.push(new plugin.google.maps.LatLng(data[i].lat, data[i].lng));
+                    points.push([data[i].lat, data[i].lng]);
                 }
-                GPSTaller.location = new plugin.google.maps.LatLngBounds(points);
                 $(".loader").fadeOut();
-                GPSTaller.showMap(GPSTaller.location.getCenter());
-                GPSTaller.map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
-                    GPSTaller.addMarkers(data);
-                    GPSTaller.map.animateCamera({
-                        'target': GPSTaller.location,
-                        'duration': 500
-                    });
-                    GPSTaller.map.off();
-                });
+                GPSTaller.showMap(points);
             } else {
                 alert('No hay talleres cerca');
                 $(".loader").fadeOut();
@@ -54,40 +39,29 @@ $(function(){
 
         $(".loader").fadeIn();
 
-        var request = {
-            'address': $("#txt_search").val()
-        };
-
-        plugin.google.maps.Geocoder.geocode(request, function(results) {
-            if (results.length) {
-                var result = results[0];
-                var position = result.position;
-
-                GPSTaller.search(position.lat, position.lng, function(data) {
-                    if(data != null) {
-                        var points = [];
-                        for(i = 0; i < data.length; i++) {
-                            points.push(new plugin.google.maps.LatLng(data[i].lat, data[i].lng));
-                        }
-                        GPSTaller.location = new plugin.google.maps.LatLngBounds(points);
+        $('#map_canvas').gmap3({
+            getlatlng: {
+                address: $("#txt_search").val(),
+                callback: function(results) {
+                    if (!results) {
+                        alert('No se encuentra dirección');
                         $(".loader").fadeOut();
-                        GPSTaller.map.clear();
-                        // GPSTaller.showMap(location.getCenter());
-                        // GPSTaller.map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
-                            GPSTaller.addMarkers(data);
-                            GPSTaller.map.animateCamera({
-                                'target': GPSTaller.location,
-                                'duration': 500
-                            });
-                        // });
                     } else {
-                        alert('No hay talleres cerca');
-                        $(".loader").fadeOut();
+                        GPSTaller.search(results[0].geometry.location.lat(), results[0].geometry.location.lng(), function(data) {
+                            if(data[0].nombre != 'sin resultados.') {
+                                var points = [];
+                                for(i = 0; i < data.length; i++) {
+                                    points.push([data[i].lat, data[i].lng]);
+                                }
+                                $(".loader").fadeOut();
+                                GPSTaller.showMap(points);
+                            } else {
+                                alert('No hay talleres cerca');
+                                $(".loader").fadeOut();
+                            }
+                        });
                     }
-                });
-            } else {
-                alert('No se encuentra dirección');
-                $(".loader").fadeOut();
+                }
             }
         });
     });

@@ -1,13 +1,14 @@
 .btn-gps {
     background-color: #cc3832 !important;
-    color:#fff !important;
+    color: #fff !important;
     font-size: 13px;
     padding: 5px 12px;
 }
 
-.checkbox{
+.checkbox {
 
 }
+
 .checkbox input{
     position: absolute !important;
     left: -2px !important;
@@ -15,6 +16,3 @@
     top: 4px !important;
     padding: 0 !important;
 }
-
-
-

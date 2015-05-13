@@ -8,34 +8,40 @@ p, h1, h2, h3, h4, label, button, span {
 }
 
 input {
-    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
-    -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
-.rojo{
-    color:#eb2026;
+
+.rojo {
+    color: #eb2026;
 }
-#content{
+
+#content {
     margin-bottom: 50px;
 }
-.menu-drop{
-     top: 0;
-  position: relative;
-  right: 0;
-  z-index: 9500;
-  margin-top: -40px;
+
+.menu-drop {
+    top: 0;
+    position: relative;
+    right: 0;
+    z-index: 9500;
+    margin-top: -40px;
 }
-.btn-nav-icon, .btn-nav-icon:focus, .btn-nav-icon:hover{
+
+.btn-nav-icon, .btn-nav-icon:focus, .btn-nav-icon:hover {
     border: 0;
     background: transparent !important;
 }
-.nav-icon{
-      width: 34px;
+
+.nav-icon {
+    width: 34px;
 }
+
 .loader {
     position: fixed;
     z-index: 9600;
-    background: rgba(256,256,256,.5);
+    background: rgba(256, 256, 256, .5);
     width: 100%;
     height: 100%;
     display: none;
@@ -74,11 +80,13 @@ h3 {
     font-size: 16px;
     font-style: italic;
 }
+
 h4 {
     font-weight: regular;
     text-align: center;
     font-size: 12px;
 }
+
 p {
     font-size: 13px;
 }
@@ -269,8 +277,8 @@ footer p {
     margin: 0 45px 12px;
     padding: 3px 0;
     position: relative;
-  float: left;
-  width: 84%;
+    float: left;
+    width: 84%;
     margin: 0 8% 20px;
 }
 
@@ -318,15 +326,14 @@ footer p {
     -moz-box-shadow: none;
     box-shadow: none;
     padding: 0px 11px 0;
-      margin: 10px 0;
-      display: block;
-  width: 100%;
-  font-weight: bold;
+    margin: 10px 0;
+    display: block;
+    width: 100%;
+    font-weight: bold;
 }
 
 #settings .ui-btn-icon-left:after {
     left: 28.5625em;
-   
     border-radius: 0;
     border-width: 3px;
     border-color: #000;
@@ -338,27 +345,29 @@ footer p {
     border: 0;
     padding: 0;
 }
+
 .mostrar-check .checkbox{
-      margin: 6px 0 0 0;
-  position: relative;
-  float: left;
-  width: 100%;
+    margin: 6px 0 0 0;
+    position: relative;
+    float: left;
+    width: 100%;
 }
+
 .mostrar-check .radio input[type="radio"], .mostrar-check .radio-inline input[type="radio"], .mostrar-check .checkbox input[type="checkbox"], .mostrar-check .checkbox-inline input[type="checkbox"] {
     position: absolute !important;
-  top: 11px !important;
-  right: 78% !important;
-  width: 16px;
-  height: 16px;
-  left: 89% !important;
-  right: 0 !important;
+    top: 11px !important;
+    right: 78% !important;
+    width: 16px;
+    height: 16px;
+    left: 89% !important;
+    right: 0 !important;
 }
 
 #settings input.ui-slider-input, #settings .ui-field-contain input.ui-slider-input {
     position: absolute;
-      top: -57px;
-  right: -39px;
-  font-weight: bold;
+    top: -57px;
+    right: -39px;
+    font-weight: bold;
     border: 0;
     background: none;
     -webkit-box-shadow: none;
@@ -380,7 +389,7 @@ footer p {
     border-radius: 0;
     /* background-color: #000; */
     border-color: #000;
-    background: rgba(0,0,0,1);
+    background: rgba(0, 0, 0, 1);
 }
 
 #settings .ui-slider-track {
@@ -458,41 +467,48 @@ footer p {
     font-family: 'Open Sans', sans-serif;
 }
 
-.content-menu-login{
+.content-menu-login {
     width: 80%;
     margin: 20px auto;
 }
-.content-menu-login.social{
+
+.content-menu-login.social {
     max-width: 270px;
 }
 
-.content-menu-login.social .row{
+.content-menu-login.social .row {
     margin-bottom: 10px;
 }
-.content-menu-login.texto{
+
+.content-menu-login.texto {
     width: 70%;
     margin: 40px auto;
-      max-width: 302px;
+    max-width: 302px;
 }
-.content-menu-login.texto .ui-input-text{
+
+.content-menu-login.texto .ui-input-text {
       margin: 5px 0 0 0;
 }
-.content-menu-login.texto input[type="text"], .content-menu-login.texto input[type="email"], .content-menu-login.texto input[type="password"]{
+
+.content-menu-login.texto input[type="text"], .content-menu-login.texto input[type="email"], .content-menu-login.texto input[type="password"] {
     border-width: 0 0 1px 0;
     border-style: solid;
     font-size: 16px;
-    color:#999;
+    color: #999;
     border-color: #000;
     width: 100%;
 }
-.content-menu-login.social img{
+
+.content-menu-login.social img {
     width: 100%;
 }
-.content-menu-login.texto .links{
+
+.content-menu-login.texto .links {
     margin: 10px 0;
 }
-.content-menu-login.texto .links a{
-    color:#000;
+
+.content-menu-login.texto .links a {
+    color: #000;
     text-align: center;
     width: 100%;
     position: relative;
@@ -501,24 +517,28 @@ footer p {
 }
 
 /* REGISTRO */
-.btn-registrarme{
+.btn-registrarme {
     margin-bottom: 15px;
 }
-.content-registro{
+
+.content-registro {
     width: 90%;
     margin: 0 auto;
     max-width: 320px;
 }
-.content-registro input{
+
+.content-registro input {
     font-size: 11px;
     color: #000;
 }
-.content-registro.recuperar input{
+
+.content-registro.recuperar input {
     text-align: center;
     margin: 0 0 23px;
 }
-.registro-texto{
-     width: 90%;
+
+.registro-texto {
+    width: 90%;
     margin: 0 auto;
     border-color: #929497;
     border-width: 1px;
@@ -526,22 +546,24 @@ footer p {
     -moz-border-radius: 5px;
     border-radius: 5px;
     border-style: solid;
-      padding: 7px 7px;
-        max-width: 320px;
+    padding: 7px 7px;
+    max-width: 320px;
 }
-.registro-texto p{
+
+.registro-texto p {
     font-size: 10px;
     line-height: 11px;
 }
+
 .checkbox.aceptoterminos {
     text-align: center;
     width: 195px;
     margin: 10px auto;
     font-size: 10px;
     line-height: 21px;
-      
 }
-.ingrese-mail{
+
+.ingrese-mail {
     text-align: center;
     font-size: 15px;
     font-weight: 600;
@@ -594,9 +616,11 @@ footer p {
     .content-mapa {
         height: 550px;
     }
+
     #settings .ui-btn-icon-left:after {
         left: 84%;
     }
+
     .content-menu-login.social{
         max-width: 200px;
     }
@@ -624,10 +648,9 @@ footer p {
         position: fixed;
         bottom: 0;
     }
-    
+
 }
 @media (max-height: 550px) {
-    
     footer.nofix {
         position: relative;
         bottom: 0;

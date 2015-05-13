@@ -15,49 +15,42 @@
 
         <script type="text/javascript" src="cordova.js"></script>
 
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?region=AR&language=es&key=AIzaSyANCx09BALEnUGN6urN5oG0zOk0-8xBMlg"></script>
+
         <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
-
         <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/gmap3.min.js"></script>
+
         <script type="text/javascript" src="js/gpstaller.js"></script>
         <script type="text/javascript" src="js/navigation.js"></script>
         <script type="text/javascript" src="js/map.js"></script>
-
-        <script>
-            document.addEventListener("deviceready", function() {
-            // $(function(){
-                // $('.loader').fadeIn();
-                // $('.loader').delay(1500).fadeOut();
-            }, false);
-
-        </script>
+        <script type="text/javascript" src="js/events.js"></script>
+        <script type="text/javascript" src="js/access.js"></script>
     </head>
     <body>
         <div class="loader">
-            <!--<img src="img/loading2.gif" />-->
             <p>Cargando...</p>
         </div>
 
         <div class="container">
 
-            <div class="row">
+            <div class="row" id="header">
                 <header>
                     <a href="#" style="display: block;" nav="index"><img class="logo" src="img/logo.png" /></a>
                     <div class="line-01"></div>
                     <div class="dropdown pull-right menu-drop">
                         <button class="btn btn-default dropdown-toggle btn-nav-icon" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                            <img class="nav-icon" src="img/nav-icon.png"/>
+                            <img class="nav-icon" src="img/nav-icon.png" />
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <li role="presentation"><a role="menuitem" tabindex="-1" nav="login">Login</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" nav="registro">Registro</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" nav="solicitarcontrasenia">Solicitar contraseña</a></li>
-                            
                         </ul>
                     </div>
-
                 </header>
-            </div>
+            </div> <!-- #header -->
 
             <div id="content">
 
@@ -65,52 +58,51 @@
 
                     <div class="row">
                         <h1><br>SOLICITAR NUEVA CONTRASEÑA</h1>
-                        <h4>Le enviaremos instrucciones para obtener una nueva contraseña por email.</h4>    
+                        <h4>Le enviaremos instrucciones para obtener una nueva contraseña por email.</h4>
                         <p class="ingrese-mail">Ingrese su email<span class="rojo">*</span></p>
                     </div>
                     <div class="row">
                         <div class="content-registro recuperar">
                             <form>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email">
-                                </div>                                
+                                    <input type="email" class="form-control" placeholder="Email" />
+                                </div>
                             </form>
-                        </div>                       
+                        </div>
                     </div>
-                    
-                    
+
                     <div class="row">
                         <button class="btn btn-gps center-block">Enviar Solicitud</button>
                     </div>
-                    
 
                 </div> <!-- #solicitarcontrasenia -->
+
                 <div id="registro" page style="display: none;">
 
                     <div class="row">
                         <h1>REGISTRARME</h1>
-                        <h4>Regístrate con tu dirección de correo electrónico</h4>                        
+                        <h4>Regístrate con tu dirección de correo electrónico</h4>
                     </div>
                     <div class="row">
                         <div class="content-registro">
                             <form>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email">
+                                    <input type="email" class="form-control" placeholder="Email" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Nombre">
+                                    <input type="text" class="form-control" placeholder="Nombre" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Apellido">
+                                    <input type="text" class="form-control" placeholder="Apellido" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Contraseña">
+                                    <input type="password" class="form-control" placeholder="Contraseña" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Repetir Contraseña">
+                                    <input type="password" class="form-control" placeholder="Repetir Contraseña" />
                                 </div>
                             </form>
-                        </div>                       
+                        </div>
                     </div>
                     <div class="row">
                         <div class="registro-texto">
@@ -127,43 +119,41 @@
                     <div class="row">
                         <button class="btn btn-gps center-block btn-registrarme">Registrarme</button>
                     </div>
-                    
 
                 </div> <!-- #registro -->
+
                 <div id="login" page style="display: none;">
 
                     <div class="row">
                         <div class="content-menu-login social">
                             <div class="row">
-                                <a href="#"><img src="img/login-fb.png"/></a>
+                                <a href="#"><img src="img/login-fb.png" /></a>
                             </div>
                             <div class="row">
-                                <a href="#"><img src="img/login-google.png"/></a>
+                                <a href="#"><img src="img/login-google.png" /></a>
                             </div>
-                            
                         </div>
                         <div class="content-menu-login texto">
-                             <div class="row">
-                                 <div class="media">
-                                     <div class="media-left media-middle">
-                                         <label for="user"><img width="25" src="img/user.png"/></label>
-                                     </div>
-                                     <div class="media-body">
-                                         <input id="user" name="user" type="email"/>
-                                     </div>
-                                 </div>                                 
+                            <div class="row">
+                                <div class="media">
+                                    <div class="media-left media-middle">
+                                        <label for="user"><img width="25" src="img/user.png" /></label>
+                                    </div>
+                                    <div class="media-body">
+                                        <input id="login_email" name="user" type="email" />
+                                    </div>
+                                 </div>
                             </div>
                              <div class="row">
-                                 <div class="media">
-                                     <div class="media-left media-middle">
-                                         <label for="password"><img width="25" src="img/password.png"/></label>
-                                     </div>
-                                     <div class="media-body">
-                                         <input id="password" name="password" type="password"/>
-                                     </div>
-                                 </div>                                 
+                                <div class="media">
+                                    <div class="media-left media-middle">
+                                        <label for="password"><img width="25" src="img/password.png" /></label>
+                                    </div>
+                                    <div class="media-body">
+                                        <input id="login_password" name="password" type="password" />
+                                    </div>
+                                 </div>
                             </div>
-                             
                         </div>
                         <div class="content-menu-login texto">
                             <div class="row">
@@ -171,44 +161,39 @@
                                 <div class="col-xs-5">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox"> Recordarme
+                                            <input type="checkbox">Recordarme
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-xs-5"><button class="btn btn-gps center-block">Login</button></div>
+                                <div class="col-xs-5"><button id="btn_login" class="btn btn-gps center-block">Login</button></div>
                                 <div class="col-xs-1"></div>
                             </div>
-                            
-                            <div class="row links">                                
+                            <div class="row links">
                                 <a href="#">Regístrate por primera vez</a>
                             </div>
-                            <div class="row links">                                
+                            <div class="row links">
                                 <a href="#">Recuperar Contraseña</a>
                             </div>
                         </div>
                     </div>
 
-                    
-
                 </div> <!-- #login -->
-                
-                <div id="index" page >
+
+                <div id="index" page>
 
                     <div class="row">
                         <div class="content-menu-home">
                             <div class="row">
-                                <a href="#" nav="search-map"><img src="img/buscador-taller.png"/></a>
+                                <a href="#" nav="search-map"><img src="img/buscador-taller.png" /></a>
                             </div>
                             <div class="row">
-                                <a href="#" nav="demo-textos"><img src="img/historia-del-auto.png"/></a>
+                                <a href="#" nav="demo-textos"><img src="img/historia-del-auto.png" /></a>
                             </div>
                             <div class="row">
-                                <a href="#" nav="demo-textos"><img src="img/asegura-tu-auto.png"/></a>
+                                <a href="#" nav="demo-textos"><img src="img/asegura-tu-auto.png" /></a>
                             </div>
                         </div>
                     </div>
-
-                    
 
                 </div> <!-- #index -->
 
@@ -258,10 +243,10 @@
                         <div class="row">
                             <div class="mostrar-check">
                                 <div class="checkbox">
-                                    <label>Taller<input id="chk_taller" value="1" type="checkbox"></label>
+                                    <label>Taller<input id="chk_taller" value="1" type="checkbox" /></label>
                                 </div>
                                 <div class="checkbox">
-                                    <label>Gomería<input id="chk_gomeria" value="2" type="checkbox"></label>
+                                    <label>Gomería<input id="chk_gomeria" value="2" type="checkbox" /></label>
                                 </div>
                             </div>
                         </div>
@@ -290,8 +275,6 @@
                         </div>
                     </div>
 
-                    
-
                 </div> <!-- #settings -->
 
                 <div id="demo-textos" page style="display: none;">
@@ -304,17 +287,17 @@
                         <p>Lorem Ipsum es <strong>simplemente el texto de</strong> relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos.</p>
                     </div>
 
-                    
-
                 </div> <!-- #demo-textos -->
 
             </div> <!-- #content -->
-            <div class="row">
-                        <footer class="nofix">
-                            <div class="line-01"></div>
-                            <p>La red de talleres mecánicos que te acompaña en todo el país</p>
-                        </footer>
-                    </div>
+
+            <div class="row" id="footer">
+                <footer class="nofix">
+                    <div class="line-01"></div>
+                    <p>La red de talleres mecánicos que te acompaña en todo el país</p>
+                </footer>
+            </div> <!-- #footer -->
+
         </div> <!-- #container -->
     </body>
 </html>
