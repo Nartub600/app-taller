@@ -10,6 +10,11 @@ GPSTaller = {
         if(!$('#footer').is(':visible')) {
             $('#footer').show();
         }
+        if(page == 'index') {
+            $('#btn_volver').hide();
+        } else {
+            $('#btn_volver').show();
+        }
         $('[page]:visible').hide();
         $('[page][id="' + page + '"]').show();
         if($('[page][id="' + page + '"]').attr('callback')) {

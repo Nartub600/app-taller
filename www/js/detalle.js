@@ -1,7 +1,9 @@
 GPSTaller.detalle = function (tallerID) {
     $(".loader").fadeIn();
 
-    GPSTaller.search({tallerID: tallerID}, function(data){
+    GPSTaller.search({
+        tallerID: tallerID
+    }, function(data){
         $(".loader").fadeOut();
         $('#detalle_nombre').text(data[0].nombre);
         $('#detalle_direccion').text(data[0].direccion);
@@ -9,6 +11,7 @@ GPSTaller.detalle = function (tallerID) {
         $('#detalle_email').text(data[0].email);
         $('#detalle_horario').text(data[0].horarioAtencion);
         $('#detalle_descripcion').text(data[0].descripcion);
+        $('#detalle_rating').attr('src', 'img/rating-' + data[0].rating + '.png')
         $('[nav="comentarios"]').data('tallerID', tallerID);
     });
 }

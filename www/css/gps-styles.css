@@ -20,18 +20,21 @@ input {
 #content {
     margin-bottom: 0;
 }
-.volver-btn{
-     top: 0;
-  position: relative;
-  left: 8px;
-  z-index: 9500;
-  margin-top: -44px;
-  width: 35px;
-  display: block;
+
+.volver-btn {
+    top: 0;
+    position: relative;
+    left: 8px;
+    z-index: 9500;
+    margin-top: -44px;
+    width: 35px;
+    display: block;
 }
-.volver-btn img{
+
+.volver-btn img {
     width: 100%;
 }
+
 .menu-drop {
     top: 0;
     position: relative;
@@ -748,7 +751,7 @@ footer p {
     .content-menu-login.social {
         max-width: 200px;
     }
-   
+
 }
 
 @media (max-width: 320px) {

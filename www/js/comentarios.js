@@ -6,7 +6,8 @@ GPSTaller.comentarios = function(data) {
         type: 'get',
         dataType: 'json',
         data: {
-            id: data.tallerID
+            id: data.tallerID,
+            mail: GPSTaller.logged || ''
         },
         success: function(data) {
             $(".loader").fadeOut();
@@ -15,6 +16,9 @@ GPSTaller.comentarios = function(data) {
                 $('#com' + (i + 1) + '_nombre').text(e.nombre);
                 $('#com' + (i + 1) + '_fecha').text(e.fecha);
             });
+            if(data.usuario.permiso == '2') {
+                $('#comentarios_comentar').show();
+            }
         }
     });
 }

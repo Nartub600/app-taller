@@ -47,14 +47,14 @@
                             <img class="nav-icon" src="img/nav-icon.png" />
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" nav="login">Login</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" nav="registro">Registro</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" nav="solicitarcontrasenia">Solicitar contraseña</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" nav="detalle-taller">Detalle taller</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" nav="comentarios">Comentarios</a></li>
+                            <li role="presentation"><a href="#" role="menuitem" nav="login">Login</a></li>
+                            <li role="presentation"><a href="#" role="menuitem" nav="registro">Registro</a></li>
+                            <li role="presentation"><a href="#" role="menuitem" nav="solicitarcontrasenia">Solicitar contraseña</a></li>
+                            <li role="presentation"><a href="#" role="menuitem" nav="detalle-taller">Detalle taller</a></li>
+                            <li role="presentation"><a href="#" role="menuitem" nav="comentarios">Comentarios</a></li>
                         </ul>
                     </div>
-                    <a class="volver-btn" href="#" nav="index"><img src="img/volver.png"/></a>
+                    <a class="volver-btn" href="#" id="btn_volver" style="display: none;"><img src="img/volver.png" /></a>
                 </header>
 
             </div> <!-- #header -->
@@ -85,26 +85,28 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="detalle-taller-content">
-                            <textarea placeholder="Escribe aquí para comentar"></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="detalle-taller-content">
-                            <div class="col-xs-6">
-                                <div class="row content-estrellas">
-                                    <div class="col-xs-2 content-estrella"><img src="img/estrella-1.png" /></div>
-                                    <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png" /></div>
-                                    <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png" /></div>
-                                    <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png" /></div>
-                                    <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png" /></div>
-                                </div>
-                                <div class="row content-estrellas">
-                                    <p>Pulse una estrella para puntuar</p>
-                                </div>
+                    <div id="comentarios_comentar" style="display: none;">
+                        <div class="row">
+                            <div class="detalle-taller-content">
+                                <textarea placeholder="Escribe aquí para comentar"></textarea>
                             </div>
-                            <div class="col-xs-6"><button class="btn btn-gps pull-right">Comentar</button></div>
+                        </div>
+                        <div class="row">
+                            <div class="detalle-taller-content">
+                                <div class="col-xs-6">
+                                    <div class="row content-estrellas">
+                                        <div class="col-xs-2 content-estrella"><img src="img/estrella-1.png" /></div>
+                                        <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png" /></div>
+                                        <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png" /></div>
+                                        <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png" /></div>
+                                        <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png" /></div>
+                                    </div>
+                                    <div class="row content-estrellas">
+                                        <p>Pulse una estrella para puntuar</p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6"><button class="btn btn-gps pull-right">Comentar</button></div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -126,7 +128,7 @@
                             <p>Teléfono: <span id="detalle_telefono"></span></p>
                             <p>Mail: <span id="detalle_email"></span></p>
                             <p>Horario: <span id="detalle_horario"></span></p>
-                            <p>Calificación: <img class="img-rating" src="img/rating-1.png" /></p>
+                            <p>Calificación: <img id="detalle_rating" class="img-rating" src="" /></p>
                             <div class="line-02"></div>
                             <p class="titulo-descripcion">Descripción:</p>
                             <p class="texto-descripcion"><span id="detalle_descripcion"></span></p>
@@ -310,7 +312,7 @@
                         <div class="row">
                         <div class="media top-settings">
                             <div class="media-left">
-                                <a id="btn_volver" href="#" nav="search-map">
+                                <a id="btn_volver_settings" href="#" nav="search-map">
                                     <img class="media-object" src="img/icon-volver.png" alt="" />
                                 </a>
                             </div>
