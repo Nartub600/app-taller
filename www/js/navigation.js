@@ -9,13 +9,8 @@ $(function(){
         var actual = $('[page]:visible').attr('id');
         var next = $(this).attr('nav');
 
-        if(next != actual) {
-            $('[page]:visible').hide();
-            $('[page][id="' + next + '"]').show();
-            if($('[page][id="' + next + '"]').attr('callback')) {
-                var func = $('[page][id="' + next + '"]').attr('callback') + "();";
-                eval(func);
-            }
+        if (next != actual) {
+            GPSTaller.show(next, $(e.target).data());
             GPSTaller.visited.push(next);
         }
     });
@@ -23,15 +18,10 @@ $(function(){
     document.addEventListener("backbutton", function(e){
         e.preventDefault();
 
-        if(GPSTaller.visited.length >= 2) {
+        if (GPSTaller.visited.length >= 2) {
             GPSTaller.visited.pop();
             var next = GPSTaller.visited[GPSTaller.visited.length - 1];
-            $('[page]:visible').hide();
-            $('[page][id="' + next + '"]').show();
-            if($('[page][id="' + next + '"]').attr('callback')) {
-                var func = $('[page][id="' + next + '"]').attr('callback') + "();";
-                eval(func);
-            }
+            GPSTaller.show(next, $(e.target).data());
         } else {
             navigator.app.exitApp();
         }

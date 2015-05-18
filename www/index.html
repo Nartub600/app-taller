@@ -25,6 +25,8 @@
         <script type="text/javascript" src="js/gpstaller.js"></script>
         <script type="text/javascript" src="js/navigation.js"></script>
         <script type="text/javascript" src="js/map.js"></script>
+        <script type="text/javascript" src="js/detalle.js"></script>
+        <script type="text/javascript" src="js/comentarios.js"></script>
         <script type="text/javascript" src="js/events.js"></script>
         <script type="text/javascript" src="js/access.js"></script>
     </head>
@@ -36,6 +38,7 @@
         <div class="container">
 
             <div class="row" id="header">
+
                 <header>
                     <a href="#" style="display: block;" nav="index"><img class="logo" src="img/logo.png" /></a>
                     <div class="line-01"></div>
@@ -52,31 +55,31 @@
                         </ul>
                     </div>
                 </header>
+
             </div> <!-- #header -->
 
             <div id="content">
 
-                <div id="comentarios" page style="display: none;">
+                <div id="comentarios" page style="display: none;" callback="GPSTaller.comentarios">
 
                     <div class="row">
                         <h1>TALLER PANCHO</h1>
-                        
                     </div>
                     <div class="row">
                         <div class="detalle-taller-content">
                             <div class="comentario">
-                                <p class="titulo-comentario">1. Muy buen taller totalmente recomendado!!</p>
-                                <p class="datos-usuario-comentario"><span class="usuario">Francisco</span><span class="fecha">22/05/2015</span><img class="img-rating-comentario" src="img/rating-1.png"/></p>
+                                <p class="titulo-comentario"><span id="com1_comentario"></span></p>
+                                <p class="datos-usuario-comentario"><span class="usuario" id="com1_nombre"></span><span class="fecha" id="com1_fecha"></span><img class="img-rating-comentario" src="img/rating-1.png" /></p>
                                 <div class="line-02"></div>
                             </div>
                             <div class="comentario">
-                                <p class="titulo-comentario">1. Muy buen taller totalmente recomendado!!</p>
-                                <p class="datos-usuario-comentario"><span class="usuario">Francisco</span><span class="fecha">22/05/2015</span><img class="img-rating-comentario" src="img/rating-1.png"/></p>
+                                <p class="titulo-comentario"><span id="com2_comentario"></span></p>
+                                <p class="datos-usuario-comentario"><span class="usuario" id="com2_nombre"></span><span class="fecha" id="com2_fecha"></span><img class="img-rating-comentario" src="img/rating-1.png" /></p>
                                 <div class="line-02"></div>
                             </div>
                             <div class="comentario">
-                                <p class="titulo-comentario">1. Muy buen taller totalmente recomendado!!</p>
-                                <p class="datos-usuario-comentario"><span class="usuario">Francisco</span><span class="fecha">22/05/2015</span><img class="img-rating-comentario" src="img/rating-1.png"/></p>
+                                <p class="titulo-comentario"><span id="com3_comentario"></span></p>
+                                <p class="datos-usuario-comentario"><span class="usuario" id="com3_nombre"></span><span class="fecha" id="com3_fecha"></span><img class="img-rating-comentario" src="img/rating-1.png" /></p>
                                 <div class="line-02"></div>
                             </div>
                         </div>
@@ -90,11 +93,11 @@
                         <div class="detalle-taller-content">
                             <div class="col-xs-6">
                                 <div class="row content-estrellas">
-                                    <div class="col-xs-2 content-estrella"><img src="img/estrella-1.png"/></div>
-                                    <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png"/></div>
-                                    <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png"/></div>
-                                    <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png"/></div>
-                                    <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png"/></div>
+                                    <div class="col-xs-2 content-estrella"><img src="img/estrella-1.png" /></div>
+                                    <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png" /></div>
+                                    <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png" /></div>
+                                    <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png" /></div>
+                                    <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png" /></div>
                                 </div>
                                 <div class="row content-estrellas">
                                     <p>Pulse una estrella para puntuar</p>
@@ -108,32 +111,30 @@
                             <p class="bajada-comentarios"><span class="rojo">*</span>El dominio debe tener un servicio registrado por este taller en el sistema para  comentar.</p>
                         </div>
                     </div>
-                    
 
-                </div> <!-- #solicitarcontrasenia -->
-                <div id="detalle-taller" page style="display: none;">
+                </div> <!-- #comentarios -->
+
+                <div id="detalle-taller" page style="display: none;" callback="GPSTaller.detalle">
 
                     <div class="row">
-                        <h1>TALLER PANCHO</h1>
-                        
+                        <h1><span id="detalle_nombre"></span></h1>
                     </div>
                     <div class="row">
                         <div class="detalle-taller-content">
-                            <p>Dirección: Calle Falsa 123 <a href="#" class="como-llego">¿Cómo llego?</a></p>
-                            <p>Teléfono: 11 1234 5678</p>
-                            <p>Mail: asd@asd.com.ar</p>
-                            <p>Horario: Lunes a Sábado (9 - 18 Hs)</p>
-                            <p>Calificación: <img class="img-rating" src="img/rating-1.png"/></p>
+                            <p>Dirección: <span id="detalle_direccion"></span> <a href="#" class="como-llego">¿Cómo llego?</a></p>
+                            <p>Teléfono: <span id="detalle_telefono"></span></p>
+                            <p>Mail: <span id="detalle_email"></span></p>
+                            <p>Horario: <span id="detalle_horario"></span></p>
+                            <p>Calificación: <img class="img-rating" src="img/rating-1.png" /></p>
                             <div class="line-02"></div>
                             <p class="titulo-descripcion">Descripción:</p>
-                            <p class="texto-descripcion">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed ac elit. Cras tellus leo, sollicitudin a, sagittis eu, vulputate quis, arcu Proin at diam. Cras tellus leo, sollicitudin a, sagittis eu, vulputate quis, arcu Proin at diam.Cras tellus leo, sol.</p>
-                            <a href="#" class="rojo ver-comentarios"nav="comentarios">Ver comentarios</a>
+                            <p class="texto-descripcion"><span id="detalle_descripcion"></span></p>
+                            <a href="#" class="rojo ver-comentarios" nav="comentarios" callback="GPSTaller.comentarios">Ver comentarios</a>
                         </div>
                     </div>
 
-                    
+                </div> <!-- #detalle-taller -->
 
-                </div> <!-- #solicitarcontrasenia -->
                 <div id="solicitarcontrasenia" page style="display: none;">
 
                     <div class="row">
@@ -167,19 +168,19 @@
                         <div class="content-registro">
                             <form>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email" />
+                                    <input name="reg_email" type="email" class="form-control" placeholder="Email" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Nombre" />
+                                    <input name="reg_firstname" type="text" class="form-control" placeholder="Nombre" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Apellido" />
+                                    <input name="reg_lastname" type="text" class="form-control" placeholder="Apellido" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Contraseña" />
+                                    <input name="reg_password" type="password" class="form-control" placeholder="Contraseña" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Repetir Contraseña" />
+                                    <input name="reg_passconf" type="password" class="form-control" placeholder="Repetir Contraseña" />
                                 </div>
                             </form>
                         </div>
@@ -192,12 +193,12 @@
                     <div class="row">
                         <div class="checkbox aceptoterminos">
                             <label>
-                                <input type="checkbox"> <span class="rojo">*</span> Acepto los términos y condiciones
+                                <input id="reg_terms" type="checkbox"> <span class="rojo">*</span> Acepto los términos y condiciones
                             </label>
                         </div>
                     </div>
                     <div class="row">
-                        <button class="btn btn-gps center-block btn-registrarme">Registrarme</button>
+                        <button id="btn_register" class="btn btn-gps center-block btn-registrarme">Registrarme</button>
                     </div>
 
                 </div> <!-- #registro -->
@@ -241,7 +242,7 @@
                                 <div class="col-xs-5">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox">Recordarme
+                                            <input id="login_remember" type="checkbox">Recordarme
                                         </label>
                                     </div>
                                 </div>
@@ -249,10 +250,10 @@
                                 <div class="col-xs-1"></div>
                             </div>
                             <div class="row links">
-                                <a href="#">Regístrate por primera vez</a>
+                                <a href="#" nav="registro">Regístrate por primera vez</a>
                             </div>
                             <div class="row links">
-                                <a href="#">Recuperar Contraseña</a>
+                                <a href="#" nav="solicitarcontrasenia">Recuperar Contraseña</a>
                             </div>
                         </div>
                     </div>
@@ -277,7 +278,7 @@
 
                 </div> <!-- #index -->
 
-                <div id="search-map" page style="display: none;" callback="talleresCercanos">
+                <div id="search-map" page style="display: none;" callback="GPSTaller.talleresCercanos">
 
                     <div class="row">
                         <div class="content-search col-lg-6">
@@ -372,10 +373,12 @@
             </div> <!-- #content -->
 
             <div class="row" id="footer">
+
                 <footer class="nofix">
                     <div class="line-01"></div>
                     <p>La red de talleres mecánicos que te acompaña en todo el país</p>
                 </footer>
+
             </div> <!-- #footer -->
 
         </div> <!-- #container -->
