@@ -88,24 +88,25 @@
                     <div id="comentarios_comentar" style="display: none;">
                         <div class="row">
                             <div class="detalle-taller-content">
-                                <textarea placeholder="Escribe aquí para comentar"></textarea>
+                                <textarea id="comentarios_comentario" placeholder="Escribe aquí para comentar"></textarea>
                             </div>
                         </div>
                         <div class="row">
                             <div class="detalle-taller-content">
                                 <div class="col-xs-6">
                                     <div class="row content-estrellas">
-                                        <div class="col-xs-2 content-estrella"><img src="img/estrella-1.png" /></div>
-                                        <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png" /></div>
-                                        <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png" /></div>
-                                        <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png" /></div>
-                                        <div class="col-xs-2 content-estrella"><img src="img/estrella-0.png" /></div>
+                                        <div class="col-xs-2 content-estrella" star="1"><img src="img/estrella-0.png" /></div>
+                                        <div class="col-xs-2 content-estrella" star="2"><img src="img/estrella-0.png" /></div>
+                                        <div class="col-xs-2 content-estrella" star="3"><img src="img/estrella-0.png" /></div>
+                                        <div class="col-xs-2 content-estrella" star="4"><img src="img/estrella-0.png" /></div>
+                                        <div class="col-xs-2 content-estrella" star="5"><img src="img/estrella-0.png" /></div>
+                                        <input type="hidden" id="comentarios_rating" />
                                     </div>
                                     <div class="row content-estrellas">
                                         <p>Pulse una estrella para puntuar</p>
                                     </div>
                                 </div>
-                                <div class="col-xs-6"><button class="btn btn-gps pull-right">Comentar</button></div>
+                                <div class="col-xs-6"><button class="btn btn-gps pull-right" id="comentarios_btn">Comentar</button></div>
                             </div>
                         </div>
                     </div>

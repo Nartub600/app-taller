@@ -11,7 +11,9 @@ $(function(){
     $('#btn_login').on('click', function(e){
         e.preventDefault();
 
-        GPSTaller.login($('#login_email').val(), $('#login_password').val(), function(data){
+        var email = $('#login_email').val();
+
+        GPSTaller.login(email, $('#login_password').val(), function(data){
             switch(data.login) {
                 case 1:
                     alert('Complete el email');
@@ -36,7 +38,7 @@ $(function(){
                     break;
                 case 10:
                     alert('Usuario logueado');
-                    GPSTaller.logged = $('#login_email').val();
+                    GPSTaller.logged = email;
                     GPSTaller.show('index');
                     break;
             }
