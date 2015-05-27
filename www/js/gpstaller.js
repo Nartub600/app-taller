@@ -3,7 +3,8 @@ GPSTaller = {
     urls: {
         access: 'https://www.gpstaller.com.ar/dev_v1/api/views/access.json.php',
         search: 'https://www.gpstaller.com.ar/dev_v1/api/views/talleres.json.php',
-        comments: 'https://www.gpstaller.com.ar/dev_v1/api/views/comentariosTaller.json.php'
+        comments: 'https://www.gpstaller.com.ar/dev_v1/api/views/comentariosTaller.json.php',
+        faq: 'https://www.gpstaller.com.ar/dev_v1/api/views/faq.json.php'
     },
 
     show: function (page, data) {
