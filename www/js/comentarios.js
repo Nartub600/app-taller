@@ -1,6 +1,14 @@
 GPSTaller.comentarios = function(data) {
     $(".loader").fadeIn();
 
+    $('#comentarios_lista').html('');
+
+    GPSTaller.search({
+        tallerID: data.tallerID
+    }, function(data){
+        $('#comentarios_nombre').text(data[0].nombre);
+    });
+
     $.ajax({
         url: GPSTaller.urls.comments,
         type: 'get',
@@ -13,9 +21,7 @@ GPSTaller.comentarios = function(data) {
             $(".loader").fadeOut();
             $('#comentarios_btn').attr('tallerID', data.tallerID);
             $.each(data.comentarios, function(i, e){
-                $('#com' + (i + 1) + '_comentario').text(e.comentario);
-                $('#com' + (i + 1) + '_nombre').text(e.nombre);
-                $('#com' + (i + 1) + '_fecha').text(e.fecha);
+                $('#comentarios_lista').append("<div class=\"comentario\"><p class=\"titulo-comentario\">" + e.comentario + "<p class=\"datos-usuario-comentario\">" + e.nombre + " " + e.fecha + "<img class=\"img-rating-comentario\" src=\"img/rating-" + e.rating + ".png\" /></p><div class=\"line-02\"></div></div>");
             });
             if(data.usuario.permiso == '2') {
                 $('#comentarios_comentar').show();

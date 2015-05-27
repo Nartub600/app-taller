@@ -6,7 +6,7 @@ function backbuttonHandler(e) {
     if (GPSTaller.visited.length >= 2) {
         GPSTaller.visited.pop();
         var next = GPSTaller.visited[GPSTaller.visited.length - 1];
-        GPSTaller.show(next, $(e.currentTarget).data());
+        GPSTaller.show(next, null, false);
     } else {
         navigator.app.exitApp();
     }
@@ -20,10 +20,10 @@ $(function(){
 
         var actual = $('[page]:visible').attr('id');
         var next = $(this).attr('nav');
+        GPSTaller.visited.push(next);
 
         if (next != actual) {
-            GPSTaller.show(next, $(e.currentTarget).data());
-            GPSTaller.visited.push(next);
+            GPSTaller.show(next);
         }
     });
 

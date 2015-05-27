@@ -62,28 +62,139 @@
 
             <div id="content">
 
-                <div id="comentarios" page style="display: none;" callback="GPSTaller.comentarios">
+                <div id="index" page>
 
                     <div class="row">
-                        <h1>TALLER PANCHO</h1>
+                        <div class="content-menu-home">
+                            <div class="row">
+                                <a href="#" nav="search-map"><img src="img/buscador-taller.png" /></a>
+                            </div>
+                            <div class="row">
+                                <a href="#" nav="demo-textos"><img src="img/historia-del-auto.png" /></a>
+                            </div>
+                            <div class="row">
+                                <a href="#" nav="demo-textos"><img src="img/asegura-tu-auto.png" /></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- #index -->
+
+                <div id="search-map" page style="display: none;" callback="GPSTaller.talleresCercanos">
+
+                    <div class="row">
+                        <div class="content-search col-lg-6">
+                            <div class="gps-estado">
+                                <img src="img/sin-gps.png" id="img_gps" />
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-btn2">
+                                    <button id="btn_search" class="btn btn-search" type="button">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    </button>
+                                </span>
+                                <input id="txt_search" type="text" class="form-control" placeholder="Buscar..." />
+                            </div>
+                            <a class="settings-icon" nav="settings">
+                                <img src="img/settings.png" />
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="map_canvas" class="row content-mapa"></div>
+
+                </div> <!-- #search-map -->
+
+                <div id="settings" page style="display: none;">
+
+                    <div class="wrapper">
+                        <div class="row">
+                        <div class="media top-settings">
+                            <div class="media-left">
+                                <a id="btn_volver_settings" href="#" nav="search-map">
+                                    <img class="media-object" src="img/icon-volver.png" alt="" />
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">CONFIGURACIÓN</h4>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <p class="titulo">Mostrar:</p>
+                        </div>
+                        <div class="row">
+                            <div class="mostrar-check">
+                                <div class="checkbox">
+                                    <label>Taller<input id="chk_taller" value="1" type="checkbox" checked /></label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>Gomería<input id="chk_gomeria" value="2" type="checkbox" checked /></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="titulo">Distancia:</p>
+                        </div>
+                        <div class="row">
+                            <div class="content-slider">
+                                <label for="slider-1"></label>
+                                <input id="input_distancia" type="range" name="slider-1" id="slider-1" value="50" min="1" max="500" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="titulo">Cantidad:</p>
+                        </div>
+                        <div class="row">
+                            <div class="content-slider">
+                                <label for="slider-1"></label>
+                                <input id="input_cantidad" type="range" name="slider-2" id="slider-1" value="10" min="1" max="100" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="btn-guardar">
+                                <button id="btn_guardar" class="btn">Guardar</button>
+                            </div>
+                        </div>
+                        <div class="row ajuste-alto"></div>
+                    </div>
+
+                </div> <!-- #settings -->
+
+                <div id="detalle-taller" page style="display: none;" callback="GPSTaller.detalle">
+
+                    <div class="row">
+                        <h1><span id="detalle_nombre"></span></h1>
                     </div>
                     <div class="row">
                         <div class="detalle-taller-content">
-                            <div class="comentario">
-                                <p class="titulo-comentario"><span id="com1_comentario"></span></p>
-                                <p class="datos-usuario-comentario"><span class="usuario" id="com1_nombre"></span><span class="fecha" id="com1_fecha"></span><img class="img-rating-comentario" src="img/rating-1.png" /></p>
-                                <div class="line-02"></div>
+                            <p>Dirección: <span id="detalle_direccion"></span> <a id="detalle_comollego" href="#" class="como-llego">¿Cómo llego?</a></p>
+                            <p>Teléfono: <span id="detalle_telefono"></span></p>
+                            <p>Mail: <span id="detalle_email"></span></p>
+                            <p>Horario: <span id="detalle_horario"></span></p>
+                            <p>Calificación: <img id="detalle_rating" class="img-rating" src="" /></p>
+                            <p class="cantidad-comentarios"><span id="detalle_cant_comentarios"></span> comentarios</p>
+                            <div class="line-02"></div>
+                            <p class="titulo-descripcion">Descripción:</p>
+                            <p class="texto-descripcion"><span id="detalle_descripcion"></span></p>
+                            <a href="#" class="rojo ver-comentarios" nav="comentarios" callback="GPSTaller.comentarios">Ver comentarios</a>
+                            <input type="hidden" id="detalle_lat" />
+                            <input type="hidden" id="detalle_lng" />
+                        </div>
+                    </div>
+
+                </div> <!-- #detalle-taller -->
+
+                <div id="comentarios" page style="display: none;" callback="GPSTaller.comentarios">
+
+                    <div class="row">
+                        <h1><span id="comentarios_nombre"></span></h1>
+                    </div>
+                    <div class="row">
+                        <div class="detalle-taller-content">
+                            <div id="comentarios_lista">
                             </div>
-                            <div class="comentario">
-                                <p class="titulo-comentario"><span id="com2_comentario"></span></p>
-                                <p class="datos-usuario-comentario"><span class="usuario" id="com2_nombre"></span><span class="fecha" id="com2_fecha"></span><img class="img-rating-comentario" src="img/rating-1.png" /></p>
-                                <div class="line-02"></div>
-                            </div>
-                            <div class="comentario">
-                                <p class="titulo-comentario"><span id="com3_comentario"></span></p>
-                                <p class="datos-usuario-comentario"><span class="usuario" id="com3_nombre"></span><span class="fecha" id="com3_fecha"></span><img class="img-rating-comentario" src="img/rating-1.png" /></p>
-                                <div class="line-02"></div>
-                            </div>
+                            <div class="row ajuste-alto"></div>
                         </div>
                     </div>
                     <div id="comentarios_comentar" style="display: none;">
@@ -118,28 +229,6 @@
                     </div>
 
                 </div> <!-- #comentarios -->
-
-                <div id="detalle-taller" page style="display: none;" callback="GPSTaller.detalle">
-
-                    <div class="row">
-                        <h1><span id="detalle_nombre"></span></h1>
-                    </div>
-                    <div class="row">
-                        <div class="detalle-taller-content">
-                            <p>Dirección: <span id="detalle_direccion"></span> <a href="#" class="como-llego">¿Cómo llego?</a></p>
-                            <p>Teléfono: <span id="detalle_telefono"></span></p>
-                            <p>Mail: <span id="detalle_email"></span></p>
-                            <p>Horario: <span id="detalle_horario"></span></p>
-                            <p>Calificación: <img id="detalle_rating" class="img-rating" src="" /></p>
-                            <p class="cantidad-comentarios">25 Comentarios</p>
-                            <div class="line-02"></div>
-                            <p class="titulo-descripcion">Descripción:</p>
-                            <p class="texto-descripcion"><span id="detalle_descripcion"></span></p>
-                            <a href="#" class="rojo ver-comentarios" nav="comentarios" callback="GPSTaller.comentarios">Ver comentarios</a>
-                        </div>
-                    </div>
-
-                </div> <!-- #detalle-taller -->
 
                 <div id="solicitarcontrasenia" page style="display: none;">
 
@@ -266,104 +355,6 @@
 
                 </div> <!-- #login -->
 
-                <div id="index" page>
-
-                    <div class="row">
-                        <div class="content-menu-home">
-                            <div class="row">
-                                <a href="#" nav="search-map"><img src="img/buscador-taller.png" /></a>
-                            </div>
-                            <div class="row">
-                                <a href="#" nav="demo-textos"><img src="img/historia-del-auto.png" /></a>
-                            </div>
-                            <div class="row">
-                                <a href="#" nav="demo-textos"><img src="img/asegura-tu-auto.png" /></a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div> <!-- #index -->
-
-                <div id="search-map" page style="display: none;" callback="GPSTaller.talleresCercanos">
-
-                    <div class="row">
-                        <div class="content-search col-lg-6">
-                            <div class="gps-estado">
-                                <img src="img/sin-gps.png" id="img_gps" />
-                            </div>
-                            <div class="input-group">
-                                <span class="input-group-btn2">
-                                    <button id="btn_search" class="btn btn-search" type="button">
-                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                    </button>
-                                </span>
-                                <input id="txt_search" type="text" class="form-control" placeholder="Buscar..." />
-                            </div>
-                            <a class="settings-icon" nav="settings">
-                                <img src="img/settings.png" />
-                            </a>
-                        </div>
-                    </div>
-
-                    <div id="map_canvas" class="row content-mapa"></div>
-
-                </div> <!-- #search-map -->
-
-                <div id="settings" page style="display: none;">
-
-                    <div class="wrapper">
-                        <div class="row">
-                        <div class="media top-settings">
-                            <div class="media-left">
-                                <a id="btn_volver_settings" href="#" nav="search-map">
-                                    <img class="media-object" src="img/icon-volver.png" alt="" />
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">CONFIGURACIÓN</h4>
-                            </div>
-                        </div>
-                    </div>
-                        <div class="row">
-                            <p class="titulo">Mostrar:</p>
-                        </div>
-                        <div class="row">
-                            <div class="mostrar-check">
-                                <div class="checkbox">
-                                    <label>Taller<input id="chk_taller" value="1" type="checkbox" /></label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>Gomería<input id="chk_gomeria" value="2" type="checkbox" /></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <p class="titulo">Distancia:</p>
-                        </div>
-                        <div class="row">
-                            <div class="content-slider">
-                                <label for="slider-1"></label>
-                                <input id="input_distancia" type="range" name="slider-1" id="slider-1" value="50" min="1" max="500" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <p class="titulo">Cantidad:</p>
-                        </div>
-                        <div class="row">
-                            <div class="content-slider">
-                                <label for="slider-1"></label>
-                                <input id="input_cantidad" type="range" name="slider-2" id="slider-1" value="10" min="1" max="100" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="btn-guardar">
-                                <button id="btn_guardar" class="btn">Guardar</button>
-                            </div>
-                        </div>
-                        <div class="row ajuste-alto"></div>
-                    </div>
-
-                </div> <!-- #settings -->
                 <div id="ayuda" page style="display: none;">
 
                     <div class="row">

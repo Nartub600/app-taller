@@ -7,26 +7,35 @@ GPSTaller = {
         faq: 'https://www.gpstaller.com.ar/dev_v1/api/views/faq.json.php'
     },
 
-    show: function (page, data) {
+    show: function (page, data, die) {
+
         if(!$('#footer').is(':visible')) {
             $('#footer').show();
         }
+
         if(page == 'index') {
             $('#btn_volver').hide();
         } else {
             $('#btn_volver').show();
         }
+
         $('[page]:visible').hide();
         $('[page][id="' + page + '"]').show();
-        if($('[page][id="' + page + '"]').attr('callback')) {
-            if (data) {
-                var string = 'data';
-            } else {
-                var string = '';
-            }
+
+        if(!$.isEmptyObject(data)) {
+            var string = 'data';
+        } else if(!$.isEmptyObject($('[nav="' + page + '"]').data())) {
+            var string = 'data';
+            data = $('[nav="' + page + '"]').data();
+        } else {
+            var string = '';
+        }
+
+        if($('[page][id="' + page + '"]').attr('callback') && die != false) {
             var func = $('[page][id="' + page + '"]').attr('callback') + "(" + string + ");";
             eval(func);
         }
+
     },
 
     registro: function (email, nombre, apellido, password, callback) {
@@ -96,7 +105,8 @@ GPSTaller = {
                 values: points,
                 events: {
                     click: function(marker, event, context) {
-                        GPSTaller.show('detalle-taller', context.data.tallerID);
+                        GPSTaller.visited.push('detalle-taller');
+                        GPSTaller.show('detalle-taller', {tallerID: context.data.tallerID});
                     }
                 }
             }
