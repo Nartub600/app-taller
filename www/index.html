@@ -53,6 +53,7 @@
                             <li role="presentation"><a href="#" role="menuitem" nav="detalle-taller">Detalle taller</a></li>
                             <li role="presentation"><a href="#" role="menuitem" nav="comentarios">Comentarios</a></li>
                             <li role="presentation"><a href="#" role="menuitem" nav="ayuda">Ayuda</a></li>
+                            <li role="presentation"><a href="#" role="menuitem" nav="cuenta">Cuenta</a></li>
                         </ul>
                     </div>
                     <a class="volver-btn" href="#" id="btn_volver" style="display: none;"><img src="img/volver.png" /></a>
@@ -375,17 +376,258 @@
                     <div class="row ajuste-alto"></div>
 
                 </div> <!-- #ayuda -->
+                
+                <div id="cuenta" page style="display: none;">
 
-                <div id="demo-textos" page style="display: none;">
-
-                    <div class="row" style="padding: 0 5%;">
-                        <h1>Título</h1>
-                        <h2>Subtitulo</h2>
-                        <h3>Bajada</h3>
-                        <p>Lorem Ipsum es <strong>simplemente el texto de relleno</strong> de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos.</p>
-                        <p>Lorem Ipsum es <strong>simplemente el texto de</strong> relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos.</p>
+                    <div class="row">
+                        <h1><br>CUENTA</h1>
                     </div>
+                    <div class="row">
+                        <div class="link-item">
+                            <a href="#" nav="login" target="_blank"><p>Login</p><div class="arrow"><img src="img/arrow.png"/></div></a>
+                        </div>
+                        <div class="link-item">
+                            <a href="#" nav="mis-datos" target="_blank"><p>Editar Perfil</p><div class="arrow"><img src="img/arrow.png"/></div></a>
+                        </div>
+                        <div class="link-item">
+                            <a href="#" nav="solicitarcontrasenia" target="_blank"><p>Cambiar la contraseña</p><div class="arrow"><img src="img/arrow.png"/></div></a>
+                        </div>
+                        <div class="link-item">
+                            <a href="#" nav="asociar-dominio" target="_blank"><p>Editar información del auto</p><div class="arrow"><img src="img/arrow.png"/></div></a>
+                        </div>
+                       
+                        
+                    </div>
+                    <div class="row">
+                        <h1><br>Información</h1>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="link-item">
+                            <a href="#" nav="ayuda" target="_blank"><p>Ayuda</p><div class="arrow"><img src="img/arrow.png"/></div></a>
+                        </div>
+                        <div class="link-item">
+                            <a href="#" nav="contacto" target="_blank"><p>Contacto</p><div class="arrow"><img src="img/arrow.png"/></div></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h1><br></h1>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="link-item">
+                            <a href="http://youtube" target="_blank"><p>Cerrar sesión</p><div class="arrow"><img src="img/arrow.png"/></div></a>
+                        </div>
+                       
+                    </div>
+                    <div class="row ajuste-alto"></div>
 
+                </div> <!-- #CUENTA -->
+                
+                <div id="mis-datos" page style="display: none;">
+
+                    <div class="row">
+                        <h1><br>MIS DATOS</h1>
+                    </div>
+                    <div class="row">
+                        <div class="content-registro">
+                            <form>
+                                <div class="form-group">
+                                    <input name="titular" type="text" class="form-control" placeholder="Titular*" />
+                                </div>
+                                <div class="form-group">
+                                    <input name="email" type="email" class="form-control" placeholder="Email*" />
+                                </div>
+                                <div class="form-group">
+                                    <input name="celular" type="tel" class="form-control" placeholder="Celular*" />
+                                </div>
+                                <div class="form-group">
+                                    <input name="empresa" type="text" class="form-control" placeholder="Empresa" />
+                                </div>
+                                <div class="form-group">
+                                    <input name="fecha_nacimiento" type="date" class="form-control" placeholder="Fecha de nacimiento" />
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>Genero</option>
+                                        <option>Masculino</option>
+                                        <option>Femenino</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>Estado civil</option>
+                                        <option>Soltero</option>
+                                        <option>Casado</option>
+                                        <option>Divorciado</option>
+                                        <option>Viudo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>Forma de pago</option>
+                                        <option>Efectivo</option>
+                                        <option>Cheque</option>
+                                        <option>Tarjeta de crédito</option>
+                                    </select>
+                                </div>
+                                 <div class="form-group">
+                                    <input name="cuit" type="text" class="form-control" placeholder="CUIT" />
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>Condición IVA</option>
+                                        <option>Inscripto</option>
+                                        <option>No inscripto</option>
+                                        <option>Exento</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input name="horario_contacto" type="text" class="form-control" placeholder="Horario de contacto" />
+                                </div>
+                                <div class="form-group">
+                                    <input name="domicilio" type="text" class="form-control" placeholder="Domicilio" />
+                                </div>
+                                <div class="form-group">
+                                    <input name="codigo_postal" type="text" class="form-control" placeholder="Código postal" />
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>Provincia</option>
+                                        <option>Provincia 1</option>
+                                        <option>Provincia 2</option>
+                                        <option>Provincia 3</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>Partido</option>
+                                        <option>Partido 1</option>
+                                        <option>Partido 2</option>
+                                        <option>Partido 3</option>
+                                        <option>Partido 4</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>Localidad</option>
+                                        <option>Localidad 1</option>
+                                        <option>Localidad 2</option>
+                                        <option>Localidad 3</option>
+                                    </select>
+                                </div>
+                                <div class="row">
+                                    <button id="btn_guardar_perfil" class="btn btn-gps center-block btn-registrarme">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                       
+                        
+                    </div>
+                    
+                    <div class="row ajuste-alto"></div>
+
+                </div> <!-- #mis-datos -->
+                
+                <div id="asociar-dominio" page style="display: none;">
+
+                    <div class="row">
+                        <h1><br>ASOCIAR DOMINIO</h1>
+                    </div>
+                    <div class="row">
+                        <div class="content-registro">
+                            <form>
+                                <div class="form-group">
+                                    <input name="dominio" type="text" class="form-control" placeholder="Dominio*" />
+                                </div>
+                                <div class="form-group">
+                                    <input name="anio" type="number" class="form-control" placeholder="Año*" />
+                                </div>
+                                <div class="form-group">
+                                    <select name="marca" class="form-control">
+                                        <option>Marca *</option>
+                                        <option>Marca 1</option>
+                                        <option>Marca 2</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="modelo" class="form-control">
+                                        <option>Modelo *</option>
+                                        <option>Modelo 1</option>
+                                        <option>Modelo 2</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="version" class="form-control">
+                                        <option>Version</option>
+                                        <option>Version 1</option>
+                                        <option>Version 2</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input name="color" type="text" class="form-control" placeholder="Color" />
+                                </div>
+                                <div class="form-group">
+                                    <input name="vin" type="text" class="form-control" placeholder="VIN" />
+                                </div>
+                                <div class="form-group">
+                                    <input name="chasis" type="number" class="form-control" placeholder="Nro. de chasis" />
+                                </div>
+                                <div class="form-group">
+                                    <input name="motor" type="number" class="form-control" placeholder="Nro. de motor" />
+                                </div>
+                                <div class="form-group">
+                                    <input name="dispositivo_recupero" type="text" class="form-control" placeholder="Dispositivo de Recupero" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>Sin GNC</option>
+                                        <option>Con GNC</option>
+                                        
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-xs-1"></div>
+                                    <div class="col-xs-5">
+                                        <button id="btn_asociar_vehiculo" class="btn btn-gps center-block btn-registrarme">Asociar vehiculo</button>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <button id="btn_cancelar_asociar_vehiculo" class="btn btn-gps center-block btn-registrarme">Cancelar</button>
+                                    </div>
+                                    <div class="col-xs-1"></div>
+                                    
+                                </div>
+                            </form>
+                        </div>
+                       
+                        
+                    </div>
+                    
+                    <div class="row ajuste-alto"></div>
+
+                </div> <!-- #asociar-dominio -->
+
+                <div id="contacto" page style="display: none;">
+                    <div class="row">
+                        <h1><br>CONTACTO</h1>
+                    </div>
+                    <div class="row">
+                        <div class="content-registro">
+                            <p>GPS Taller, Condistelec S.A.
+Carlos Pellegrini 1785
+(B1604ASQ) Florida Oeste
+Buenos Aires - Argentina<br>
+Tel:<a href="tel:+541147303533">+54 11 4730-3533</a><br>
+Fax:<a href="tel:+541147600596">+54 11 4760-0596</a><br>
+<a href="mailto:info@gpstaller.com.ar">info@gpstaller.com.ar</a></p>
+                        </div>
+                        
+                        
+                    </div>
+                    <div class="row ajuste-alto"></div>
                 </div> <!-- #demo-textos -->
 
             </div> <!-- #content -->

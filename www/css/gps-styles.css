@@ -12,7 +12,9 @@ input {
     -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
     box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
-
+span.form-control{
+    display: none;
+}
 .rojo {
     color: #eb2026;
 }
@@ -557,7 +559,7 @@ footer p {
     max-width: 320px;
 }
 
-.content-registro input {
+.content-registro input, .content-registro select {
     font-size: 11px;
     color: #000;
 }
@@ -714,7 +716,7 @@ footer p {
 /* AYUDA */
 #ayuda {}
 
-#ayuda h1 {
+#ayuda h1, #cuenta h1 {
     color: #929497;
     text-align: left;
     text-align: left;
@@ -804,7 +806,21 @@ footer p {
     color:#929497;
 }
 /* END AYUDA */
-
+/* CONTACTO */
+#contacto{}
+#contacto p{
+    font-size: 18px;
+    text-align: center;
+    line-height: normal;
+    margin-top: 50px;
+}
+#contacto p a{
+      font-size: 18px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #666;
+}
+/* END CONTACTO */
 @media (max-width: 1024px) and (min-width: 992px) {
     footer p {
         margin: 2% 3%;
@@ -858,13 +874,14 @@ footer p {
     .content-menu-login.social {
         max-width: 200px;
     }
-}
-
-@media (max-width: 320px) {
-    footer p {
+     footer p {
         font-size: 10px;
         margin: 6% 3%;
     }
+}
+
+@media (max-width: 320px) {
+   
 
     .content-mapa {
         height: 380px;
