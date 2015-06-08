@@ -4,7 +4,9 @@
     font-size: 13px;
     padding: 5px 12px;
 }
-
+.btn-reducido{
+    font-size: 11px;
+}
 .checkbox {
 
 }

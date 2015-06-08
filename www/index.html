@@ -54,6 +54,7 @@
                             <li role="presentation"><a href="#" role="menuitem" nav="comentarios">Comentarios</a></li>
                             <li role="presentation"><a href="#" role="menuitem" nav="ayuda">Ayuda</a></li>
                             <li role="presentation"><a href="#" role="menuitem" nav="cuenta">Cuenta</a></li>
+                            <li role="presentation"><a href="#" role="menuitem" nav="panel-administracion">Panel Administración</a></li>
                         </ul>
                     </div>
                     <a class="volver-btn" href="#" id="btn_volver" style="display: none;"><img src="img/volver.png" /></a>
@@ -604,6 +605,270 @@
                         </div>
                        
                         
+                    </div>
+                    
+                    <div class="row ajuste-alto"></div>
+
+                </div> <!-- #asociar-dominio -->
+                
+                <div id="panel-administracion" page style="display: none;">
+
+                    <div class="row">
+                        <h1><br>Bienvenido a su panel de administración</h1>
+                        <h2>Seleccione el dominio o patente que desea consultar:</h2>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="content-registro">
+                            <div class="row">
+                                <div class="col-xs-1"></div>
+                                <div class="col-xs-5">
+                                    <button id="btn_asociar_vehiculo" class="btn btn-gps center-block btn-registrarme">Asociar vehiculo</button>
+                                </div>
+                                <div class="col-xs-5">
+                                    <button id="btn_cancelar_asociar_vehiculo" class="btn btn-gps center-block btn-registrarme">Mis datos</button>
+                                </div>
+                                <div class="col-xs-1"></div>
+
+                            </div>
+                            <div role="tabpanel">
+
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#dominio-1" aria-controls="home" role="tab" data-toggle="tab">PHI 637</a></li>
+                                    <li role="presentation"><a href="#dominio-2" aria-controls="profile" role="tab" data-toggle="tab">PHI 637</a></li>
+                                    
+
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="dominio-1">
+                                        <div class="row ajuste-grid">
+                                            <div class="col-xs-6">
+                                                <p><strong>Marca:</strong> Alfa Romeo</p>
+                                                <p><strong>Año:</strong> 1950</p>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <p><strong>Modelo:</strong> 147</p>
+                                            </div>
+                                        </div>
+                                        <div class="row ajuste-grid">
+                                            <div class="col-xs-6">
+                                                <p><strong>Historia Clínica</strong> (Usuario).</p>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <a href="#" class="link-nuevo-servicio">Agregar nuevo servicio</a>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row content-background-listado">
+                                            <div class="col-xs-4">
+                                                <p>Fecha</p>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p>Kilómetros</p>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p>Servicio</p>
+                                            </div>
+                                        </div>
+                                        <div class="row content-background-listado descripciones">
+                                            <div class="col-xs-4">
+                                                <p>30/03/2015</p>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p>15.000</p>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p>Diagnostico por scanner</p>
+                                                <p>Relizado por: Taller Pepe</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                          
+                                            <div class="col-xs-6">
+                                                <button id="btn_asociar_vehiculo" class="btn btn-gps btn-reducido center-block btn-registrarme">Desvincular <br>dominio</button>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <button id="btn_cancelar_asociar_vehiculo" class="btn btn-gps btn-reducido center-block btn-registrarme">Solicitar <br>Cambio de Datos</button>
+                                            </div>
+                                          
+
+                                        </div>
+
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="dominio-2">
+                                        <div class="row ajuste-grid">
+                                            <div class="col-xs-6">
+                                                <p><strong>Marca:</strong> Alfa Romeo</p>
+                                                <p><strong>Año:</strong> 1950</p>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <p><strong>Modelo:</strong> 147</p>
+                                            </div>
+                                        </div>
+                                        <div class="row ajuste-grid">
+                                            <div class="col-xs-6">
+                                                <p><strong>Historia Clínica</strong> (Usuario).</p>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <a href="#" class="link-nuevo-servicio">Agregar nuevo servicio</a>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row content-background-listado">
+                                            <div class="col-xs-4">
+                                                <p>Fecha</p>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p>Kilómetros</p>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p>Servicio</p>
+                                            </div>
+                                        </div>
+                                        <div class="row content-background-listado descripciones">
+                                            <div class="col-xs-4">
+                                                <p>30/03/2015</p>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p>15.000</p>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p>Diagnostico por scanner</p>
+                                                <p>Relizado por: Taller Pepe</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                          
+                                            <div class="col-xs-6">
+                                                <button id="btn_asociar_vehiculo" class="btn btn-gps btn-reducido center-block btn-registrarme">Desvincular <br>dominio</button>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <button id="btn_cancelar_asociar_vehiculo" class="btn btn-gps btn-reducido center-block btn-registrarme">Solicitar <br>Cambio de Datos</button>
+                                            </div>
+                                          
+
+                                        </div>
+
+                                    </div>
+                                     
+                                    
+                                </div>
+
+                            </div>
+                            <h4>Servicio Registardo por Taller</h4>
+                            <div role="tabpanel">
+
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#taller-1" aria-controls="home" role="tab" data-toggle="tab">PHI 637</a></li>
+                                    <li role="presentation"><a href="#taller-2" aria-controls="profile" role="tab" data-toggle="tab">PHI 637</a></li>
+                                    
+
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="taller-1">
+                                        <div class="row ajuste-grid">
+                                            <div class="col-xs-6">
+                                                <p><strong>Marca:</strong> Alfa Romeo</p>
+                                                <p><strong>Año:</strong> 1950</p>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <p><strong>Modelo:</strong> 147</p>
+                                            </div>
+                                        </div>
+                                        <div class="row ajuste-grid">
+                                            <div class="col-xs-6">
+                                                <p><strong>Historia Clínica</strong> (Taller).</p>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <a href="#" class="link-nuevo-servicio">Agregar nuevo servicio</a>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row content-background-listado">
+                                            <div class="col-xs-4">
+                                                <p>Fecha</p>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p>Kilómetros</p>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p>Servicio</p>
+                                            </div>
+                                        </div>
+                                        <div class="row content-background-listado descripciones">
+                                            <div class="col-xs-4">
+                                                <p>30/03/2015</p>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p>15.000</p>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p>Diagnostico por scanner</p>
+                                                <p>Relizado por: Taller Pepe</p>
+                                            </div>
+                                        </div>
+                                       
+
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="taller-2">
+                                        <div class="row ajuste-grid">
+                                            <div class="col-xs-6">
+                                                <p><strong>Marca:</strong> Alfa Romeo</p>
+                                                <p><strong>Año:</strong> 1950</p>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <p><strong>Modelo:</strong> 147</p>
+                                            </div>
+                                        </div>
+                                        <div class="row ajuste-grid">
+                                            <div class="col-xs-6">
+                                                <p><strong>Historia Clínica</strong> (Taller).</p>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <a href="#" class="link-nuevo-servicio">Agregar nuevo servicio</a>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row content-background-listado">
+                                            <div class="col-xs-4">
+                                                <p>Fecha</p>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p>Kilómetros</p>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p>Servicio</p>
+                                            </div>
+                                        </div>
+                                        <div class="row content-background-listado descripciones">
+                                            <div class="col-xs-4">
+                                                <p>30/03/2015</p>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p>15.000</p>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p>Diagnostico por scanner</p>
+                                                <p>Relizado por: Taller Pepe</p>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                     
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+
+
                     </div>
                     
                     <div class="row ajuste-alto"></div>

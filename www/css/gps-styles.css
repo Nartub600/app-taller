@@ -821,6 +821,90 @@ footer p {
   color: #666;
 }
 /* END CONTACTO */
+/* PANEL ADMINISTRACION */
+#panel-administracion{}
+#panel-administracion h1{
+    font-size: 14px;
+}
+#panel-administracion h2{
+    font-size: 12px;
+    text-align: center;
+    margin: 7px 0 23px 0;
+    position: relative;
+    float: left;
+    width: 100%;
+}
+#panel-administracion h4{
+    font-size: 14px;
+    text-align: left;
+    width: 100%;
+    margin: 20px 0 11px 0;
+}
+#panel-administracion .tab-content{
+      border-width: 1px;
+  border-style: solid;
+  border-color: #e9eaea;
+}
+#panel-administracion .tab-content .row{
+    margin: 0;
+}
+#panel-administracion .tab-content .row:first-child{
+    margin-top: 5px;
+}
+#panel-administracion .nav-tabs{
+    border-color: #fff;
+}
+#panel-administracion .nav-tabs > li{
+    margin-bottom: -2px;
+}
+
+#panel-administracion .nav-tabs > li > a, #panel-administracion .nav-tabs > li.active > a, #panel-administracion .nav-tabs > li.active > a:hover, #panel-administracion .nav-tabs > li.active > a:focus{
+    border-width: 1px 1px 0;
+    color:#e92429;
+      padding: 5px 8px;
+}
+#panel-administracion .link-nuevo-servicio{
+    font-size: 10px;
+    text-decoration: underline;
+    display: block;
+    padding: 6px 2px;
+    text-align: right;
+      color: #e92429;
+}
+#panel-administracion .ajuste-grid{
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+#panel-administracion .ajuste-grid .col-xs-6:first-child{
+    padding: 0 2px 0 0;
+}
+#panel-administracion .ajuste-grid .col-xs-6:nth-child(2){
+    padding: 0 0 0 2px;
+}
+.content-background-listado{
+    background-color: #e9eaea;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    margin: 0 5px 5px !important;
+}
+.content-background-listado .col-xs-4 {
+      padding: 0 7px;
+}
+.content-background-listado .col-xs-4 p{
+    text-align: center;
+    color:#000;
+    font-size: 13px;
+    margin: 5px 0;
+}
+.content-background-listado.descripciones .col-xs-4 p{
+    text-align: center;
+    color:#000;
+    margin: 5px 0;
+    font-size: 11px;
+      text-align: left;
+}
+/* END PANEL ADMINISTRACION */
 @media (max-width: 1024px) and (min-width: 992px) {
     footer p {
         margin: 2% 3%;
