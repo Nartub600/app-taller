@@ -3,6 +3,10 @@
     color: #fff !important;
     font-size: 13px;
     padding: 5px 12px;
+    float: none;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
 }
 .btn-reducido{
     font-size: 11px;
