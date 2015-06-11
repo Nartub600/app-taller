@@ -29,8 +29,10 @@
         <script type="text/javascript" src="js/comentarios.js"></script>
         <script type="text/javascript" src="js/events.js"></script>
         <script type="text/javascript" src="js/access.js"></script>
+        <script type="text/javascript" src="js/botones.js"></script>
     </head>
     <body>
+
         <div class="loader">
             <p>Cargando...</p>
         </div>
@@ -47,14 +49,14 @@
                             <img class="nav-icon" src="img/nav-icon.png" />
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a href="#" role="menuitem" nav="login">Login</a></li>
-                            <li role="presentation"><a href="#" role="menuitem" nav="registro">Registro</a></li>
-                            <li role="presentation"><a href="#" role="menuitem" nav="solicitarcontrasenia">Solicitar contraseña</a></li>
-                            <li role="presentation"><a href="#" role="menuitem" nav="detalle-taller">Detalle taller</a></li>
-                            <li role="presentation"><a href="#" role="menuitem" nav="comentarios">Comentarios</a></li>
+                            <li noauth role="presentation"><a href="#" role="menuitem" nav="login">Login</a></li>
+                            <li noauth role="presentation"><a href="#" role="menuitem" nav="registro">Registro</a></li>
+                            <li auth role="presentation"><a href="#" role="menuitem" nav="solicitarcontrasenia">Solicitar contraseña</a></li>
+                            <!-- <li role="presentation"><a href="#" role="menuitem" nav="detalle-taller">Detalle taller</a></li> -->
+                            <!-- <li role="presentation"><a href="#" role="menuitem" nav="comentarios">Comentarios</a></li> -->
                             <li role="presentation"><a href="#" role="menuitem" nav="ayuda">Ayuda</a></li>
                             <li role="presentation"><a href="#" role="menuitem" nav="cuenta">Cuenta</a></li>
-                            <li role="presentation"><a href="#" role="menuitem" nav="panel-administracion">Panel Administración</a></li>
+                            <li auth role="presentation"><a href="#" role="menuitem" nav="panel-administracion">Panel Administración</a></li>
                         </ul>
                     </div>
                     <a class="volver-btn" href="#" id="btn_volver" style="display: none;"><img src="img/volver.png" /></a>
@@ -158,7 +160,9 @@
                                 <button id="btn_guardar" class="btn">Guardar</button>
                             </div>
                         </div>
+
                         <div class="row ajuste-alto"></div>
+
                     </div>
 
                 </div> <!-- #settings -->
@@ -243,14 +247,14 @@
                         <div class="content-registro recuperar">
                             <form>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email" />
+                                    <input id="solicitar_email" type="email" class="form-control" placeholder="Email" />
                                 </div>
                             </form>
                         </div>
                     </div>
 
                     <div class="row">
-                        <button class="btn btn-gps center-block">Enviar Solicitud</button>
+                        <button id="btn_solicitar" class="btn btn-gps center-block">Enviar Solicitud</button>
                     </div>
 
                 </div> <!-- #solicitarcontrasenia -->
@@ -265,19 +269,19 @@
                         <div class="content-registro">
                             <form>
                                 <div class="form-group">
-                                    <input name="reg_email" type="email" class="form-control" placeholder="Email" />
+                                    <input id="reg_email" type="email" class="form-control" placeholder="Email" />
                                 </div>
                                 <div class="form-group">
-                                    <input name="reg_firstname" type="text" class="form-control" placeholder="Nombre" />
+                                    <input id="reg_firstname" type="text" class="form-control" placeholder="Nombre" />
                                 </div>
                                 <div class="form-group">
-                                    <input name="reg_lastname" type="text" class="form-control" placeholder="Apellido" />
+                                    <input id="reg_lastname" type="text" class="form-control" placeholder="Apellido" />
                                 </div>
                                 <div class="form-group">
-                                    <input name="reg_password" type="password" class="form-control" placeholder="Contraseña" />
+                                    <input id="reg_password" type="password" class="form-control" placeholder="Contraseña" />
                                 </div>
                                 <div class="form-group">
-                                    <input name="reg_passconf" type="password" class="form-control" placeholder="Repetir Contraseña" />
+                                    <input id="reg_passconf" type="password" class="form-control" placeholder="Repetir Contraseña" />
                                 </div>
                             </form>
                         </div>
@@ -290,14 +294,16 @@
                     <div class="row">
                         <div class="checkbox aceptoterminos">
                             <label>
-                                <input id="reg_terms" type="checkbox"> <span class="rojo">*</span> Acepto los términos y condiciones
+                                <input id="reg_terms" type="checkbox" /> <span class="rojo">*</span> Acepto los términos y condiciones
                             </label>
                         </div>
                     </div>
                     <div class="row">
                         <p style="text-align:center"><button id="btn_register" class="btn btn-gps center-block btn-registrarme">Registrarme</button></p>
                     </div>
+
                     <div class="row ajuste-alto"></div>
+
                 </div> <!-- #registro -->
 
                 <div id="login" page style="display: none;">
@@ -318,7 +324,7 @@
                                         <label for="user"><img width="25" src="img/user.png" /></label>
                                     </div>
                                     <div class="media-body">
-                                        <input id="login_email" name="user" type="email" />
+                                        <input id="login_email" name="user" type="email" value="maimar@gmail.com" />
                                     </div>
                                  </div>
                             </div>
@@ -328,7 +334,7 @@
                                         <label for="password"><img width="25" src="img/password.png" /></label>
                                     </div>
                                     <div class="media-body">
-                                        <input id="login_password" name="password" type="password" />
+                                        <input id="login_password" name="password" type="password" value="qwertyasdf" />
                                     </div>
                                  </div>
                             </div>
@@ -377,32 +383,32 @@
                     <div class="row ajuste-alto"></div>
 
                 </div> <!-- #ayuda -->
-                
+
                 <div id="cuenta" page style="display: none;">
 
                     <div class="row">
                         <h1><br>CUENTA</h1>
                     </div>
+
                     <div class="row">
-                        <div class="link-item">
+                        <div class="link-item" noauth>
                             <a href="#" nav="login" target="_blank"><p>Login</p><div class="arrow"><img src="img/arrow.png"/></div></a>
                         </div>
-                        <div class="link-item">
+                        <div class="link-item" auth>
                             <a href="#" nav="mis-datos" target="_blank"><p>Editar Perfil</p><div class="arrow"><img src="img/arrow.png"/></div></a>
                         </div>
-                        <div class="link-item">
+                        <div class="link-item" auth>
                             <a href="#" nav="solicitarcontrasenia" target="_blank"><p>Cambiar la contraseña</p><div class="arrow"><img src="img/arrow.png"/></div></a>
                         </div>
-                        <div class="link-item">
+                        <div class="link-item" auth>
                             <a href="#" nav="asociar-dominio" target="_blank"><p>Editar información del auto</p><div class="arrow"><img src="img/arrow.png"/></div></a>
                         </div>
-                       
-                        
                     </div>
+
                     <div class="row">
                         <h1><br>Información</h1>
                     </div>
-                    
+
                     <div class="row">
                         <div class="link-item">
                             <a href="#" nav="ayuda" target="_blank"><p>Ayuda</p><div class="arrow"><img src="img/arrow.png"/></div></a>
@@ -411,20 +417,21 @@
                             <a href="#" nav="contacto" target="_blank"><p>Contacto</p><div class="arrow"><img src="img/arrow.png"/></div></a>
                         </div>
                     </div>
+
                     <div class="row">
                         <h1><br></h1>
                     </div>
-                    
+
                     <div class="row">
-                        <div class="link-item">
-                            <a href="http://youtube" target="_blank"><p>Cerrar sesión</p><div class="arrow"><img src="img/arrow.png"/></div></a>
+                        <div class="link-item" auth>
+                            <a id="btn_logout" href="#"><p>Cerrar sesión</p><div class="arrow"><img src="img/arrow.png"/></div></a>
                         </div>
-                       
                     </div>
+
                     <div class="row ajuste-alto"></div>
 
-                </div> <!-- #CUENTA -->
-                
+                </div> <!-- #cuenta -->
+
                 <div id="mis-datos" page style="display: none;">
 
                     <div class="row">
@@ -434,66 +441,69 @@
                         <div class="content-registro">
                             <form>
                                 <div class="form-group">
-                                    <input name="titular" type="text" class="form-control" placeholder="Titular*" />
+                                    <input id="perfil_titular" type="text" class="form-control" placeholder="Titular*" />
                                 </div>
                                 <div class="form-group">
-                                    <input name="email" type="email" class="form-control" placeholder="Email*" />
+                                    <input id="perfil_email" type="email" class="form-control" placeholder="Email*" />
                                 </div>
                                 <div class="form-group">
-                                    <input name="celular" type="tel" class="form-control" placeholder="Celular*" />
+                                    <input id="perfil_telefono" type="tel" class="form-control" placeholder="Teléfono*" />
                                 </div>
                                 <div class="form-group">
-                                    <input name="empresa" type="text" class="form-control" placeholder="Empresa" />
+                                    <input id="perfil_celular" type="tel" class="form-control" placeholder="Celular*" />
                                 </div>
                                 <div class="form-group">
-                                    <input name="fecha_nacimiento" type="date" class="form-control" placeholder="Fecha de nacimiento" />
+                                    <input id="perfil_empresa" type="text" class="form-control" placeholder="Empresa" />
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control">
-                                        <option>Genero</option>
-                                        <option>Masculino</option>
-                                        <option>Femenino</option>
+                                    <input id="perfil_fechaNacimiento" type="date" class="form-control" placeholder="Fecha de nacimiento" />
+                                </div>
+                                <div class="form-group">
+                                    <select id="perfil_genero" class="form-control">
+                                        <option value="">Genero</option>
+                                        <option value="M">Masculino</option>
+                                        <option value="F">Femenino</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control">
-                                        <option>Estado civil</option>
-                                        <option>Soltero</option>
-                                        <option>Casado</option>
-                                        <option>Divorciado</option>
-                                        <option>Viudo</option>
+                                    <select id="perfil_estadoCivil" class="form-control">
+                                        <option value="">Estado civil</option>
+                                        <option value="S">Soltero</option>
+                                        <option value="C">Casado</option>
+                                        <option value="D">Divorciado</option>
+                                        <option value="V">Viudo</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control">
-                                        <option>Forma de pago</option>
-                                        <option>Efectivo</option>
-                                        <option>Cheque</option>
-                                        <option>Tarjeta de crédito</option>
+                                    <select id="perfil_pagoSeguros" class="form-control">
+                                        <option value="">Forma de pago</option>
+                                        <option value="D">Débito en cuenta</option>
+                                        <option value="T">Tarjeta de crédito</option>
                                     </select>
                                 </div>
                                  <div class="form-group">
-                                    <input name="cuit" type="text" class="form-control" placeholder="CUIT" />
+                                    <input id="perfil_cuit" type="text" class="form-control" placeholder="CUIT" />
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control">
-                                        <option>Condición IVA</option>
-                                        <option>Inscripto</option>
-                                        <option>No inscripto</option>
-                                        <option>Exento</option>
+                                    <select id="perfil_condIva" class="form-control">
+                                        <option value="">Condición IVA</option>
+                                        <option value="C">Consumidor final</option>
+                                        <option value="I">Inscripto</option>
+                                        <option value="E">Exento</option>
+                                        <option value="M">Monotributo</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input name="horario_contacto" type="text" class="form-control" placeholder="Horario de contacto" />
+                                    <input id="perfil_horarioContacto" type="text" class="form-control" placeholder="Horario de contacto" />
                                 </div>
                                 <div class="form-group">
-                                    <input name="domicilio" type="text" class="form-control" placeholder="Domicilio" />
+                                    <input id="perfil_domicilio" type="text" class="form-control" placeholder="Domicilio" />
                                 </div>
                                 <div class="form-group">
-                                    <input name="codigo_postal" type="text" class="form-control" placeholder="Código postal" />
+                                    <input id="perfil_codigoPostal" type="text" class="form-control" placeholder="Código postal" />
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control">
+                                    <select id="perfil_provincia" class="form-control">
                                         <option>Provincia</option>
                                         <option>Provincia 1</option>
                                         <option>Provincia 2</option>
@@ -501,7 +511,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control">
+                                    <select id="perfil_partido" class="form-control">
                                         <option>Partido</option>
                                         <option>Partido 1</option>
                                         <option>Partido 2</option>
@@ -510,7 +520,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control">
+                                    <select id="perfil_localidad" class="form-control">
                                         <option>Localidad</option>
                                         <option>Localidad 1</option>
                                         <option>Localidad 2</option>
@@ -522,14 +532,12 @@
                                 </div>
                             </form>
                         </div>
-                       
-                        
                     </div>
-                    
+
                     <div class="row ajuste-alto"></div>
 
                 </div> <!-- #mis-datos -->
-                
+
                 <div id="asociar-dominio" page style="display: none;">
 
                     <div class="row">
@@ -580,16 +588,14 @@
                                 <div class="form-group">
                                     <input name="dispositivo_recupero" type="text" class="form-control" placeholder="Dispositivo de Recupero" />
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <select class="form-control">
                                         <option>Sin GNC</option>
                                         <option>Con GNC</option>
-                                        
-                                        
                                     </select>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-xs-1"></div>
                                     <div class="col-xs-5">
@@ -599,25 +605,22 @@
                                         <button id="btn_cancelar_asociar_vehiculo" class="btn btn-gps center-block btn-registrarme">Cancelar</button>
                                     </div>
                                     <div class="col-xs-1"></div>
-                                    
                                 </div>
                             </form>
                         </div>
-                       
-                        
                     </div>
-                    
+
                     <div class="row ajuste-alto"></div>
 
                 </div> <!-- #asociar-dominio -->
-                
+
                 <div id="panel-administracion" page style="display: none;">
 
                     <div class="row">
                         <h1><br>Bienvenido a su panel de administración</h1>
                         <h2>Seleccione el dominio o patente que desea consultar:</h2>
                     </div>
-                    
+
                     <div class="row">
                         <div class="content-registro">
                             <div class="row">
@@ -629,7 +632,6 @@
                                     <button id="btn_cancelar_asociar_vehiculo" class="btn btn-gps center-block btn-registrarme">Mis datos</button>
                                 </div>
                                 <div class="col-xs-1"></div>
-
                             </div>
                             <div role="tabpanel">
 
@@ -637,8 +639,6 @@
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li role="presentation" class="active"><a href="#dominio-1" aria-controls="home" role="tab" data-toggle="tab">PHI 637</a></li>
                                     <li role="presentation"><a href="#dominio-2" aria-controls="profile" role="tab" data-toggle="tab">PHI 637</a></li>
-                                    
-
                                 </ul>
 
                                 <!-- Tab panes -->
@@ -660,7 +660,6 @@
                                             <div class="col-xs-6">
                                                 <a href="#" class="link-nuevo-servicio">Agregar nuevo servicio</a>
                                             </div>
-                                            
                                         </div>
                                         <div class="row content-background-listado">
                                             <div class="col-xs-4">
@@ -686,17 +685,14 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                          
+
                                             <div class="col-xs-6">
                                                 <button id="btn_asociar_vehiculo" class="btn btn-gps btn-reducido center-block btn-registrarme">Desvincular <br>dominio</button>
                                             </div>
                                             <div class="col-xs-6">
                                                 <button id="btn_cancelar_asociar_vehiculo" class="btn btn-gps btn-reducido center-block btn-registrarme">Solicitar <br>Cambio de Datos</button>
                                             </div>
-                                          
-
                                         </div>
-
                                     </div>
                                     <div role="tabpanel" class="tab-pane" id="dominio-2">
                                         <div class="row ajuste-grid">
@@ -715,7 +711,7 @@
                                             <div class="col-xs-6">
                                                 <a href="#" class="link-nuevo-servicio">Agregar nuevo servicio</a>
                                             </div>
-                                            
+
                                         </div>
                                         <div class="row content-background-listado">
                                             <div class="col-xs-4">
@@ -741,22 +737,16 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                          
+
                                             <div class="col-xs-6">
                                                 <button id="btn_asociar_vehiculo" class="btn btn-gps btn-reducido center-block btn-registrarme">Desvincular <br>dominio</button>
                                             </div>
                                             <div class="col-xs-6">
                                                 <button id="btn_cancelar_asociar_vehiculo" class="btn btn-gps btn-reducido center-block btn-registrarme">Solicitar <br>Cambio de Datos</button>
                                             </div>
-                                          
-
                                         </div>
-
                                     </div>
-                                     
-                                    
                                 </div>
-
                             </div>
                             <h4>Servicio Registardo por Taller</h4>
                             <div role="tabpanel">
@@ -765,8 +755,6 @@
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li role="presentation" class="active"><a href="#taller-1" aria-controls="home" role="tab" data-toggle="tab">PHI 637</a></li>
                                     <li role="presentation"><a href="#taller-2" aria-controls="profile" role="tab" data-toggle="tab">PHI 637</a></li>
-                                    
-
                                 </ul>
 
                                 <!-- Tab panes -->
@@ -788,7 +776,7 @@
                                             <div class="col-xs-6">
                                                 <a href="#" class="link-nuevo-servicio">Agregar nuevo servicio</a>
                                             </div>
-                                            
+
                                         </div>
                                         <div class="row content-background-listado">
                                             <div class="col-xs-4">
@@ -813,8 +801,6 @@
                                                 <p>Relizado por: Taller Pepe</p>
                                             </div>
                                         </div>
-                                       
-
                                     </div>
                                     <div role="tabpanel" class="tab-pane" id="taller-2">
                                         <div class="row ajuste-grid">
@@ -833,7 +819,6 @@
                                             <div class="col-xs-6">
                                                 <a href="#" class="link-nuevo-servicio">Agregar nuevo servicio</a>
                                             </div>
-                                            
                                         </div>
                                         <div class="row content-background-listado">
                                             <div class="col-xs-4">
@@ -858,19 +843,12 @@
                                                 <p>Relizado por: Taller Pepe</p>
                                             </div>
                                         </div>
-                                        
-
                                     </div>
-                                     
-                                    
                                 </div>
-
                             </div>
                         </div>
-
-
                     </div>
-                    
+
                     <div class="row ajuste-alto"></div>
 
                 </div> <!-- #asociar-dominio -->
@@ -881,18 +859,20 @@
                     </div>
                     <div class="row">
                         <div class="content-registro">
-                            <p>GPS Taller, Condistelec S.A.
-Carlos Pellegrini 1785
-(B1604ASQ) Florida Oeste
-Buenos Aires - Argentina<br>
-Tel:<a href="tel:+541147303533">+54 11 4730-3533</a><br>
-Fax:<a href="tel:+541147600596">+54 11 4760-0596</a><br>
-<a href="mailto:info@gpstaller.com.ar">info@gpstaller.com.ar</a></p>
+                            <p>
+                                GPS Taller, Condistelec S.A.
+                                Carlos Pellegrini 1785
+                                (B1604ASQ) Florida Oeste
+                                Buenos Aires - Argentina<br>
+                                Tel:<a href="tel:+541147303533">+54 11 4730-3533</a><br>
+                                Fax:<a href="tel:+541147600596">+54 11 4760-0596</a><br>
+                                <a href="mailto:info@gpstaller.com.ar">info@gpstaller.com.ar</a>
+                            </p>
                         </div>
-                        
-                        
                     </div>
+
                     <div class="row ajuste-alto"></div>
+
                 </div> <!-- #demo-textos -->
 
             </div> <!-- #content -->

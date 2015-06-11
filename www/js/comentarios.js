@@ -15,7 +15,7 @@ GPSTaller.comentarios = function(data) {
         dataType: 'json',
         data: {
             id: data.tallerID,
-            mail: GPSTaller.logged || ''
+            mail: window.localStorage['user_email'] || ''
         },
         success: function(data) {
             $(".loader").fadeOut();
@@ -52,7 +52,7 @@ $(function(){
             data: {
                 action: 'comentar',
                 id: $('#comentarios_btn').attr('tallerID'),
-                mail: GPSTaller.logged,
+                mail: window.localStorage['user_email'],
                 calificacion: $('#comentarios_rating').val(),
                 comentario: $('#comentarios_comentario').val()
             },

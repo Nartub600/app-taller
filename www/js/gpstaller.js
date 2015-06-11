@@ -4,16 +4,17 @@ GPSTaller = {
         access: 'https://www.gpstaller.com.ar/dev_v1/api/views/access.json.php',
         search: 'https://www.gpstaller.com.ar/dev_v1/api/views/talleres.json.php',
         comments: 'https://www.gpstaller.com.ar/dev_v1/api/views/comentariosTaller.json.php',
-        faq: 'https://www.gpstaller.com.ar/dev_v1/api/views/faq.json.php'
+        faq: 'https://www.gpstaller.com.ar/dev_v1/api/views/faq.json.php',
+        data: 'https://www.gpstaller.com.ar/dev_v1/api/views/data.json.php'
     },
 
     show: function (page, data, die) {
 
-        if(!$('#footer').is(':visible')) {
+        if (!$('#footer').is(':visible')) {
             $('#footer').show();
         }
 
-        if(page == 'index') {
+        if (page == 'index') {
             $('#btn_volver').hide();
         } else {
             $('#btn_volver').show();
@@ -22,51 +23,59 @@ GPSTaller = {
         $('[page]:visible').hide();
         $('[page][id="' + page + '"]').show();
 
-        if(!$.isEmptyObject(data)) {
+        if (!$.isEmptyObject(data)) {
             var string = 'data';
-        } else if(!$.isEmptyObject($('[nav="' + page + '"]').data())) {
+        } else if (!$.isEmptyObject($('[nav="' + page + '"]').data())) {
             var string = 'data';
             data = $('[nav="' + page + '"]').data();
         } else {
             var string = '';
         }
 
-        if($('[page][id="' + page + '"]').attr('callback') && die != false) {
+        if ($('[page][id="' + page + '"]').attr('callback') && die != false) {
             var func = $('[page][id="' + page + '"]').attr('callback') + "(" + string + ");";
             eval(func);
         }
 
     },
 
-    registro: function (email, nombre, apellido, password, callback) {
+    registro: function (data, callback) {
+        data.action = 'register';
+
         $.ajax({
             url: GPSTaller.urls.access,
             type: 'post',
             dataType: 'json',
-            data: {
-                action: 'registro',
-                nombre: nombre,
-                apellido: apellido,
-                mail: email,
-                contraseña: password
-            },
-            success: function(data) {
+            data: data,
+            success: function (data) {
                 callback(data);
             }
         });
     },
 
-    login: function (email, password, callback) {
+    login: function (data, callback) {
+        data.action = 'login';
+
         $.ajax({
             url: GPSTaller.urls.access,
             type: 'post',
             dataType: 'json',
-            data: {
-                action: 'login',
-                mail: email,
-                contraseña: password
-            },
-            success: function(data) {
+            data: data,
+            success: function (data) {
+                callback(data);
+            }
+        });
+    },
+
+    solicitar: function (data, callback) {
+        data.action = 'solicitarContrasena';
+
+        $.ajax({
+            url: GPSTaller.urls.access,
+            type: 'get',
+            dataType: 'json',
+            data: data,
+            success: function (data) {
                 callback(data);
             }
         });
@@ -92,7 +101,21 @@ GPSTaller = {
             type: 'get',
             dataType: 'json',
             data: data,
-            success: function(data) {
+            success: function (data) {
+                callback(data);
+            }
+        });
+    },
+
+    editarPerfil: function (data, callback) {
+        data.action = 'editarPerfil';
+
+        $.ajax({
+            url: GPSTaller.urls.data,
+            type: 'post',
+            dataType: 'json',
+            data: data,
+            success: function (data) {
                 callback(data);
             }
         });
@@ -104,7 +127,7 @@ GPSTaller = {
             marker: {
                 values: points,
                 events: {
-                    click: function(marker, event, context) {
+                    click: function (marker, event, context) {
                         GPSTaller.visited.push('detalle-taller');
                         GPSTaller.show('detalle-taller', {tallerID: context.data.tallerID});
                     }
