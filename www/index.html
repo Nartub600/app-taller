@@ -57,6 +57,9 @@
                             <li role="presentation"><a href="#" role="menuitem" nav="ayuda">Ayuda</a></li>
                             <li role="presentation"><a href="#" role="menuitem" nav="cuenta">Cuenta</a></li>
                             <li auth role="presentation"><a href="#" role="menuitem" nav="panel-administracion">Panel Administración</a></li>
+                            <li auth role="presentation"><a href="#" role="menuitem" nav="desvincular-vehiculo">Desvincular Vehículo</a></li>
+                            <li auth role="presentation"><a href="#" role="menuitem" nav="solicitar-cambios">Solicitar Cambios</a></li>
+                            <li auth role="presentation"><a href="#" role="menuitem" nav="ingresar-servicio">Ingresar Servicio</a></li>
                         </ul>
                     </div>
                     <a class="volver-btn" href="#" id="btn_volver" style="display: none;"><img src="img/volver.png" /></a>
@@ -254,7 +257,7 @@
                     </div>
 
                     <div class="row">
-                        <button id="btn_solicitar" class="btn btn-gps center-block">Enviar Solicitud</button>
+                        <p class="texto-centrado"><a id="btn_solicitar" class="btn btn-gps center-block">Enviar Solicitud</a></p>
                     </div>
 
                 </div> <!-- #solicitarcontrasenia -->
@@ -299,7 +302,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <p style="text-align:center"><button id="btn_register" class="btn btn-gps center-block btn-registrarme">Registrarme</button></p>
+                        <p class="texto-centrado"><a id="btn_register" class="btn btn-gps center-block btn-registrarme">Registrarme</a></p>
                     </div>
 
                     <div class="row ajuste-alto"></div>
@@ -435,7 +438,7 @@
                 <div id="mis-datos" page style="display: none;">
 
                     <div class="row">
-                        <h1><br>MIS DATOS</h1>
+                        <h1>MIS DATOS</h1>
                     </div>
                     <div class="row">
                         <div class="content-registro">
@@ -852,7 +855,113 @@
                     <div class="row ajuste-alto"></div>
 
                 </div> <!-- #asociar-dominio -->
+                
+                <div id="desvincular-vehiculo" page style="display: none;">
+                    <div class="content-registro desvincular-vehiculo">
+                        <div class="row">
+                            <h1>DESVINCULAR VEHÍCULO</h1>
+                            <p>¿Está seguro que desea desvincular el dominio <span class="rojo bold">PHI 637</span> de su cuenta?</p>
+                            <p class="small gris-01">Por favor indique las razones de su desvinculación con el vehiculo:</p>
+                        </div>
+                        <div class="row">
+                            
+                                <form>
+                                    <div class="form-group">
+                                        <textarea class="textarea-01" placeholder="Razones de desvinculación de dominio. (Máximo 255 caracteres)"></textarea>
+                                    </div>
+                                </form>
+                          
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p class="texto-centrado"><a id="" class="btn btn-gps center-block">Desvincular</a></p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p class="texto-centrado"><a id="" class="btn btn-gps center-block">Cancelar</a></p>
+                            </div>
+                            
+                        </div>
+                    </div>  
+                </div> <!-- #desvincular-vehiculo -->
+                
+                <div id="solicitar-cambios" page style="display: none;">
+                    <div class="content-registro desvincular-vehiculo">
+                        <div class="row">
+                            <h1>SOLICITAR CAMBIOS</h1>
+                            <p>Los datos ingresados al sistema solo pueden ser modificados por el personal autorizado. Si necesita realizar algun cambio en la información ingresada, detalle los cambios que desea realizar en el cuadro debajo, y revisaremos su solicitud.</p>
+                            <p class="small gris-01">Por favor detalle los cambios que necesita realizar aquí:</p>
+                        </div>
+                        <div class="row">
+                            
+                                <form>
+                                    <div class="form-group">
+                                        <textarea class="textarea-01" placeholder="Mensaje. (Máximo 255 caracteres)"></textarea>
+                                    </div>
+                                </form>
+                          
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p class="texto-centrado"><a id="" class="btn btn-gps center-block">Enviar</a></p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p class="texto-centrado"><a id="" class="btn btn-gps center-block">Cancelar</a></p>
+                            </div>
+                            
+                        </div>
+                    </div>  
+                </div> <!-- #desvincular-vehiculo -->
+                
+                <div id="ingresar-servicio" page style="display: none;">
 
+                    <div class="row">
+                        <h1>INGRESAR SERVICIO</h1>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="content-registro">
+                            <p>Dominio: <span class="rojo bold">PHI 637</span> </p>
+                            <form>
+                                <div class="form-group">
+                                    <input id="" type="date" class="form-control" placeholder="Fecha*" />
+                                </div>
+                                <div class="form-group">
+                                    <input id="" type="number" class="form-control" placeholder="Kilometros*" />
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <select id="" class="form-control">
+                                        <option value="">Tipo de servicio*</option>
+                                        <option value="">Servicio 1</option>
+                                        <option value="">Servicio 2</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input id="" type="tel" class="form-control" placeholder="Realizado por*" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <p>Detalle</p>
+                                    <textarea class="textarea-01"></textarea>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <p class="texto-centrado"><a id="" class="btn btn-gps center-block">Guardar</a></p>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <p class="texto-centrado"><a id="" class="btn btn-gps center-block">Cancelar</a></p>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="row ajuste-alto"></div>
+
+                </div> <!-- #ingresar-servicio -->
+                
                 <div id="contacto" page style="display: none;">
                     <div class="row">
                         <h1><br>CONTACTO</h1>

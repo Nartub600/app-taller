@@ -6,11 +6,26 @@ p, h1, h2, h3, h4, label, button, span {
     font-family: 'Open Sans', sans-serif;
     text-shadow: 0px 0px 0px rgba(150, 150, 150, 0);
 }
-
+p.texto-centrado{
+    text-align: center;
+}
+.gris-01{
+    color:#666666;
+}
 input {
     -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
     -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
     box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+}
+.textarea-01{
+    width: 100%;
+    resize: none;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    font-size: 12px;
+    height: 82px !important;
+    padding: 3px 6px;
 }
 span.form-control{
     display: none;
@@ -18,7 +33,9 @@ span.form-control{
 .rojo {
     color: #eb2026;
 }
-
+.bold{
+    font-weight: bold;
+}
 .ajuste-alto {
     position: relative;
     float: left;
@@ -113,7 +130,9 @@ h4 {
 p {
     font-size: 13px;
 }
-
+p.small{
+    font-size: 11px;
+}
 .container {
     width: 100%;
 }
