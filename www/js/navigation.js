@@ -36,4 +36,10 @@ $(function(){
         $('#btn_volver_settings').trigger('click');
     });
 
+    $('#btn_asegura').on('click', function(e){
+        e.preventDefault();
+
+        alert('Próximamente');
+    });
+
 }, false);

@@ -100,13 +100,14 @@ $(function(){
                     break;
                 case 10:
                     alert('Usuario logueado');
+                    // rutina de login
                     if ($('#login_remember').is(':checked')) {
                         window.localStorage['user_email'] = $('#login_email').val();
                     }
                     $('[auth]').show();
                     $('[noauth]').hide();
-                    GPSTaller.show('index');
-                    GPSTaller.visited = ['index'];
+                    GPSTaller.visited = ['index', 'panel-administracion'];
+                    GPSTaller.show('panel-administracion');
                     break;
             }
         });
@@ -155,6 +156,7 @@ $(function(){
         GPSTaller.visited = ['index'];
         $('[auth]').hide();
         $('[noauth]').show();
+        $('#btn_historia').attr('nav', 'login');
         GPSTaller.show('index');
     });
 

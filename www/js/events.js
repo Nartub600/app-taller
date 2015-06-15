@@ -13,12 +13,13 @@ document.addEventListener("deviceready", function() {
         }
     });
 
-    if (window.localStorage['user_email'] === undefined ||  window.localStorage['user_email'] === 'undefined' || window.localStorage['user_email'] === 'null') { // no hay usuario
+    if (window.localStorage['user_email'] === undefined || window.localStorage['user_email'] === 'undefined' || window.localStorage['user_email'] === 'null') { // no hay usuario
         $('[auth]').hide();
         $('[noauth]').show();
     } else { // hay usuario
         $('[auth]').show();
         $('[noauth]').hide();
+        $('#btn_historia').attr('nav', 'panel-administracion');
     }
 
 }, false);

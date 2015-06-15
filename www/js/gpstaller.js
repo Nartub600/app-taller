@@ -1,5 +1,7 @@
 GPSTaller = {
 
+    hash: '1f8393c163b12a7c87550866ba07444f31bc4012c501e4e006ab475e5cd2d06b',
+
     urls: {
         access: 'https://www.gpstaller.com.ar/dev_v1/api/views/access.json.php',
         search: 'https://www.gpstaller.com.ar/dev_v1/api/views/talleres.json.php',
@@ -10,7 +12,9 @@ GPSTaller = {
 
     show: function (page, data, die) {
 
-        if (!$('#footer').is(':visible')) {
+        if($('[page][id="' + page + '"]').is('[nofooter]')) {
+            $('#footer').hide();
+        } else {
             $('#footer').show();
         }
 
@@ -109,7 +113,8 @@ GPSTaller = {
 
     editarPerfil: function (data, callback) {
         data.action = 'editarPerfil';
-
+        data.hash = GPSTaller.hash;
+$.each(data, function(i,e){ alert(e) });
         $.ajax({
             url: GPSTaller.urls.data,
             type: 'post',

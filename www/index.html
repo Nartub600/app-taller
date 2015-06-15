@@ -29,7 +29,7 @@
         <script type="text/javascript" src="js/comentarios.js"></script>
         <script type="text/javascript" src="js/events.js"></script>
         <script type="text/javascript" src="js/access.js"></script>
-        <script type="text/javascript" src="js/botones.js"></script>
+        <script type="text/javascript" src="js/cuenta.js"></script>
     </head>
     <body>
 
@@ -77,17 +77,17 @@
                                 <a href="#" nav="search-map"><img src="img/buscador-taller.png" /></a>
                             </div>
                             <div class="row">
-                                <a href="#" nav="demo-textos"><img src="img/historia-del-auto.png" /></a>
+                                <a href="#" nav="login" id="btn_historia"><img src="img/historia-del-auto.png" /></a>
                             </div>
                             <div class="row">
-                                <a href="#" nav="demo-textos"><img src="img/asegura-tu-auto.png" /></a>
+                                <a href="#" id="btn_asegura"><img src="img/asegura-tu-auto.png" /></a>
                             </div>
                         </div>
                     </div>
 
                 </div> <!-- #index -->
 
-                <div id="search-map" page style="display: none;" callback="GPSTaller.talleresCercanos">
+                <div id="search-map" page nofooter style="display: none;" callback="GPSTaller.talleresCercanos">
 
                     <div class="row">
                         <div class="content-search col-lg-6">
@@ -116,17 +116,17 @@
 
                     <div class="wrapper">
                         <div class="row">
-                        <div class="media top-settings">
-                            <div class="media-left">
-                                <a id="btn_volver_settings" href="#" nav="search-map">
-                                    <img class="media-object" src="img/icon-volver.png" alt="" />
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">CONFIGURACIÓN</h4>
+                            <div class="media top-settings">
+                                <div class="media-left">
+                                    <a id="btn_volver_settings" href="#" nav="search-map">
+                                        <img class="media-object" src="img/icon-volver.png" alt="" />
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">CONFIGURACIÓN</h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
                         <div class="row">
                             <p class="titulo">Mostrar:</p>
                         </div>
@@ -414,10 +414,10 @@
 
                     <div class="row">
                         <div class="link-item">
-                            <a href="#" nav="ayuda" target="_blank"><p>Ayuda</p><div class="arrow"><img src="img/arrow.png"/></div></a>
+                            <a href="#" nav="ayuda"><p>Ayuda</p><div class="arrow"><img src="img/arrow.png"/></div></a>
                         </div>
                         <div class="link-item">
-                            <a href="#" nav="contacto" target="_blank"><p>Contacto</p><div class="arrow"><img src="img/arrow.png"/></div></a>
+                            <a href="#" nav="contacto"><p>Contacto</p><div class="arrow"><img src="img/arrow.png"/></div></a>
                         </div>
                     </div>
 
@@ -435,7 +435,7 @@
 
                 </div> <!-- #cuenta -->
 
-                <div id="mis-datos" page style="display: none;">
+                <div id="mis-datos" page style="display: none;" callback="GPSTaller.verPerfil">
 
                     <div class="row">
                         <h1>MIS DATOS</h1>
@@ -444,22 +444,46 @@
                         <div class="content-registro">
                             <form>
                                 <div class="form-group">
-                                    <input id="perfil_titular" type="text" class="form-control" placeholder="Titular*" />
-                                </div>
-                                <div class="form-group">
-                                    <input id="perfil_email" type="email" class="form-control" placeholder="Email*" />
-                                </div>
-                                <div class="form-group">
-                                    <input id="perfil_telefono" type="tel" class="form-control" placeholder="Teléfono*" />
-                                </div>
-                                <div class="form-group">
-                                    <input id="perfil_celular" type="tel" class="form-control" placeholder="Celular*" />
+                                    <input id="perfil_titular" type="text" class="form-control" placeholder="Titular*" disabled />
                                 </div>
                                 <div class="form-group">
                                     <input id="perfil_empresa" type="text" class="form-control" placeholder="Empresa" />
                                 </div>
                                 <div class="form-group">
-                                    <input id="perfil_fechaNacimiento" type="date" class="form-control" placeholder="Fecha de nacimiento" />
+                                    <input id="perfil_email" type="email" class="form-control" placeholder="Email*" disabled />
+                                </div>
+                                <div class="form-group">
+                                    <input id="perfil_celular" type="tel" class="form-control" placeholder="Celular*" />
+                                </div>
+                                <div class="form-group">
+                                    <input id="perfil_telefono" type="tel" class="form-control" placeholder="Teléfono*" />
+                                </div>
+                                <!-- <div class="form-group">
+                                    <input id="perfil_fechaNacimiento" type="text" class="form-control" placeholder="Fecha de nacimiento" />
+                                </div> -->
+                                <div class="form-group">
+                                    <input id="perfil_domicilio" type="text" class="form-control" placeholder="Domicilio" />
+                                </div>
+                                <div class="form-group">
+                                    <input id="perfil_codigoPostal" type="text" class="form-control" placeholder="Código postal" />
+                                </div>
+                                <div class="form-group">
+                                    <input id="perfil_localidad" type="text" class="form-control" placeholder="Localidad" />
+                                </div>
+                                <!-- <div class="form-group">
+                                    <input id="perfil_partido" type="text" class="form-control" placeholder="Partido" />
+                                </div>
+                                <div class="form-group">
+                                    <input id="perfil_provincia" type="text" class="form-control" placeholder="Provincia" />
+                                </div> -->
+                                 <div class="form-group">
+                                    <input id="perfil_cuit" type="text" class="form-control" placeholder="CUIT" />
+                                </div>
+                                <div class="form-group">
+                                    <input id="perfil_iva" type="text" class="form-control" placeholder="Cond. IVA" />
+                                </div>
+                                <div class="form-group">
+                                    <input id="perfil_horarioContacto" type="text" class="form-control" placeholder="Horario de contacto" />
                                 </div>
                                 <div class="form-group">
                                     <select id="perfil_genero" class="form-control">
@@ -480,58 +504,13 @@
                                 <div class="form-group">
                                     <select id="perfil_pagoSeguros" class="form-control">
                                         <option value="">Forma de pago</option>
-                                        <option value="D">Débito en cuenta</option>
                                         <option value="T">Tarjeta de crédito</option>
-                                    </select>
-                                </div>
-                                 <div class="form-group">
-                                    <input id="perfil_cuit" type="text" class="form-control" placeholder="CUIT" />
-                                </div>
-                                <div class="form-group">
-                                    <select id="perfil_condIva" class="form-control">
-                                        <option value="">Condición IVA</option>
-                                        <option value="C">Consumidor final</option>
-                                        <option value="I">Inscripto</option>
-                                        <option value="E">Exento</option>
-                                        <option value="M">Monotributo</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <input id="perfil_horarioContacto" type="text" class="form-control" placeholder="Horario de contacto" />
-                                </div>
-                                <div class="form-group">
-                                    <input id="perfil_domicilio" type="text" class="form-control" placeholder="Domicilio" />
-                                </div>
-                                <div class="form-group">
-                                    <input id="perfil_codigoPostal" type="text" class="form-control" placeholder="Código postal" />
-                                </div>
-                                <div class="form-group">
-                                    <select id="perfil_provincia" class="form-control">
-                                        <option>Provincia</option>
-                                        <option>Provincia 1</option>
-                                        <option>Provincia 2</option>
-                                        <option>Provincia 3</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <select id="perfil_partido" class="form-control">
-                                        <option>Partido</option>
-                                        <option>Partido 1</option>
-                                        <option>Partido 2</option>
-                                        <option>Partido 3</option>
-                                        <option>Partido 4</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <select id="perfil_localidad" class="form-control">
-                                        <option>Localidad</option>
-                                        <option>Localidad 1</option>
-                                        <option>Localidad 2</option>
-                                        <option>Localidad 3</option>
+                                        <option value="D">Débito en cuenta</option>
                                     </select>
                                 </div>
                                 <div class="row">
-                                    <button id="btn_guardar_perfil" class="btn btn-gps center-block btn-registrarme">Guardar</button>
+                                    <!-- <button id="" class="btn btn-gps center-block btn-registrarme"></button> -->
+                                    <p class="texto-centrado"><a id="btn_guardar_perfil" class="btn btn-gps center-block">Guardar</a></p>
                                 </div>
                             </form>
                         </div>
@@ -617,11 +596,11 @@
 
                 </div> <!-- #asociar-dominio -->
 
-                <div id="panel-administracion" page style="display: none;">
+                <div id="panel-administracion" page style="display: none;" callback="GPSTaller.verPerfil">
 
                     <div class="row">
                         <h1><br>Bienvenido a su panel de administración</h1>
-                        <h2>Seleccione el dominio o patente que desea consultar:</h2>
+                        <h2 id="administracionTitle" style="display: none;">Seleccione el dominio o patente que desea consultar:</h2>
                     </div>
 
                     <div class="row">
@@ -629,24 +608,24 @@
                             <div class="row">
                                 <div class="col-xs-1"></div>
                                 <div class="col-xs-5">
-                                    <button id="btn_asociar_vehiculo" class="btn btn-gps center-block btn-registrarme">Asociar vehiculo</button>
+                                    <button nav="asociar-dominio" class="btn btn-gps center-block btn-registrarme">Asociar vehiculo</button>
                                 </div>
                                 <div class="col-xs-5">
-                                    <button id="btn_cancelar_asociar_vehiculo" class="btn btn-gps center-block btn-registrarme">Mis datos</button>
+                                    <button nav="mis-datos" class="btn btn-gps center-block btn-registrarme">Mis datos</button>
                                 </div>
                                 <div class="col-xs-1"></div>
                             </div>
                             <div role="tabpanel">
 
                                 <!-- Nav tabs -->
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#dominio-1" aria-controls="home" role="tab" data-toggle="tab">PHI 637</a></li>
-                                    <li role="presentation"><a href="#dominio-2" aria-controls="profile" role="tab" data-toggle="tab">PHI 637</a></li>
+                                <ul class="nav nav-tabs" role="tablist" id="dominiosRegistradosTabs">
+                                    <!-- <li role="presentation" class="active"><a href="#dominio-1" aria-controls="home" role="tab" data-toggle="tab">PHI 637</a></li>
+                                    <li role="presentation"><a href="#dominio-2" aria-controls="profile" role="tab" data-toggle="tab">PHI 637</a></li> -->
                                 </ul>
 
                                 <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="dominio-1">
+                                <div class="tab-content" id="dominiosRegistradosData">
+                                    <!-- <div role="tabpanel" class="tab-pane active" id="dominio-1">
                                         <div class="row ajuste-grid">
                                             <div class="col-xs-6">
                                                 <p><strong>Marca:</strong> Alfa Romeo</p>
@@ -688,12 +667,11 @@
                                             </div>
                                         </div>
                                         <div class="row">
-
                                             <div class="col-xs-6">
-                                                <button id="btn_asociar_vehiculo" class="btn btn-gps btn-reducido center-block btn-registrarme">Desvincular <br>dominio</button>
+                                                <button class="btn btn-gps btn-reducido center-block btn-registrarme btn_desvincularDominio">Desvincular <br>dominio</button>
                                             </div>
                                             <div class="col-xs-6">
-                                                <button id="btn_cancelar_asociar_vehiculo" class="btn btn-gps btn-reducido center-block btn-registrarme">Solicitar <br>Cambio de Datos</button>
+                                                <button class="btn btn-gps btn-reducido center-block btn-registrarme btn_cambioDatos">Solicitar <br>Cambio de Datos</button>
                                             </div>
                                         </div>
                                     </div>
@@ -714,7 +692,6 @@
                                             <div class="col-xs-6">
                                                 <a href="#" class="link-nuevo-servicio">Agregar nuevo servicio</a>
                                             </div>
-
                                         </div>
                                         <div class="row content-background-listado">
                                             <div class="col-xs-4">
@@ -740,112 +717,113 @@
                                             </div>
                                         </div>
                                         <div class="row">
-
                                             <div class="col-xs-6">
-                                                <button id="btn_asociar_vehiculo" class="btn btn-gps btn-reducido center-block btn-registrarme">Desvincular <br>dominio</button>
+                                                <button class="btn btn-gps btn-reducido center-block btn-registrarme">Desvincular <br>dominio</button>
                                             </div>
                                             <div class="col-xs-6">
-                                                <button id="btn_cancelar_asociar_vehiculo" class="btn btn-gps btn-reducido center-block btn-registrarme">Solicitar <br>Cambio de Datos</button>
+                                                <button class="btn btn-gps btn-reducido center-block btn-registrarme">Solicitar <br>Cambio de Datos</button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
-                            <h4>Servicio Registardo por Taller</h4>
-                            <div role="tabpanel">
+                            <div id="serviciosRegistrados" style="display: none;">
+                            <h4>Servicio Registrado por Taller</h4>
+                                <div role="tabpanel">
 
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#taller-1" aria-controls="home" role="tab" data-toggle="tab">PHI 637</a></li>
-                                    <li role="presentation"><a href="#taller-2" aria-controls="profile" role="tab" data-toggle="tab">PHI 637</a></li>
-                                </ul>
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs" role="tablist" id="serviciosRegistradosTabs">
+                                        <!-- <li role="presentation" class="active"><a href="#taller-1" aria-controls="home" role="tab" data-toggle="tab">PHI 637</a></li>
+                                        <li role="presentation"><a href="#taller-2" aria-controls="profile" role="tab" data-toggle="tab">PHI 637</a></li> -->
+                                    </ul>
 
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="taller-1">
-                                        <div class="row ajuste-grid">
-                                            <div class="col-xs-6">
-                                                <p><strong>Marca:</strong> Alfa Romeo</p>
-                                                <p><strong>Año:</strong> 1950</p>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content" id="serviciosRegistradosData">
+                                        <!-- <div role="tabpanel" class="tab-pane active" id="taller-1">
+                                            <div class="row ajuste-grid">
+                                                <div class="col-xs-6">
+                                                    <p><strong>Marca:</strong> Alfa Romeo</p>
+                                                    <p><strong>Año:</strong> 1950</p>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <p><strong>Modelo:</strong> 147</p>
+                                                </div>
                                             </div>
-                                            <div class="col-xs-6">
-                                                <p><strong>Modelo:</strong> 147</p>
-                                            </div>
-                                        </div>
-                                        <div class="row ajuste-grid">
-                                            <div class="col-xs-6">
-                                                <p><strong>Historia Clínica</strong> (Taller).</p>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <a href="#" class="link-nuevo-servicio">Agregar nuevo servicio</a>
-                                            </div>
+                                            <div class="row ajuste-grid">
+                                                <div class="col-xs-6">
+                                                    <p><strong>Historia Clínica</strong> (Taller).</p>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <a href="#" class="link-nuevo-servicio">Agregar nuevo servicio</a>
+                                                </div>
 
-                                        </div>
-                                        <div class="row content-background-listado">
-                                            <div class="col-xs-4">
-                                                <p>Fecha</p>
                                             </div>
-                                            <div class="col-xs-4">
-                                                <p>Kilómetros</p>
+                                            <div class="row content-background-listado">
+                                                <div class="col-xs-4">
+                                                    <p>Fecha</p>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <p>Kilómetros</p>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <p>Servicio</p>
+                                                </div>
                                             </div>
-                                            <div class="col-xs-4">
-                                                <p>Servicio</p>
-                                            </div>
-                                        </div>
-                                        <div class="row content-background-listado descripciones">
-                                            <div class="col-xs-4">
-                                                <p>30/03/2015</p>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <p>15.000</p>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <p>Diagnostico por scanner</p>
-                                                <p>Relizado por: Taller Pepe</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="taller-2">
-                                        <div class="row ajuste-grid">
-                                            <div class="col-xs-6">
-                                                <p><strong>Marca:</strong> Alfa Romeo</p>
-                                                <p><strong>Año:</strong> 1950</p>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <p><strong>Modelo:</strong> 147</p>
+                                            <div class="row content-background-listado descripciones">
+                                                <div class="col-xs-4">
+                                                    <p>30/03/2015</p>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <p>15.000</p>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <p>Diagnostico por scanner</p>
+                                                    <p>Relizado por: Taller Pepe</p>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="row ajuste-grid">
-                                            <div class="col-xs-6">
-                                                <p><strong>Historia Clínica</strong> (Taller).</p>
+                                        <div role="tabpanel" class="tab-pane" id="taller-2">
+                                            <div class="row ajuste-grid">
+                                                <div class="col-xs-6">
+                                                    <p><strong>Marca:</strong> Alfa Romeo</p>
+                                                    <p><strong>Año:</strong> 1950</p>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <p><strong>Modelo:</strong> 147</p>
+                                                </div>
                                             </div>
-                                            <div class="col-xs-6">
-                                                <a href="#" class="link-nuevo-servicio">Agregar nuevo servicio</a>
+                                            <div class="row ajuste-grid">
+                                                <div class="col-xs-6">
+                                                    <p><strong>Historia Clínica</strong> (Taller).</p>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <a href="#" class="link-nuevo-servicio">Agregar nuevo servicio</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row content-background-listado">
-                                            <div class="col-xs-4">
-                                                <p>Fecha</p>
+                                            <div class="row content-background-listado">
+                                                <div class="col-xs-4">
+                                                    <p>Fecha</p>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <p>Kilómetros</p>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <p>Servicio</p>
+                                                </div>
                                             </div>
-                                            <div class="col-xs-4">
-                                                <p>Kilómetros</p>
+                                            <div class="row content-background-listado descripciones">
+                                                <div class="col-xs-4">
+                                                    <p>30/03/2015</p>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <p>15.000</p>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <p>Diagnostico por scanner</p>
+                                                    <p>Relizado por: Taller Pepe</p>
+                                                </div>
                                             </div>
-                                            <div class="col-xs-4">
-                                                <p>Servicio</p>
-                                            </div>
-                                        </div>
-                                        <div class="row content-background-listado descripciones">
-                                            <div class="col-xs-4">
-                                                <p>30/03/2015</p>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <p>15.000</p>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <p>Diagnostico por scanner</p>
-                                                <p>Relizado por: Taller Pepe</p>
-                                            </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -855,8 +833,9 @@
                     <div class="row ajuste-alto"></div>
 
                 </div> <!-- #asociar-dominio -->
-                
+
                 <div id="desvincular-vehiculo" page style="display: none;">
+
                     <div class="content-registro desvincular-vehiculo">
                         <div class="row">
                             <h1>DESVINCULAR VEHÍCULO</h1>
@@ -864,13 +843,11 @@
                             <p class="small gris-01">Por favor indique las razones de su desvinculación con el vehiculo:</p>
                         </div>
                         <div class="row">
-                            
-                                <form>
-                                    <div class="form-group">
-                                        <textarea class="textarea-01" placeholder="Razones de desvinculación de dominio. (Máximo 255 caracteres)"></textarea>
-                                    </div>
-                                </form>
-                          
+                            <form>
+                                <div class="form-group">
+                                    <textarea class="textarea-01" placeholder="Razones de desvinculación de dominio. (Máximo 255 caracteres)"></textarea>
+                                </div>
+                            </form>
                         </div>
                         <div class="row">
                             <div class="col-xs-6">
@@ -879,11 +856,11 @@
                             <div class="col-xs-6">
                                 <p class="texto-centrado"><a id="" class="btn btn-gps center-block">Cancelar</a></p>
                             </div>
-                            
                         </div>
-                    </div>  
+                    </div>
+
                 </div> <!-- #desvincular-vehiculo -->
-                
+
                 <div id="solicitar-cambios" page style="display: none;">
                     <div class="content-registro desvincular-vehiculo">
                         <div class="row">
@@ -892,13 +869,11 @@
                             <p class="small gris-01">Por favor detalle los cambios que necesita realizar aquí:</p>
                         </div>
                         <div class="row">
-                            
-                                <form>
-                                    <div class="form-group">
-                                        <textarea class="textarea-01" placeholder="Mensaje. (Máximo 255 caracteres)"></textarea>
-                                    </div>
-                                </form>
-                          
+                            <form>
+                                <div class="form-group">
+                                    <textarea class="textarea-01" placeholder="Mensaje. (Máximo 255 caracteres)"></textarea>
+                                </div>
+                            </form>
                         </div>
                         <div class="row">
                             <div class="col-xs-6">
@@ -907,16 +882,14 @@
                             <div class="col-xs-6">
                                 <p class="texto-centrado"><a id="" class="btn btn-gps center-block">Cancelar</a></p>
                             </div>
-                            
                         </div>
-                    </div>  
+                    </div>
                 </div> <!-- #desvincular-vehiculo -->
-                
+
                 <div id="ingresar-servicio" page style="display: none;">
 
                     <div class="row">
                         <h1>INGRESAR SERVICIO</h1>
-                        
                     </div>
                     <div class="row">
                         <div class="content-registro">
@@ -939,12 +912,12 @@
                                 <div class="form-group">
                                     <input id="" type="tel" class="form-control" placeholder="Realizado por*" />
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <p>Detalle</p>
                                     <textarea class="textarea-01"></textarea>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-xs-6">
                                         <p class="texto-centrado"><a id="" class="btn btn-gps center-block">Guardar</a></p>
@@ -952,7 +925,6 @@
                                     <div class="col-xs-6">
                                         <p class="texto-centrado"><a id="" class="btn btn-gps center-block">Cancelar</a></p>
                                     </div>
-
                                 </div>
                             </form>
                         </div>
@@ -961,7 +933,7 @@
                     <div class="row ajuste-alto"></div>
 
                 </div> <!-- #ingresar-servicio -->
-                
+
                 <div id="contacto" page style="display: none;">
                     <div class="row">
                         <h1><br>CONTACTO</h1>
@@ -982,7 +954,7 @@
 
                     <div class="row ajuste-alto"></div>
 
-                </div> <!-- #demo-textos -->
+                </div> <!-- #contacto -->
 
             </div> <!-- #content -->
 
