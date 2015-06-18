@@ -103,7 +103,7 @@ document.addEventListener("deviceready", function() {
                     // alert('Usuario logueado');
                     // rutina de login
                     GPSTaller.loggedUser = $('#login_email').val();
-                    $('#btn_historia').attr('nav', 'panel-administracion');
+                    // $('#btn_historia').attr('nav', 'panel-administracion');
                     if ($('#login_remember').is(':checked')) {
                         window.localStorage['user_email'] = $('#login_email').val();
                     }
@@ -160,7 +160,7 @@ document.addEventListener("deviceready", function() {
         GPSTaller.visited = ['index'];
         $('[auth]').hide();
         $('[noauth]').show();
-        $('#btn_historia').attr('nav', 'login');
+        // $('#btn_historia').attr('nav', 'login');
         $('input').val('');
         $('option').selected = false;
         GPSTaller.show('index');

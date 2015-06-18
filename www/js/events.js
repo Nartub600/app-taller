@@ -10,7 +10,7 @@ document.addEventListener("deviceready", function() {
         $('[auth]').show();
         $('[noauth]').hide();
         GPSTaller.loggedUser = window.localStorage['user_email'];
-        $('#btn_historia').attr('nav', 'panel-administracion');
+        // $('#btn_historia').attr('nav', 'panel-administracion');
     }
 
     // data que pedimos al inicio de la aplicación
