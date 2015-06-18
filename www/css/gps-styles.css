@@ -620,6 +620,20 @@ footer p {
     font-weight: 600;
     margin: 23px 0;
 }
+.scrollable-bases {
+    height: auto;
+    max-height: 180px;
+    overflow-x: hidden;
+}
+.scrollable-bases::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 4px;        
+}    
+.scrollable-bases::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: lightgray;
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.75);        
+}
 /* EDN REGISTRO */
 
 /* COMENTARIOS */
