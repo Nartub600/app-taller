@@ -12,8 +12,8 @@ function backbuttonHandler(e) {
     }
 }
 
-// document.addEventListener("deviceready", function() {
-$(function(){
+document.addEventListener("deviceready", function() {
+// $(function(){
 
     $('body').on('click', '[nav]', function(e){
         e.preventDefault();

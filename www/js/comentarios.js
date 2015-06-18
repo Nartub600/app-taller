@@ -1,4 +1,4 @@
-GPSTaller.comentarios = function(data) {
+GPSTaller.comentarios = function (data) {
     $(".loader").fadeIn();
 
     $('#comentarios_lista').html('');
@@ -15,7 +15,7 @@ GPSTaller.comentarios = function(data) {
         dataType: 'json',
         data: {
             id: data.tallerID,
-            mail: window.localStorage['user_email'] || ''
+            mail: GPSTaller.loggedUser || ''
         },
         success: function(data) {
             $(".loader").fadeOut();
@@ -30,7 +30,8 @@ GPSTaller.comentarios = function(data) {
     });
 }
 
-$(function(){
+document.addEventListener("deviceready", function() {
+// $(function(){
 
     $('[star]').on('click', function(e){
         e.preventDefault();

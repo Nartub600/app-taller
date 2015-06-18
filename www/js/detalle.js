@@ -31,7 +31,8 @@ GPSTaller.detalle = function (data) {
     });
 }
 
-$(function(){
+document.addEventListener("deviceready", function() {
+// $(function(){
 
     $('body').on('click', '#detalle_comollego', function(e){
         e.preventDefault();

@@ -114,13 +114,28 @@ GPSTaller = {
     editarPerfil: function (data, callback) {
         data.action = 'editarPerfil';
         data.hash = GPSTaller.hash;
-$.each(data, function(i,e){ alert(e) });
+
         $.ajax({
             url: GPSTaller.urls.data,
             type: 'post',
             dataType: 'json',
             data: data,
             success: function (data) {
+                callback(data);
+            }
+        });
+    },
+
+    asociarVehiculo: function(data, callback) {
+        data.action = 'nuevoVehiculo';
+        data.hash = GPSTaller.hash;
+
+        $.ajax({
+            url: GPSTaller.urls.data,
+            type: 'post',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
                 callback(data);
             }
         });

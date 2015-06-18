@@ -1,4 +1,5 @@
-$(function(){
+document.addEventListener("deviceready", function() {
+// $(function(){
 
     $('#btn_register').on('click', function(e){
         e.preventDefault();
@@ -99,11 +100,14 @@ $(function(){
                     alert('El ingreso está bloqueado por reiterados intentos fallidos');
                     break;
                 case 10:
-                    alert('Usuario logueado');
+                    // alert('Usuario logueado');
                     // rutina de login
+                    GPSTaller.loggedUser = $('#login_email').val();
+                    $('#btn_historia').attr('nav', 'panel-administracion');
                     if ($('#login_remember').is(':checked')) {
                         window.localStorage['user_email'] = $('#login_email').val();
                     }
+                    GPSTaller.verPerfil();
                     $('[auth]').show();
                     $('[noauth]').hide();
                     GPSTaller.visited = ['index', 'panel-administracion'];
@@ -157,6 +161,8 @@ $(function(){
         $('[auth]').hide();
         $('[noauth]').show();
         $('#btn_historia').attr('nav', 'login');
+        $('input').val('');
+        $('option').selected = false;
         GPSTaller.show('index');
     });
 

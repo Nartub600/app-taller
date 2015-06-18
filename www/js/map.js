@@ -1,5 +1,4 @@
-GPSTaller.talleresCercanos =  function ()
-{
+GPSTaller.talleresCercanos = function () {
     $('#footer').hide();
     $(".loader").fadeIn();
 
@@ -39,7 +38,8 @@ GPSTaller.talleresCercanos =  function ()
     }
 }
 
-$(function(){
+document.addEventListener("deviceready", function() {
+// $(function(){
 
     $('#btn_search').on('click', function(e){
         e.preventDefault();
