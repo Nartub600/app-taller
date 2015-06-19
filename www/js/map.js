@@ -8,7 +8,7 @@ GPSTaller.talleresCercanos = function () {
     }
 
     var onSuccess = function(position) {
-        GPSTaller.currentposition = [position.coords.latitude, position.coords.longitude];
+        GPSTaller.currentPosition = [position.coords.latitude, position.coords.longitude];
         $('#img_gps').attr('src', 'img/con-gps.png');
         // var data = [{"tallerID":"1","rating":4,"comentarios":3,"categoria":"1","nombre":"Taller Tincani Inyeccion Electronica","direccion":"Mexico 2210","barrio":"","codigoPostal":"1222","lat":"-34.616196","lng":"-58.397865","telefono":"(011) 4943-6474","nextel":"","celular":"","email":"ceciliafontenla@gmail.com","localidad":"Ciudad De Buenos Aires","partido":"CABA","provincia":"Capital Federal","horarioAtencion":"","descripcion":""}];
         GPSTaller.search({lat: position.coords.latitude, lng: position.coords.longitude}, function(data) {
@@ -34,7 +34,9 @@ GPSTaller.talleresCercanos = function () {
     if ($('#txt_search').val() != '') {
         $('#btn_search').trigger('click');
     } else {
-        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        navigator.geolocation.getCurrentPosition(onSuccess, onError, {
+            enableHighAccuracy: true
+        });
     }
 }
 

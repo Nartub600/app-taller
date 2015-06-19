@@ -44,7 +44,7 @@ document.addEventListener("deviceready", function() {
         $('#map_canvas').gmap3({
             getroute: {
                 options: {
-                    origin: GPSTaller.currentposition,
+                    origin: GPSTaller.currentPosition,
                     destination: [$('#detalle_lat').val(), $('#detalle_lng').val()],
                     travelMode: google.maps.DirectionsTravelMode.DRIVING
                 },

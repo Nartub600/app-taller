@@ -1,5 +1,17 @@
 GPSTaller.visited = ['index'];
 
+function navigationHandler(e) {
+    e.preventDefault();
+
+    var actual = $('[page]:visible').attr('id');
+    var next = $(this).attr('nav');
+    GPSTaller.visited.push(next);
+
+    if (next != actual) {
+        GPSTaller.show(next);
+    }
+}
+
 function backbuttonHandler(e) {
     e.preventDefault();
 
@@ -15,17 +27,7 @@ function backbuttonHandler(e) {
 document.addEventListener("deviceready", function() {
 // $(function(){
 
-    $('body').on('click', '[nav]', function(e){
-        e.preventDefault();
-
-        var actual = $('[page]:visible').attr('id');
-        var next = $(this).attr('nav');
-        GPSTaller.visited.push(next);
-
-        if (next != actual) {
-            GPSTaller.show(next);
-        }
-    });
+    $('body').on('click', '[nav]', navigationHandler);
 
     document.addEventListener("backbutton", backbuttonHandler, false);
 

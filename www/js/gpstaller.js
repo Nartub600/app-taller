@@ -12,6 +12,13 @@ GPSTaller = {
 
     show: function (page, data, die) {
 
+        var onlineStatus = checkConnection();
+
+        if (onlineStatus == false) {
+            alert('Debe contar con conexión a internet');
+            return;
+        }
+
         if($('[page][id="' + page + '"]').is('[nofooter]')) {
             $('#footer').hide();
         } else {

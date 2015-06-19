@@ -18,6 +18,9 @@ document.addEventListener("deviceready", function() {
         GPSTaller.registro(data, function(data) {
             $(".loader").fadeOut();
             switch (data.register) {
+                case 0:
+                    alert('Error de conexión');
+                    break;
                 case 1:
                     alert('Complete el email');
                     break;
