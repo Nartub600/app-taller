@@ -80,42 +80,19 @@ document.addEventListener("deviceready", function() {
         GPSTaller.login(data, function(data){
             $(".loader").fadeOut();
             window.localStorage['user_email'] = undefined;
-            switch (data.login) {
-                case 1:
-                    alert('Complete el email');
-                    break;
-                case 2:
-                    alert('Complete la contraseña');
-                    break;
-                case 3:
-                    alert('El email es inválido');
-                    break;
-                case 4:
-                    alert('No existe un usuario con esa dirección');
-                    break;
-                case 5:
-                    alert('El usuario todavía no está activado');
-                    break;
-                case 6:
-                    alert('La contraseña es incorrecta');
-                    break;
-                case 7:
-                    alert('El ingreso está bloqueado por reiterados intentos fallidos');
-                    break;
-                case 10:
-                    // alert('Usuario logueado');
-                    // rutina de login
-                    GPSTaller.loggedUser = $('#login_email').val();
-                    // $('#btn_historia').attr('nav', 'panel-administracion');
-                    if ($('#login_remember').is(':checked')) {
-                        window.localStorage['user_email'] = $('#login_email').val();
-                    }
-                    GPSTaller.verPerfil();
-                    $('[auth]').show();
-                    $('[noauth]').hide();
-                    GPSTaller.visited = ['index', 'panel-administracion'];
-                    GPSTaller.show('panel-administracion');
-                    break;
+            if (data[0].status == 'ok' || data[0].code == 200) {
+                // rutina de login
+                GPSTaller.loggedUser = $('#login_email').val();
+                // $('#btn_historia').attr('nav', 'panel-administracion');
+                if ($('#login_remember').is(':checked')) {
+                    window.localStorage['user_email'] = $('#login_email').val();
+                }
+                $('[auth]').show();
+                $('[noauth]').hide();
+                GPSTaller.visited = ['index', 'panel-administracion'];
+                GPSTaller.show('panel-administracion');
+            } else if (data[0].status == 'error') {
+                alert(data[0].mensaje);
             }
         });
     });

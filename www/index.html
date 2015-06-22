@@ -61,7 +61,7 @@
                     <a href="#" style="display: block;" nav="index"><img class="logo" src="img/logo.png" /></a>
                     <div class="line-01"></div>
                     <div class="dropdown pull-right menu-drop">
-                        <button nav="cuenta" class="btn btn-default dropdown-toggle btn-nav-icon">
+                        <button id="btn_cuenta" class="btn btn-default dropdown-toggle btn-nav-icon"> <!-- nav="cuenta" -->
                             <img class="nav-icon" src="img/nav-icon.png" />
                         </button>
                         <!-- <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -93,7 +93,7 @@
                                 <a href="#" nav="search-map" online><img src="img/buscador-taller.png" /></a>
                             </div>
                             <div class="row">
-                                <a href="#" id="btn_historia"><img src="img/historia-del-auto.png" /></a>
+                                <a href="#" id="btn_historia"><img src="img/historia-del-auto.png" /></a> <!-- nav="panel-administracion" -->
                             </div>
                             <div class="row">
                                 <a href="#" id="btn_asegura"><img src="img/asegura-tu-auto.png" /></a>
@@ -328,14 +328,14 @@
                 <div id="login" page style="display: none;">
 
                     <div class="row">
-                        <div class="content-menu-login social">
+                        <!-- <div class="content-menu-login social">
                             <div class="row">
                                 <a href="#"><img src="img/login-fb.png" /></a>
                             </div>
                             <div class="row">
                                 <a href="#"><img src="img/login-google.png" /></a>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="content-menu-login texto">
                             <div class="row">
                                 <div class="media">
@@ -422,6 +422,9 @@
                         <div class="link-item" auth>
                             <a href="#" nav="asociar-dominio"><p>Editar información del auto</p><div class="arrow"><img src="img/arrow.png"/></div></a>
                         </div>
+                        <!-- <div class="link-item" auth>
+                            <a href="#" nav="panel-administracion"><p>Panel de administración</p><div class="arrow"><img src="img/arrow.png"/></div></a>
+                        </div> -->
                     </div>
 
                     <div class="row">
@@ -486,12 +489,12 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select id="perfil_partido" class="form-control">
+                                    <select id="perfil_partido" class="form-control" disabled>
                                         <option value="">Partido</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select id="perfil_localidad" class="form-control">
+                                    <select id="perfil_localidad" class="form-control" disabled>
                                         <option value="">Localidad</option>
                                     </select>
                                 </div>
@@ -532,7 +535,7 @@
                                 </div>
                                 <div class="row">
                                     <!-- <button id="" class="btn btn-gps center-block btn-registrarme"></button> -->
-                                    <p class="texto-centrado"><a id="btn_guardar_perfil" class="btn btn-gps center-block">Guardar</a></p>
+                                    <p class="texto-centrado"><a id="btn_guardarPerfil" class="btn btn-gps center-block">Guardar</a></p>
                                 </div>
                             </form>
                         </div>
@@ -574,12 +577,12 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select id="asociar_modelo" name="modelo" class="form-control">
+                                    <select id="asociar_modelo" name="modelo" class="form-control" disabled>
                                         <option value="">Modelo</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select id="asociar_version" name="version" class="form-control">
+                                    <select id="asociar_version" name="version" class="form-control" disabled>
                                         <option value="">Version</option>
                                     </select>
                                 </div>
@@ -596,10 +599,10 @@
                                 <div class="row">
                                     <div class="col-xs-1"></div>
                                     <div class="col-xs-5">
-                                        <button id="btn_asociar_vehiculo" class="btn btn-gps center-block btn-registrarme">Asociar vehiculo</button>
+                                        <button id="btn_asociarVehiculo" class="btn btn-gps center-block btn-registrarme">Asociar vehiculo</button>
                                     </div>
                                     <div class="col-xs-5">
-                                        <button id="btn_cancelar_asociar_vehiculo" class="btn btn-gps center-block btn-registrarme">Cancelar</button>
+                                        <button id="btn_cancelarAsociar" class="btn btn-gps center-block btn-registrarme">Cancelar</button>
                                     </div>
                                     <div class="col-xs-1"></div>
                                 </div>
@@ -611,7 +614,7 @@
 
                 </div> <!-- #asociar-dominio -->
 
-                <div id="panel-administracion" page style="display: none;">
+                <div id="panel-administracion" page callback="GPSTaller.verPerfil" style="display: none;">
 
                     <div class="row">
                         <h1><br>Bienvenido a su panel de administración</h1>
@@ -848,7 +851,7 @@
 
                 </div> <!-- #asociar-dominio -->
 
-                <div id="desvincular-vehiculo" page style="display: none;">
+                <div id="desvincular-vehiculo" page callback="GPSTaller.verDesvincular" style="display: none;">
 
                     <div class="content-registro desvincular-vehiculo">
                         <div class="row">
@@ -865,10 +868,10 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-6">
-                                <p class="texto-centrado"><a id="" class="btn btn-gps center-block">Desvincular</a></p>
+                                <p class="texto-centrado"><a id="btn_desvincular" class="btn btn-gps center-block">Desvincular</a></p>
                             </div>
                             <div class="col-xs-6">
-                                <p class="texto-centrado"><a id="" class="btn btn-gps center-block">Cancelar</a></p>
+                                <p class="texto-centrado"><a id="btn_cancelarDesvincular" class="btn btn-gps center-block">Cancelar</a></p>
                             </div>
                         </div>
                     </div>
@@ -898,46 +901,46 @@
                             </div>
                         </div>
                     </div>
-                </div> <!-- #desvincular-vehiculo -->
+                </div> <!-- #solicitar-cambios -->
 
-                <div id="ingresar-servicio" page style="display: none;">
+                <div id="ingresar-servicio" page style="display: none;" callback="GPSTaller.verIngresar">
 
                     <div class="row">
                         <h1>INGRESAR SERVICIO</h1>
                     </div>
                     <div class="row">
                         <div class="content-registro">
-                            <p>Dominio: <span class="rojo bold">PHI 637</span> </p>
+                            <p>Dominio: <span id="ingresar_dominio" class="rojo bold"></span> </p>
                             <form>
                                 <div class="form-group">
-                                    <input id="" type="date" class="form-control" placeholder="Fecha*" />
+                                    <input id="ingresar_fecha" type="date" class="form-control" placeholder="Fecha*" />
                                 </div>
                                 <div class="form-group">
-                                    <input id="" type="number" class="form-control" placeholder="Kilometros*" />
+                                    <input id="ingresar_km" type="number" class="form-control" placeholder="Kilometros*" />
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <select id="" class="form-control">
+                                    <select id="ingresar_tipoServicio" class="form-control">
                                         <option value="">Tipo de servicio*</option>
                                         <option value="">Servicio 1</option>
                                         <option value="">Servicio 2</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input id="" type="tel" class="form-control" placeholder="Realizado por*" />
+                                    <input id="ingresar_realizadoPor" type="tel" class="form-control" placeholder="Realizado por*" />
                                 </div>
 
                                 <div class="form-group">
                                     <p>Detalle</p>
-                                    <textarea class="textarea-01"></textarea>
+                                    <textarea id="ingresar_detalle" class="textarea-01"></textarea>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-xs-6">
-                                        <p class="texto-centrado"><a id="" class="btn btn-gps center-block">Guardar</a></p>
+                                        <p class="texto-centrado"><a id="btn_ingresarServicio" class="btn btn-gps center-block">Guardar</a></p>
                                     </div>
                                     <div class="col-xs-6">
-                                        <p class="texto-centrado"><a id="" class="btn btn-gps center-block">Cancelar</a></p>
+                                        <p class="texto-centrado"><a id="btn_cancelarIngresar" class="btn btn-gps center-block">Cancelar</a></p>
                                     </div>
                                 </div>
                             </form>

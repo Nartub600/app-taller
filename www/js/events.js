@@ -55,12 +55,15 @@ document.addEventListener("deviceready", function() {
         type: 'get',
         dataType: 'json',
         beforeSend: function() {
-            $('#perfil_provincia').html('<option value="">Provincia</option>');
+            $('#perfil_provincia').html('<option value="">Provincia</option>').prop('disabled', true);
+            $('#perfil_partido').html('<option value="">Partido</option>').prop('disabled', true);
+            $('#perfil_localidad').html('<option value="">Localidad</option>').prop('disabled', true);
         },
         success: function (data) {
             $.each(data, function(i, e){
                 $('#perfil_provincia').append('<option value="' + e.id + '">' + e.text + '</option>');
             });
+            $('#perfil_provincia').prop('disabled', false);
         }
     });
 
@@ -73,13 +76,14 @@ document.addEventListener("deviceready", function() {
                 provinciaID: $('#perfil_provincia').val()
             },
             beforeSend: function() {
-                $('#perfil_partido').html('<option value="">Partido</option>');
+                $('#perfil_partido').html('<option value="">Partido</option>').prop('disabled', true);
+                $('#perfil_localidad').html('<option value="">Localidad</option>').prop('disabled', true);
             },
             success: function (data) {
-                $('#perfil_localidad').html('');
                 $.each(data, function(i, e){
                     $('#perfil_partido').append('<option value="' + e.id + '">' + e.text + '</option>');
                 });
+                $('#perfil_partido').prop('disabled', false);
             }
         });
     });
@@ -94,12 +98,13 @@ document.addEventListener("deviceready", function() {
                 partidoID: $('#perfil_partido').val()
             },
             beforeSend: function() {
-                $('#perfil_localidad').html('<option value="">Localidad</option>');
+                $('#perfil_localidad').html('<option value="">Localidad</option>').prop('disabled', true);
             },
             success: function (data) {
                 $.each(data[0].children, function(i, e){
                     $('#perfil_localidad').append('<option value="' + e.id + '">' + e.text + '</option>');
                 });
+                $('#perfil_localidad').prop('disabled', false);
             }
         });
     });
@@ -129,13 +134,14 @@ document.addEventListener("deviceready", function() {
         dataType: 'json',
         beforeSend: function() {
             $('#asociar_marca').html('<option value="">Marca</option>');
-            $('#asociar_modelo').html('<option value="">Modelo</option>');
-            $('#asociar_version').html('<option value="">Versión</option>');
+            $('#asociar_modelo').html('<option value="">Modelo</option>').prop('disabled', true);
+            $('#asociar_version').html('<option value="">Versión</option>').prop('disabled', true);
         },
         success: function (data) {
             $.each(data, function(i, e){
                 $('#asociar_marca').append('<option value="' + e.id + '">' + e.text + '</option>');
             });
+            $('#asociar_marca').prop('disabled', false);
         }
     });
 
@@ -148,13 +154,14 @@ document.addEventListener("deviceready", function() {
                 marcaID: $('#asociar_marca').val()
             },
             beforeSend: function() {
-                $('#asociar_modelo').html('<option value="">Modelo</option>');
-                $('#asociar_version').html('<option value="">Versión</option>');
+                $('#asociar_modelo').html('<option value="">Modelo</option>').prop('disabled', true);
+                $('#asociar_version').html('<option value="">Versión</option>').prop('disabled', true);
             },
             success: function (data) {
                 $.each(data, function(i, e){
                     $('#asociar_modelo').append('<option value="' + e.id + '">' + e.text + '</option>');
                 });
+                $('#asociar_modelo').prop('disabled', false);
             }
         });
     });
@@ -169,15 +176,18 @@ document.addEventListener("deviceready", function() {
                 modeloID: $('#asociar_modelo').val()
             },
             beforeSend: function() {
-                $('#asociar_version').html('<option value="">Versión</option>');
+                $('#asociar_version').html('<option value="">Versión</option>').prop('disabled', true);
             },
             success: function (data) {
                 $.each(data, function(i, e){
                     $('#asociar_version').append('<option value="' + e.id + '">' + e.text + '</option>');
                 });
+                $('#asociar_version').prop('disabled', false);
             }
         });
     });
+
+    alert('Para mejorar la presición de tu ubicación recomendamos tener el GPS activado');
 
 }, false);
 

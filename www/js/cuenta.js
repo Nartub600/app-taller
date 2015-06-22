@@ -1,8 +1,10 @@
 GPSTaller.verPerfil = function() {
-    $(".loader").fadeIn();
+    // $(".loader").fadeIn();
 
     $('#dominiosRegistradosTabs').html('');
     $('#dominiosRegistradosData').html('');
+    $('#serviciosRegistradosTabs').html('');
+    $('#serviciosRegistradosData').html('');
 
     $.ajax({
         url: GPSTaller.urls.data,
@@ -13,7 +15,7 @@ GPSTaller.verPerfil = function() {
             hash: GPSTaller.hash
         },
         success: function(data) {
-            $(".loader").fadeOut();
+            // $(".loader").fadeOut();
             // $('#perfil_ID').val() = data.usuario.ID;
             $('#perfil_titular').val(data.usuario.titular);
             $('#perfil_empresa').val(data.usuario.empresa);
@@ -46,8 +48,8 @@ GPSTaller.verPerfil = function() {
                     $('#dominiosRegistradosData').append("<div role=\"tabpanel\" class=\"tab-pane " + activeString + "\" id=\"dominio-" + ibis + "\"></div>");
                     $('#serviciosRegistradosData').append("<div role=\"tabpanel\" class=\"tab-pane " + activeString + "\" id=\"taller-" + ibis + "\"></div>");
 
-                    $('#dominio-' + ibis).append("<div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Marca:</strong> " + e.marca + "</p><p><strong>Año:</strong> " + e.ano + "</p></div><div class=\"col-xs-6\"><p><strong>Modelo:</strong> " + e.modelo + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Historia Clínica</strong> (Usuario).</p></div><div class=\"col-xs-6\"><a href=\"#\" class=\"link-nuevo-servicio\">Agregar nuevo servicio</a></div></div>");
-                    $('#taller-' + ibis).append("<div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Marca:</strong> " + e.marca + "</p><p><strong>Año:</strong> " + e.ano + "</p></div><div class=\"col-xs-6\"><p><strong>Modelo:</strong> " + e.modelo + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Historia Clínica</strong> (Taller).</p></div><div class=\"col-xs-6\"><a href=\"#\" class=\"link-nuevo-servicio\">Agregar nuevo servicio</a></div></div>");
+                    $('#dominio-' + ibis).append("<div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Marca:</strong> " + e.marca + "</p><p><strong>Año:</strong> " + e.ano + "</p></div><div class=\"col-xs-6\"><p><strong>Modelo:</strong> " + e.modelo + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Historia Clínica</strong> (Usuario).</p></div><div class=\"col-xs-6\"><a nav=\"ingresar-servicio\" data-dominio=\"" + e.dominio + "\" href=\"#\" class=\"link-nuevo-servicio\">Agregar nuevo servicio</a></div></div>");
+                    $('#taller-' + ibis).append("<div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Marca:</strong> " + e.marca + "</p><p><strong>Año:</strong> " + e.ano + "</p></div><div class=\"col-xs-6\"><p><strong>Modelo:</strong> " + e.modelo + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Historia Clínica</strong> (Taller).</p></div><div class=\"col-xs-6\"><a nav=\"ingresar-servicio\" data-dominio=\"" + e.dominio + "\" href=\"#\" class=\"link-nuevo-servicio\">Agregar nuevo servicio</a></div></div>");
 
                     if(e.servicios != '0') {
                         $.each(e.servicios, function(i, e){
@@ -59,7 +61,7 @@ GPSTaller.verPerfil = function() {
                         });
                     }
 
-                    $('#dominio-' + ibis).append("<div class=\"row\"><div class=\"col-xs-6\"><button nav=\"desvincular-vehiculo\" data-dominio=\"" + e.dominio + "\" class=\"btn btn-gps btn-reducido center-block btn-registrarme btn_desvincularDominio\">Desvincular <br>dominio</button></div><div class=\"col-xs-6\"><button nav=\"solicitar-cambios\" data-dominio=\"" + e.dominio + "\" class=\"btn btn-gps btn-reducido center-block btn-registrarme btn_cambioDatos\">Solicitar <br>Cambio de Datos</button></div></div>");
+                    $('#dominio-' + ibis).append("<div class=\"row\"><div class=\"col-xs-6\"><button data-dominio=\"" + e.dominio + "\" nav=\"desvincular-vehiculo\" class=\"btn btn-gps btn-reducido center-block btn-registrarme btn_desvincularDominio\">Desvincular <br>dominio</button></div><div class=\"col-xs-6\"><button nav=\"solicitar-cambios\" data-dominio=\"" + e.dominio + "\" class=\"btn btn-gps btn-reducido center-block btn-registrarme btn_cambioDatos\">Solicitar <br>Cambio de Datos</button></div></div>");
 
                 });
             }
@@ -67,10 +69,20 @@ GPSTaller.verPerfil = function() {
     });
 }
 
+GPSTaller.verDesvincular = function(data) {
+    $('#desvincular_dominio').text('');
+    $('#desvincular_dominio').text(data.dominio);
+}
+
+GPSTaller.verIngresar = function(data) {
+    $('#ingresar_dominio').text('');
+    $('#ingresar_dominio').text(data.dominio);
+}
+
 document.addEventListener("deviceready", function() {
 // $(function(){
 
-    $('#btn_guardar_perfil').on('click', function(e){
+    $('#btn_guardarPerfil').on('click', function(e){
         e.preventDefault();
 
         $(".loader").fadeIn();
@@ -94,58 +106,16 @@ document.addEventListener("deviceready", function() {
 
         GPSTaller.editarPerfil(data, function (data) {
             $(".loader").fadeOut();
-            switch(data.cambioPerfil) {
-                case 0:
-                    alert('Error de conexión');
-                    break;
-                case 1:
-                    alert('Fecha de nacimiento inválida');
-                    break;
-                case 2:
-                    alert('El formato de la empresa es incorrecto');
-                    break;
-                case 3:
-                    alert('El formato del celular es incorrecto');
-                    break;
-                case 4:
-                    alert('El formato del teléfono es incorrecto');
-                    break;
-                case 5:
-                    alert('El formato del horario de contacto es incorrecto');
-                    break;
-                case 6:
-                    alert('El formato del CUIT es incorrecto');
-                    break;
-                case 7:
-                    alert('Error en la condición de IVA');
-                    break;
-                case 8:
-                    alert('El formato del domicilio es incorrecto');
-                    break;
-                case 9:
-                    alert('El formato del código postal es incorrecto');
-                    break;
-                case 10:
-                    alert('Error en la localidad');
-                    break;
-                case 11:
-                    alert('Error en el género');
-                    break;
-                case 12:
-                    alert('Error en el estado civil');
-                    break;
-                case 13:
-                    alert('Error en la forma de pago');
-                    break;
-                case 14:
-                    alert('Datos guardados correctamente');
-                    GPSTaller.show('index');
-                    break;
+            if (data[0].status == 'ok') {
+                alert(data[0].mensaje);
+                GPSTaller.show('index');
+            } else {
+                alert(data[0].mensaje);
             }
         });
     });
 
-    $('#btn_asociar_vehiculo').on('click', function(e){
+    $('#btn_asociarVehiculo').on('click', function(e){
         e.preventDefault();
 
         $(".loader").fadeIn();
@@ -167,61 +137,75 @@ document.addEventListener("deviceready", function() {
 
         GPSTaller.asociarVehiculo(data, function(data){
             $(".loader").fadeOut();
-            switch (data.nuevoVehiculo) {
-                case 0:
-                    alert('Error de conexion o hash incorrecto');
-                    break;
-                case 1:
-                    alert('Dominio inválido o vacio');
-                    break;
-                case 2:
-                    alert('Año inválido o vacio');
-                    break;
-                case 3:
-                    alert('Color inválido');
-                    break;
-                case 4:
-                    alert('Vin inválido');
-                    break;
-                case 5:
-                    alert('Motor inválido');
-                    break;
-                case 6:
-                    alert('Chasis inválido');
-                    break;
-                case 7:
-                    alert('Marca inválido o vacio');
-                    break;
-                case 8:
-                    alert('Modelo inválido o vacio');
-                    break;
-                case 9:
-                    alert('Versión inválido o vacio');
-                    break;
-                case 10:
-                    alert('Gnc inválido');
-                    break;
-                case 11:
-                    alert('Dispositivo de recupero inválido');
-                    break;
-                case 12:
-                    alert('El dominio ya estaba vinculado a su cuenta');
-                    break;
-                case 13:
-                    alert('Dominio ya se encuentra registrado a nombre de otra persona');
-                    break;
-                case 14:
-                    alert('Dominio ya se encuentra registrado pero fue desvinculado');
-                    break;
-                case 15:
-                    alert('Dominio guardado');
-                    GPSTaller.show('panel-administracion');
-                    break;
+            if (data[0].status == 'ok') {
+                alert(data[0].mensaje);
+                GPSTaller.show('panel-administracion');
+            } else if (data[0].status == 'error') {
+                alert(data[0].mensaje);
             }
         });
     });
 
-    $('#btn_cancelar_asociar_vehiculo').on('click', function(e){
+    $('#btn_desvincular').on('click', function(e){
+        e.preventDefault();
+
+        $(".loader").fadeIn();
+
+        var data = {
+            mail: GPSTaller.loggedUser,
+            dominio: $('#desvincular_dominio').text('')
+        };
+
+        GPSTaller.desvincularVehiculo(data, function(data){
+            $(".loader").fadeOut();
+            if (data[0].status == 'ok') {
+                alert(data[0].mensaje);
+                GPSTaller.show('panel-administracion');
+            } else if (data[0].status == 'error') {
+                alert(data[0].mensaje);
+            }
+        });
+    });
+
+    $('#btn_ingresarServicio').on('click', function(e){
+        e.preventDefault();
+
+        $(".loader").fadeIn();
+
+        var data = {
+            mail: GPSTaller.loggedUser,
+            dominio: $('#ingresar_dominio').text(),
+            km: $('#ingresar_km').val(),
+            fecha: $('#ingresar_fecha').val(),
+            tipoServicio: $('#ingresar_tipoServicio').val(),
+            detalle: $('#ingresar_detalle').val(),
+            realizadoPor: $('#ingresar_realizadoPor').val()
+        };
+
+        GPSTaller.ingresarServicio(data, function(data){
+            $(".loader").fadeOut();
+            if(data[0].status == 'ok') {
+                alert(data[0].mensaje);
+                GPSTaller.show('panel-administracion');
+            } else {
+                alert(data[0].mensaje);
+            }
+        });
+    });
+
+    $('#btn_cancelarAsociar').on('click', function(e){
+        e.preventDefault();
+
+        $('#btn_volver').trigger('click');
+    });
+
+    $('#btn_cancelarDesvincular').on('click', function(e){
+        e.preventDefault();
+
+        $('#btn_volver').trigger('click');
+    });
+
+    $('#btn_cancelarIngresar').on('click', function(e){
         e.preventDefault();
 
         $('#btn_volver').trigger('click');

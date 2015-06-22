@@ -3,7 +3,8 @@ GPSTaller.talleresCercanos = function () {
     $(".loader").fadeIn();
 
     function onError(error) {
-        alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+        // alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+        alert('Debe activar los servicios de ubicación');
         $(".loader").fadeOut();
     }
 

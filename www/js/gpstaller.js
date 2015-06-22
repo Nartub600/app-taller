@@ -3,11 +3,11 @@ GPSTaller = {
     hash: '1f8393c163b12a7c87550866ba07444f31bc4012c501e4e006ab475e5cd2d06b',
 
     urls: {
-        access: 'https://www.gpstaller.com.ar/dev_v1/api/views/access.json.php',
+        access: 'https://www.gpstaller.com.ar/api/v1/access.json.php',
         search: 'https://www.gpstaller.com.ar/dev_v1/api/views/talleres.json.php',
-        comments: 'https://www.gpstaller.com.ar/dev_v1/api/views/comentariosTaller.json.php',
-        faq: 'https://www.gpstaller.com.ar/dev_v1/api/views/faq.json.php',
-        data: 'https://www.gpstaller.com.ar/dev_v1/api/views/data.json.php'
+        comments: 'https://www.gpstaller.com.ar/api/v1/comentariosTaller.json.php',
+        faq: 'https://www.gpstaller.com.ar/api/v1/faq.json.php',
+        data: 'https://www.gpstaller.com.ar/api/v1/data.json.php'
     },
 
     show: function (page, data, die) {
@@ -135,6 +135,36 @@ GPSTaller = {
 
     asociarVehiculo: function(data, callback) {
         data.action = 'nuevoVehiculo';
+        data.hash = GPSTaller.hash;
+
+        $.ajax({
+            url: GPSTaller.urls.data,
+            type: 'post',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+                callback(data);
+            }
+        });
+    },
+
+    desvincularVehiculo: function(data, callback) {
+        data.action = 'desvincularVehiculo';
+        data.hash = GPSTaller.hash;
+
+        $.ajax({
+            url: GPSTaller.urls.data,
+            type: 'post',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+                callback(data);
+            }
+        });
+    },
+
+    ingresarServicio: function(data, callback) {
+        data.action = 'nuevoServicio';
         data.hash = GPSTaller.hash;
 
         $.ajax({
