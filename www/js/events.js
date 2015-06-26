@@ -35,7 +35,7 @@ document.addEventListener("deviceready", function() {
         $('[auth]').show();
         $('[noauth]').hide();
         GPSTaller.loggedUser = window.localStorage['user_email'];
-        // $('#btn_historia').attr('nav', 'panel-administracion');
+        $('#btn_historia').attr('nav', 'panel-administracion');
     }
 
     // data que pedimos al inicio de la aplicación
@@ -55,15 +55,15 @@ document.addEventListener("deviceready", function() {
         type: 'get',
         dataType: 'json',
         beforeSend: function() {
-            $('#perfil_provincia').html('<option value="">Provincia</option>').prop('disabled', true);
-            $('#perfil_partido').html('<option value="">Partido</option>').prop('disabled', true);
-            $('#perfil_localidad').html('<option value="">Localidad</option>').prop('disabled', true);
+            // $('#perfil_provincia').html('<option value="">Provincia</option>').prop('disabled', true);
+            // $('#perfil_partido').html('<option value="">Partido</option>').prop('disabled', true);
+            // $('#perfil_localidad').html('<option value="">Localidad</option>').prop('disabled', true);
         },
         success: function (data) {
             $.each(data, function(i, e){
                 $('#perfil_provincia').append('<option value="' + e.id + '">' + e.text + '</option>');
             });
-            $('#perfil_provincia').prop('disabled', false);
+            // $('#perfil_provincia').prop('disabled', false);
         }
     });
 
@@ -121,10 +121,19 @@ document.addEventListener("deviceready", function() {
                 },
                 success: function(data) {
                     response($.map(data, function(item){
-                        return item.text;
+                        return {
+                            label: item.text,
+                            value: item.id
+                        };
                     }));
                 }
             });
+        },
+        select: function(event, ui) {
+            alert(event);
+            // $('#perfil_codigoPostal').val(ui.item.label);
+            // $('#perfil_codigoPostalID').val(ui.item.value);
+            // return false;
         }
     });
 

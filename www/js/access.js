@@ -83,7 +83,7 @@ document.addEventListener("deviceready", function() {
             if (data[0].status == 'ok' || data[0].code == 200) {
                 // rutina de login
                 GPSTaller.loggedUser = $('#login_email').val();
-                // $('#btn_historia').attr('nav', 'panel-administracion');
+                $('#btn_historia').attr('nav', 'panel-administracion');
                 if ($('#login_remember').is(':checked')) {
                     window.localStorage['user_email'] = $('#login_email').val();
                 }
@@ -97,7 +97,7 @@ document.addEventListener("deviceready", function() {
         });
     });
 
-    $('#btn_solicitar').on('click', function(e){
+    $('#btn_solicitarContrasena').on('click', function(e){
         e.preventDefault();
 
         $(".loader").fadeIn();
@@ -108,27 +108,12 @@ document.addEventListener("deviceready", function() {
 
         GPSTaller.solicitar(data, function(data){
             $(".loader").fadeOut();
-            switch (data.contrasena) {
-                case 1:
-                    alert('Complete el email');
-                    break;
-                case 2:
-                    alert('El email es inválido');
-                    break;
-                case 3:
-                    alert('El email no está registrado');
-                    break;
-                case 4:
-                    alert('El cambio de contraseña fue solicitado hace menos de una hora');
-                    break;
-                case 5:
-                    alert('Error inesperado, vuelva a intentarlo por favor');
-                    break;
-                case 6:
-                    alert('Se le envió un mail con información para reestablecer la contraseña');
-                    GPSTaller.visited = ['index'];
-                    GPSTaller.show('index');
-                    break;
+            if (data[0].status == 'ok') {
+                alert(data[0].mensaje);
+                GPSTaller.visited = ['index'];
+                GPSTaller.show('index');
+            } else {
+                alert(data[0].mensaje);
             }
         });
     });
@@ -140,7 +125,7 @@ document.addEventListener("deviceready", function() {
         GPSTaller.visited = ['index'];
         $('[auth]').hide();
         $('[noauth]').show();
-        // $('#btn_historia').attr('nav', 'login');
+        $('#btn_historia').attr('nav', 'login');
         $('input').val('');
         $('option').selected = false;
         GPSTaller.show('index');

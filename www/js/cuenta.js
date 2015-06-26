@@ -1,10 +1,17 @@
 GPSTaller.verPerfil = function() {
-    // $(".loader").fadeIn();
+    $(".loader").fadeIn();
+
+    $('#frm_perfil input').val('');
+    $('#frm_perfil select option').prop('selected', false);
+
+    $('#perfil_partido').html('<option value="">Partido</option>').prop('disabled', true);
+    $('#perfil_localidad').html('<option value="">Localidad</option>').prop('disabled', true);
 
     $('#dominiosRegistradosTabs').html('');
     $('#dominiosRegistradosData').html('');
     $('#serviciosRegistradosTabs').html('');
     $('#serviciosRegistradosData').html('');
+    $('#serviciosRegistrados').hide();
 
     $.ajax({
         url: GPSTaller.urls.data,
@@ -15,19 +22,39 @@ GPSTaller.verPerfil = function() {
             hash: GPSTaller.hash
         },
         success: function(data) {
-            // $(".loader").fadeOut();
+            $(".loader").fadeOut();
             // $('#perfil_ID').val() = data.usuario.ID;
             $('#perfil_titular').val(data.usuario.titular);
             $('#perfil_empresa').val(data.usuario.empresa);
             $('#perfil_email').val(data.usuario.email);
             $('#perfil_celular').val(data.usuario.celular);
             $('#perfil_telefono').val(data.usuario.telefono);
-            $('#perfil_fechaNacimiento').val(data.usuario.fechaNacimiento);
+
+            var fechaNacimiento = data.usuario.fechaNacimiento.split('-');
+            $('#perfil_fechaDia').val(fechaNacimiento[0]);
+            $('#perfil_fechaMes').val(fechaNacimiento[1]);
+            $('#perfil_fechaAno').val(fechaNacimiento[2]);
+
             $('#perfil_domicilio').val(data.usuario.domicilio);
             $('#perfil_codigoPostal').val(data.usuario.CodigoPostal);
-            $('#perfil_localidad').val(data.usuario.localidad);
-            $('#perfil_partido').val(data.usuario.partido);
-            $('#perfil_provincia').val(data.usuario.provincia);
+
+            if (data.usuario.provinciaID != '') {
+                $('#perfil_provincia option[value="' + data.usuario.provinciaID + '"]').prop('selected', true);
+            } else {
+                $('#perfil_provincia').prop('disabled', false);
+            }
+
+            $('#perfil_partido').html('<option value="' + data.usuario.partidoID + '">' + data.usuario.partido + '</option>');
+            // $('#perfil_partido option[value="' + data.usuario.partidoID + '"]').prop('selected', true);
+            // if(data.usuario.partidoID != '') {
+            //     $('#perfil_partido').prop('disabled', false);
+            // }
+            $('#perfil_localidad').html('<option value="' + data.usuario.localidadID + '">' + data.usuario.localidad + '</option>');
+            // $('#perfil_localidad option[value="' + data.usuario.localidadID + '"]').prop('selected', true);
+            // if(data.usuario.localidadID) {
+            //     $('#perfil_localidad').prop('disabled', false);
+            // }
+
             $('#perfil_cuit').val(data.usuario.cuit);
             $('#perfil_iva').val(data.usuario.iva);
             $('#perfil_horarioContacto').val(data.usuario.horarioContacto);
@@ -69,14 +96,27 @@ GPSTaller.verPerfil = function() {
     });
 }
 
-GPSTaller.verDesvincular = function(data) {
-    $('#desvincular_dominio').text('');
-    $('#desvincular_dominio').text(data.dominio);
+GPSTaller.verAsociar = function() {
+    $('#asociar-dominio form input').val('');
+    $('#asociar-dominio form select option [value=""]').prop('selected', true);
 }
 
-GPSTaller.verIngresar = function(data) {
+GPSTaller.verDesvincularDominio = function(data) {
+    $('#desvincular_dominio').text('');
+    $('#desvincular_dominio').text(data.dominio);
+    $('#desvincular_mensaje').val('');
+
+}
+
+GPSTaller.verIngresarServicio = function(data) {
     $('#ingresar_dominio').text('');
     $('#ingresar_dominio').text(data.dominio);
+}
+
+GPSTaller.verSolicitarCambios = function(data) {
+    $('#solicitar_mensaje').val('');
+    $('#solicitar_dominio').val('');
+    $('#solicitar_dominio').val(data.dominio);
 }
 
 document.addEventListener("deviceready", function() {
@@ -88,7 +128,7 @@ document.addEventListener("deviceready", function() {
         $(".loader").fadeIn();
 
         var data = {
-            // fechaNacimiento: $('#perfil_fechaNacimiento').val(),
+            fechaNacimiento: $('#perfil_fechaDia').val() + '-' + $('#perfil_fechaMes').val() + '-' + $('#perfil_fechaAno').val(),
             mail: $('#perfil_email').val(),
             empresa: $('#perfil_empresa').val(),
             celular: $('#perfil_celular').val(),
@@ -153,7 +193,8 @@ document.addEventListener("deviceready", function() {
 
         var data = {
             mail: GPSTaller.loggedUser,
-            dominio: $('#desvincular_dominio').text('')
+            dominio: $('#desvincular_dominio').text(),
+
         };
 
         GPSTaller.desvincularVehiculo(data, function(data){
@@ -176,7 +217,7 @@ document.addEventListener("deviceready", function() {
             mail: GPSTaller.loggedUser,
             dominio: $('#ingresar_dominio').text(),
             km: $('#ingresar_km').val(),
-            fecha: $('#ingresar_fecha').val(),
+            fecha: $('#ingresar_dia').val() + '-' + $('#ingresar_mes').val() + '-' + $('#ingresar_ano').val(),
             tipoServicio: $('#ingresar_tipoServicio').val(),
             detalle: $('#ingresar_detalle').val(),
             realizadoPor: $('#ingresar_realizadoPor').val()
@@ -193,19 +234,29 @@ document.addEventListener("deviceready", function() {
         });
     });
 
-    $('#btn_cancelarAsociar').on('click', function(e){
+    $('#btn_solicitarCambios').on('click', function(e){
         e.preventDefault();
 
-        $('#btn_volver').trigger('click');
+        $(".loader").fadeIn();
+
+        var data = {
+            mail: GPSTaller.loggedUser,
+            dominio: $('#solicitar_dominio').val(),
+            mensaje: $('#solicitar_mensaje').val()
+        };
+
+        GPSTaller.solicitarCambios(data, function(data){
+            $(".loader").fadeOut();
+            if(data[0].status == 'ok') {
+                alert(data[0].mensaje);
+                GPSTaller.show('panel-administracion');
+            } else {
+                alert(data[0].mensaje);
+            }
+        });
     });
 
-    $('#btn_cancelarDesvincular').on('click', function(e){
-        e.preventDefault();
-
-        $('#btn_volver').trigger('click');
-    });
-
-    $('#btn_cancelarIngresar').on('click', function(e){
+    $('#btn_cancelarAsociar, #btn_cancelarDesvincular, #btn_cancelarIngresar, #btn_cancelarSolicitar').on('click', function(e){
         e.preventDefault();
 
         $('#btn_volver').trigger('click');

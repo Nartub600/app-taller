@@ -4,7 +4,7 @@ GPSTaller = {
 
     urls: {
         access: 'https://www.gpstaller.com.ar/api/v1/access.json.php',
-        search: 'https://www.gpstaller.com.ar/dev_v1/api/views/talleres.json.php',
+        search: 'https://www.gpstaller.com.ar/api/v1/talleres.json.php',
         comments: 'https://www.gpstaller.com.ar/api/v1/comentariosTaller.json.php',
         faq: 'https://www.gpstaller.com.ar/api/v1/faq.json.php',
         data: 'https://www.gpstaller.com.ar/api/v1/data.json.php'
@@ -165,6 +165,21 @@ GPSTaller = {
 
     ingresarServicio: function(data, callback) {
         data.action = 'nuevoServicio';
+        data.hash = GPSTaller.hash;
+
+        $.ajax({
+            url: GPSTaller.urls.data,
+            type: 'post',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+                callback(data);
+            }
+        });
+    },
+
+    solicitarCambios: function(data, callback) {
+        data.action = 'solicitarCambios';
         data.hash = GPSTaller.hash;
 
         $.ajax({

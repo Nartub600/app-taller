@@ -61,7 +61,7 @@
                     <a href="#" style="display: block;" nav="index"><img class="logo" src="img/logo.png" /></a>
                     <div class="line-01"></div>
                     <div class="dropdown pull-right menu-drop">
-                        <button id="btn_cuenta" class="btn btn-default dropdown-toggle btn-nav-icon"> <!-- nav="cuenta" -->
+                        <button nav="cuenta" class="btn btn-default dropdown-toggle btn-nav-icon">
                             <img class="nav-icon" src="img/nav-icon.png" />
                         </button>
                         <!-- <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -93,7 +93,7 @@
                                 <a href="#" nav="search-map" online><img src="img/buscador-taller.png" /></a>
                             </div>
                             <div class="row">
-                                <a href="#" id="btn_historia"><img src="img/historia-del-auto.png" /></a> <!-- nav="panel-administracion" -->
+                                <a href="#" id="btn_historia" nav="login"><img src="img/historia-del-auto.png" /></a>
                             </div>
                             <div class="row">
                                 <a href="#" id="btn_asegura"><img src="img/asegura-tu-auto.png" /></a>
@@ -273,7 +273,7 @@
                     </div>
 
                     <div class="row">
-                        <p class="texto-centrado"><a id="btn_solicitar" class="btn btn-gps center-block">Enviar Solicitud</a></p>
+                        <p class="texto-centrado"><a id="btn_solicitarContrasena" class="btn btn-gps center-block">Enviar Solicitud</a></p>
                     </div>
 
                 </div> <!-- #solicitarcontrasenia -->
@@ -454,14 +454,14 @@
 
                 </div> <!-- #cuenta -->
 
-                <div id="mis-datos" page style="display: none;">
+                <div id="mis-datos" page style="display: none;" callback="GPSTaller.verPerfil">
 
                     <div class="row">
                         <h1>MIS DATOS</h1>
                     </div>
                     <div class="row">
                         <div class="content-registro">
-                            <form>
+                            <form id="frm_perfil">
                                 <div class="form-group">
                                     <input id="perfil_titular" type="text" class="form-control" placeholder="Titular*" disabled />
                                 </div>
@@ -477,14 +477,16 @@
                                 <div class="form-group">
                                     <input id="perfil_telefono" type="tel" class="form-control" placeholder="Teléfono" />
                                 </div>
-                                <!-- <div class="form-group">
-                                    <input id="perfil_fechaNacimiento" type="text" class="form-control" placeholder="Fecha de nacimiento" />
-                                </div> -->
+                                <div class="form-group">
+                                    <input id="perfil_fechaDia" type="number" class="form-control" placeholder="DD" min="1" max="31" />
+                                    <input id="perfil_fechaMes" type="number" class="form-control" placeholder="MM" min="1" max="12" />
+                                    <input id="perfil_fechaAno" type="number" class="form-control" placeholder="AAAA" />
+                                </div>
                                 <div class="form-group">
                                     <input id="perfil_domicilio" type="text" class="form-control" placeholder="Domicilio" />
                                 </div>
                                 <div class="form-group">
-                                    <select id="perfil_provincia" class="form-control" data-placeholder="Provincia">
+                                    <select id="perfil_provincia" class="form-control" disabled>
                                         <option value="">Provincia</option>
                                     </select>
                                 </div>
@@ -500,6 +502,7 @@
                                 </div>
                                 <div class="form-group">
                                     <input id="perfil_codigoPostal" class="form-control" placeholder="Código Postal" />
+                                    <input type="hidden" id="perfil_codigoPostalID" />
                                 </div>
                                  <div class="form-group">
                                     <input id="perfil_cuit" type="text" class="form-control" placeholder="CUIT" />
@@ -545,7 +548,7 @@
 
                 </div> <!-- #mis-datos -->
 
-                <div id="asociar-dominio" page style="display: none;">
+                <div id="asociar-dominio" page style="display: none;" callback="GPSTaller.verAsociar">
 
                     <div class="row">
                         <h1><br>ASOCIAR DOMINIO</h1>
@@ -851,7 +854,7 @@
 
                 </div> <!-- #asociar-dominio -->
 
-                <div id="desvincular-vehiculo" page callback="GPSTaller.verDesvincular" style="display: none;">
+                <div id="desvincular-vehiculo" page callback="GPSTaller.verDesvincularDominio" style="display: none;">
 
                     <div class="content-registro desvincular-vehiculo">
                         <div class="row">
@@ -862,7 +865,7 @@
                         <div class="row">
                             <form>
                                 <div class="form-group">
-                                    <textarea class="textarea-01" placeholder="Razones de desvinculación de dominio. (Máximo 255 caracteres)"></textarea>
+                                    <textarea id="desvincular_mensaje" class="textarea-01" placeholder="Razones de desvinculación de dominio. (Máximo 255 caracteres)"></textarea>
                                 </div>
                             </form>
                         </div>
@@ -878,7 +881,7 @@
 
                 </div> <!-- #desvincular-vehiculo -->
 
-                <div id="solicitar-cambios" page style="display: none;">
+                <div id="solicitar-cambios" page style="display: none;" callback="GPSTaller.verSolicitarCambios">
                     <div class="content-registro desvincular-vehiculo">
                         <div class="row">
                             <h1>SOLICITAR CAMBIOS</h1>
@@ -888,22 +891,23 @@
                         <div class="row">
                             <form>
                                 <div class="form-group">
-                                    <textarea class="textarea-01" placeholder="Mensaje. (Máximo 255 caracteres)"></textarea>
+                                    <textarea id="solicitar_mensaje" class="textarea-01" placeholder="Mensaje. (Máximo 255 caracteres)"></textarea>
+                                    <input type="hidden" id="solicitar_dominio" />
                                 </div>
                             </form>
                         </div>
                         <div class="row">
                             <div class="col-xs-6">
-                                <p class="texto-centrado"><a id="" class="btn btn-gps center-block">Enviar</a></p>
+                                <p class="texto-centrado"><a id="btn_solicitarCambios" class="btn btn-gps center-block">Enviar</a></p>
                             </div>
                             <div class="col-xs-6">
-                                <p class="texto-centrado"><a id="" class="btn btn-gps center-block">Cancelar</a></p>
+                                <p class="texto-centrado"><a id="btn_cancelarSolicitar" class="btn btn-gps center-block">Cancelar</a></p>
                             </div>
                         </div>
                     </div>
                 </div> <!-- #solicitar-cambios -->
 
-                <div id="ingresar-servicio" page style="display: none;" callback="GPSTaller.verIngresar">
+                <div id="ingresar-servicio" page style="display: none;" callback="GPSTaller.verIngresarServicio">
 
                     <div class="row">
                         <h1>INGRESAR SERVICIO</h1>
@@ -913,7 +917,9 @@
                             <p>Dominio: <span id="ingresar_dominio" class="rojo bold"></span> </p>
                             <form>
                                 <div class="form-group">
-                                    <input id="ingresar_fecha" type="date" class="form-control" placeholder="Fecha*" />
+                                    <input id="ingresar_dia" type="date" class="form-control" placeholder="Día*" />
+                                    <input id="ingresar_mes" type="date" class="form-control" placeholder="Mes*" />
+                                    <input id="ingresar_ano" type="date" class="form-control" placeholder="Año*" />
                                 </div>
                                 <div class="form-group">
                                     <input id="ingresar_km" type="number" class="form-control" placeholder="Kilometros*" />

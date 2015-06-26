@@ -38,7 +38,7 @@ document.addEventListener("deviceready", function() {
         $('#btn_volver_settings').trigger('click');
     });
 
-    $('#btn_asegura, #btn_historia, #btn_cuenta').on('click', function(e){
+    $('#btn_asegura').on('click', function(e){
         e.preventDefault();
 
         alert('Próximamente');
