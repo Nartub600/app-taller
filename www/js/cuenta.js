@@ -111,6 +111,8 @@ GPSTaller.verDesvincularDominio = function(data) {
 GPSTaller.verIngresarServicio = function(data) {
     $('#ingresar_dominio').text('');
     $('#ingresar_dominio').text(data.dominio);
+    $('#ingresar-servicio form input').val('');
+    $('#ingresar-servicio form select option').prop('selected', false);
 }
 
 GPSTaller.verSolicitarCambios = function(data) {
@@ -128,7 +130,7 @@ document.addEventListener("deviceready", function() {
         $(".loader").fadeIn();
 
         var data = {
-            fechaNacimiento: $('#perfil_fechaDia').val() + '-' + $('#perfil_fechaMes').val() + '-' + $('#perfil_fechaAno').val(),
+            fechaNacimiento: pad('00', $('#perfil_fechaDia').val(), true) + '-' + pad('00', $('#perfil_fechaMes').val(), true) + '-' + $('#perfil_fechaAno').val(),
             mail: $('#perfil_email').val(),
             empresa: $('#perfil_empresa').val(),
             celular: $('#perfil_celular').val(),
@@ -148,7 +150,7 @@ document.addEventListener("deviceready", function() {
             $(".loader").fadeOut();
             if (data[0].status == 'ok') {
                 alert(data[0].mensaje);
-                GPSTaller.show('index');
+                GPSTaller.show('panel-administracion');
             } else {
                 alert(data[0].mensaje);
             }
@@ -217,7 +219,7 @@ document.addEventListener("deviceready", function() {
             mail: GPSTaller.loggedUser,
             dominio: $('#ingresar_dominio').text(),
             km: $('#ingresar_km').val(),
-            fecha: $('#ingresar_dia').val() + '-' + $('#ingresar_mes').val() + '-' + $('#ingresar_ano').val(),
+            fecha: pad('00', $('#ingresar_dia').val(), true) + '-' + pad('00', $('#ingresar_mes').val(), true) + '-' + $('#ingresar_ano').val(),
             tipoServicio: $('#ingresar_tipoServicio').val(),
             detalle: $('#ingresar_detalle').val(),
             realizadoPor: $('#ingresar_realizadoPor').val()

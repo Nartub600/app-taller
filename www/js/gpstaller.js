@@ -78,7 +78,7 @@ GPSTaller = {
         });
     },
 
-    solicitar: function (data, callback) {
+    solicitarContrasena: function (data, callback) {
         data.action = 'solicitarContrasena';
 
         $.ajax({
@@ -209,3 +209,13 @@ GPSTaller = {
     }
 
 };
+
+function pad(pad, str, padLeft) {
+    if (typeof str === 'undefined')
+        return pad;
+    if (padLeft) {
+        return (pad + str).slice(-pad.length);
+    } else {
+        return (str + pad).substring(0, pad.length);
+    }
+}

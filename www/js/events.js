@@ -51,6 +51,17 @@ document.addEventListener("deviceready", function() {
     });
 
     $.ajax({
+        url: 'https://www.gpstaller.com.ar/templates/servicios.json.php',
+        type: 'get',
+        dataType: 'json',
+        success: function(data) {
+            $.each(data, function(i, e){
+                $('#ingresar_tipoServicio').append('<option value="' + e.id + '">' + e.text + '</option>');
+            });
+        }
+    });
+
+    $.ajax({
         url: 'https://www.gpstaller.com.ar/templates/provincias.json.php',
         type: 'get',
         dataType: 'json',

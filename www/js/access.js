@@ -17,52 +17,12 @@ document.addEventListener("deviceready", function() {
 
         GPSTaller.registro(data, function(data) {
             $(".loader").fadeOut();
-            switch (data.register) {
-                case 0:
-                    alert('Error de conexión');
-                    break;
-                case 1:
-                    alert('Complete el email');
-                    break;
-                case 2:
-                    alert('Complete la contraseña');
-                    break;
-                case 3:
-                    alert('No coinciden las contraseñas');
-                    break;
-                case 4:
-                    alert('Complete el nombre');
-                    break;
-                case 5:
-                    alert('Complete el apellido');
-                    break;
-                case 6:
-                    alert('Debe aceptar los términos y condiciones');
-                    break;
-                case 7:
-                    alert('El formato del email es inválido');
-                    break;
-                case 8:
-                    alert('El formato de la contraseña es inválido');
-                    break;
-                case 9:
-                    alert('El formato del nombre es inválido');
-                    break;
-                case 10:
-                    alert('El formato del apellido es inválido');
-                    break;
-                case 11:
-                    alert('El email ya fue registrado pero no fue activado');
-                    break;
-                case 12:
-                    alert('El email ya fue registrado y fue activado');
-                    break;
-                case 13:
-                    alert('Registro exitoso, se envió un mail para la activación');
-                    GPSTaller.visited = ['index'];
-                    GPSTaller.show('index');
-                    break;
-                }
+            if(data[0].status == 'ok') {
+                alert(data[0].mensaje);
+                GPSTaller.visited = ['index'];
+                GPSTaller.show('index');
+            } else {
+                alert(data[0].mensaje);
             }
         );
     });
@@ -106,7 +66,7 @@ document.addEventListener("deviceready", function() {
             mail: $('#solicitar_email').val()
         };
 
-        GPSTaller.solicitar(data, function(data){
+        GPSTaller.solicitarContrasena(data, function(data){
             $(".loader").fadeOut();
             if (data[0].status == 'ok') {
                 alert(data[0].mensaje);
