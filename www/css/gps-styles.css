@@ -17,6 +17,10 @@ input {
     -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
     box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
+.label-form{
+    font-weight: normal;
+    font-size: 12px;
+}
 .textarea-01{
     width: 100%;
     resize: none;
@@ -938,6 +942,19 @@ footer p {
       text-align: left;
 }
 /* END PANEL ADMINISTRACION */
+
+/* MODAL */
+.modal{
+    z-index: 9600;
+}
+.modal-title{
+    font-size: 16px;
+    font-weight: bold;
+}
+.modal-body p{
+    
+}
+/* EDN MODAL */
 @media (max-width: 1024px) and (min-width: 992px) {
     footer p {
         margin: 2% 3%;
