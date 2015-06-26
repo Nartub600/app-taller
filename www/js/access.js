@@ -24,7 +24,7 @@ document.addEventListener("deviceready", function() {
             } else {
                 alert(data[0].mensaje);
             }
-        );
+        });
     });
 
     $('#btn_login').on('click', function(e){
