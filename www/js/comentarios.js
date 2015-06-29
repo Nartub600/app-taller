@@ -1,6 +1,7 @@
 GPSTaller.comentarios = function (data) {
     GPSTaller.alert();
 
+    $('#comentarios_nombre').text('');
     $('#comentarios_lista').html('');
 
     GPSTaller.search({
@@ -58,7 +59,6 @@ document.addEventListener("deviceready", function() {
                 comentario: $('#comentarios_comentario').val()
             },
             success: function(data) {
-                GPSTaller.alertClose();
                 if (data[0].status == 'ok') {
                     GPSTaller.alert(data[0].mensaje, true);
                     GPSTaller.visited = ['index'];

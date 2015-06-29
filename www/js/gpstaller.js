@@ -215,18 +215,19 @@ GPSTaller = {
         } else {
             $('#myModalBody').text('Un momento por favor');
         }
+
         $('#myModalButton').hide();
         if (button) {
             $('#myModalButton').show();
         }
-        // if (!$('#mensajeroModal').is(':visible')) {
-            $('#mensajeroModal').modal('show');
-        // }
+
         if (title) {
             $('#myModalLabel').text(title);
         } else {
             $('#myModalLabel').text('GPS Taller');
         }
+
+        $('#mensajeroModal').modal('show');
     },
 
     alertClose: function() {

@@ -1,7 +1,7 @@
 GPSTaller.detalle = function (data) {
     GPSTaller.alert();
 
-    $('#detalle_nombre').text('');
+    $('#detalle_nombre').text();
     $('#detalle_direccion').text('');
     $('#detalle_telefono').text('');
     $('#detalle_email').text('');
@@ -17,7 +17,7 @@ GPSTaller.detalle = function (data) {
     GPSTaller.search({
         tallerID: data.tallerID
     }, function(data){
-        GPSTaller.alert();
+        GPSTaller.alertClose();
         $('#detalle_nombre').text(data[0].nombre);
         $('#detalle_direccion').text(data[0].direccion);
         $('#detalle_telefono').text(data[0].telefono);
@@ -37,7 +37,7 @@ document.addEventListener("deviceready", function() {
     $('body').on('click', '#detalle_comollego', function(e){
         e.preventDefault();
 
-        $(".loader").fadeIn();
+        GPSTaller.alert();
         $('#txt_search').val('');
 
         $('#map_canvas').gmap3('destroy');
@@ -49,7 +49,7 @@ document.addEventListener("deviceready", function() {
                     travelMode: google.maps.DirectionsTravelMode.DRIVING
                 },
                 callback: function(results) {
-                    GPSTaller.alert();
+                    GPSTaller.alertClose();
                     if (!results) return;
                     GPSTaller.visited.push('search-map');
                     GPSTaller.show('search-map', null, false);
