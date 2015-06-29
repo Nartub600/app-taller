@@ -1,5 +1,5 @@
 GPSTaller.comentarios = function (data) {
-    $(".loader").fadeIn();
+    GPSTaller.alert();
 
     $('#comentarios_lista').html('');
 
@@ -18,7 +18,7 @@ GPSTaller.comentarios = function (data) {
             mail: GPSTaller.loggedUser || ''
         },
         success: function(data) {
-            $(".loader").fadeOut();
+            GPSTaller.alertClose();
             $('#comentarios_btn').attr('tallerID', data.tallerID);
             $.each(data.comentarios, function(i, e){
                 $('#comentarios_lista').append("<div class=\"comentario\"><p class=\"titulo-comentario\">" + e.comentario + "<p class=\"datos-usuario-comentario\">" + e.nombre + " " + e.fecha + "<img class=\"img-rating-comentario\" src=\"img/rating-" + e.rating + ".png\" /></p><div class=\"line-02\"></div></div>");
@@ -58,26 +58,13 @@ document.addEventListener("deviceready", function() {
                 comentario: $('#comentarios_comentario').val()
             },
             success: function(data) {
-                switch(data.comentario) {
-                    case 1:
-                        alert('Gracias por su comentario');
-                        GPSTaller.show('index');
-                        break;
-                    case 2:
-                        alert('Debe elegir una calificación');
-                        break;
-                    case 3:
-                        alert('Debe ingresar un comentario');
-                        break;
-                    case 4:
-                        alert('Hay un problema con el email');
-                        break;
-                    case 5:
-                        alert('No tiene permiso para comentar');
-                        break;
-                    case 6:
-                        alert('El usuario ya comentó hace menos de una hora');
-                        break;
+                GPSTaller.alertClose();
+                if (data[0].status == 'ok') {
+                    GPSTaller.alert(data[0].mensaje, true);
+                    GPSTaller.visited = ['index'];
+                    GPSTaller.show('index');
+                } else {
+                    GPSTaller.alert(data[0].mensaje, true);
                 }
             }
         });

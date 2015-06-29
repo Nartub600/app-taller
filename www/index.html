@@ -1013,22 +1013,19 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+                        <h4 class="modal-title" id="myModalLabel"></h4>
                     </div>
                     <div class="modal-body">
-                        <p>Mensaje a enviar</p>
+                        <p id="myModalBody" class="texto-centrado"></p>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-gps center-block ui-link" data-dismiss="modal">Cerrar</button>
+                    <div class="modal-footer" id="myModalButton">
+                        <p class="texto-centrado"><a type="button" class="btn btn-gps center-block ui-link" data-dismiss="modal">Cerrar</a></p>
                     </div>
                 </div>
             </div>
 
         </div> <!-- #mensajeroModal -->
 
-        <script>
-            // $('#mensajeroModal').modal('show') ;
-        </script>
     </body>
 </html>

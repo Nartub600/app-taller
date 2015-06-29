@@ -15,7 +15,7 @@ GPSTaller = {
         var onlineStatus = checkConnection();
 
         if (onlineStatus == false) {
-            alert('Debe contar con conexión a internet');
+            GPSTaller.alert('Debe contar con conexión a internet', true);
             return;
         }
 
@@ -206,6 +206,30 @@ GPSTaller = {
                 }
             }
         }, 'autofit');
+    },
+
+    alert: function(message, button, title) {
+        if (message) {
+            $('#myModalBody').text(message);
+        } else {
+            $('#myModalBody').text('Un momento por favor');
+        }
+        $('#myModalButton').hide();
+        if (button) {
+            $('#myModalButton').show();
+        }
+        // if (!$('#mensajeroModal').is(':visible')) {
+            $('#mensajeroModal').modal('show');
+        // }
+        if (title) {
+            $('#myModalLabel').text(title);
+        } else {
+            $('#myModalLabel').text('GPS Taller');
+        }
+    },
+
+    alertClose: function() {
+        $('#mensajeroModal').modal('hide');
     }
 
 };

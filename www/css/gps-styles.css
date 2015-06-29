@@ -55,7 +55,7 @@ span.form-control{
     top: 0;
     position: relative;
     left: 8px;
-    z-index: 9500;
+    z-index: 1000;
     margin-top: -44px;
     width: 35px;
     display: block;
@@ -224,7 +224,7 @@ footer {
 
 .gps-estado {
     position: absolute;
-    z-index: 9000;
+    z-index: 1000;
     height: 90%;
     width: auto;
     top: 14px;
@@ -238,7 +238,7 @@ footer {
 
 .settings-icon {
     position: absolute;
-    z-index: 9000;
+    z-index: 1000;
     height: 90%;
     width: auto;
     top: 14px;
@@ -631,12 +631,12 @@ footer p {
 }
 .scrollable-bases::-webkit-scrollbar {
     -webkit-appearance: none;
-    width: 4px;        
-}    
+    width: 4px;
+}
 .scrollable-bases::-webkit-scrollbar-thumb {
     border-radius: 3px;
     background-color: lightgray;
-    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.75);        
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.75);
 }
 /* EDN REGISTRO */
 
@@ -952,7 +952,7 @@ footer p {
     font-weight: bold;
 }
 .modal-body p{
-    
+
 }
 /* EDN MODAL */
 @media (max-width: 1024px) and (min-width: 992px) {
@@ -1015,7 +1015,7 @@ footer p {
 }
 
 @media (max-width: 320px) {
-   
+
 
     .content-mapa {
         height: 380px;

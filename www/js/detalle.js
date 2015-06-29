@@ -1,5 +1,5 @@
 GPSTaller.detalle = function (data) {
-    $(".loader").fadeIn();
+    GPSTaller.alert();
 
     $('#detalle_nombre').text('');
     $('#detalle_direccion').text('');
@@ -17,7 +17,7 @@ GPSTaller.detalle = function (data) {
     GPSTaller.search({
         tallerID: data.tallerID
     }, function(data){
-        $(".loader").fadeOut();
+        GPSTaller.alert();
         $('#detalle_nombre').text(data[0].nombre);
         $('#detalle_direccion').text(data[0].direccion);
         $('#detalle_telefono').text(data[0].telefono);
@@ -49,7 +49,7 @@ document.addEventListener("deviceready", function() {
                     travelMode: google.maps.DirectionsTravelMode.DRIVING
                 },
                 callback: function(results) {
-                    $(".loader").fadeOut();
+                    GPSTaller.alert();
                     if (!results) return;
                     GPSTaller.visited.push('search-map');
                     GPSTaller.show('search-map', null, false);

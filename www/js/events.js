@@ -139,12 +139,6 @@ document.addEventListener("deviceready", function() {
                     }));
                 }
             });
-        },
-        select: function(event, ui) {
-            alert(event);
-            // $('#perfil_codigoPostal').val(ui.item.label);
-            // $('#perfil_codigoPostalID').val(ui.item.value);
-            // return false;
         }
     });
 
@@ -207,7 +201,7 @@ document.addEventListener("deviceready", function() {
         });
     });
 
-    alert('Para mejorar la presición de tu ubicación recomendamos tener el GPS activado');
+    GPSTaller.alert('Para mejorar la presición de tu ubicación te recomendamos tener el GPS activado', true);
 
 }, false);
 

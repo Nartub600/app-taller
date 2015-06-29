@@ -41,7 +41,7 @@ document.addEventListener("deviceready", function() {
     $('#btn_asegura').on('click', function(e){
         e.preventDefault();
 
-        alert('Próximamente');
+        GPSTaller.alert('Esta sección estará disponible próximamente', true);
     });
 
 }, false);

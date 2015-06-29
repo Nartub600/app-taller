@@ -4,7 +4,7 @@ document.addEventListener("deviceready", function() {
     $('#btn_register').on('click', function(e){
         e.preventDefault();
 
-        $(".loader").fadeIn();
+        GPSTaller.alert();
 
         var data = {
             nombre: $('#reg_firstname').val(),
@@ -16,13 +16,13 @@ document.addEventListener("deviceready", function() {
         }
 
         GPSTaller.registro(data, function(data) {
-            $(".loader").fadeOut();
+            GPSTaller.alertClose();
             if(data[0].status == 'ok') {
-                alert(data[0].mensaje);
+                GPSTaller.alert(data[0].mensaje, true);
                 GPSTaller.visited = ['index'];
                 GPSTaller.show('index');
             } else {
-                alert(data[0].mensaje);
+                GPSTaller.alert(data[0].mensaje, true);
             }
         });
     });
@@ -30,7 +30,7 @@ document.addEventListener("deviceready", function() {
     $('#btn_login').on('click', function(e){
         e.preventDefault();
 
-        $(".loader").fadeIn();
+        GPSTaller.alert();
 
         var data = {
             mail: $('#login_email').val(),
@@ -38,7 +38,6 @@ document.addEventListener("deviceready", function() {
         };
 
         GPSTaller.login(data, function(data){
-            $(".loader").fadeOut();
             window.localStorage['user_email'] = undefined;
             if (data[0].status == 'ok' || data[0].code == 200) {
                 // rutina de login
@@ -52,7 +51,7 @@ document.addEventListener("deviceready", function() {
                 GPSTaller.visited = ['index', 'panel-administracion'];
                 GPSTaller.show('panel-administracion');
             } else if (data[0].status == 'error') {
-                alert(data[0].mensaje);
+                GPSTaller.alert(data[0].mensaje, true);
             }
         });
     });
@@ -60,20 +59,20 @@ document.addEventListener("deviceready", function() {
     $('#btn_solicitarContrasena').on('click', function(e){
         e.preventDefault();
 
-        $(".loader").fadeIn();
+        GPSTaller.alert();
 
         data = {
             mail: $('#solicitar_email').val()
         };
 
         GPSTaller.solicitarContrasena(data, function(data){
-            $(".loader").fadeOut();
+            GPSTaller.alertClose();
             if (data[0].status == 'ok') {
-                alert(data[0].mensaje);
+                GPSTaller.alert(data[0].mensaje, true);
                 GPSTaller.visited = ['index'];
                 GPSTaller.show('index');
             } else {
-                alert(data[0].mensaje);
+                GPSTaller.alert(data[0].mensaje, true);
             }
         });
     });

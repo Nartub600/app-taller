@@ -1,5 +1,7 @@
 GPSTaller.verPerfil = function() {
-    $(".loader").fadeIn();
+    if(!$('#mensajeroModal').is(':visible')) {
+        GPSTaller.alert();
+    }
 
     $('#frm_perfil input').val('');
     $('#frm_perfil select option').prop('selected', false);
@@ -22,7 +24,7 @@ GPSTaller.verPerfil = function() {
             hash: GPSTaller.hash
         },
         success: function(data) {
-            $(".loader").fadeOut();
+            GPSTaller.alertClose();
             // $('#perfil_ID').val() = data.usuario.ID;
             $('#perfil_titular').val(data.usuario.titular);
             $('#perfil_empresa').val(data.usuario.empresa);
@@ -127,7 +129,7 @@ document.addEventListener("deviceready", function() {
     $('#btn_guardarPerfil').on('click', function(e){
         e.preventDefault();
 
-        $(".loader").fadeIn();
+        GPSTaller.alert();
 
         var data = {
             fechaNacimiento: pad('00', $('#perfil_fechaDia').val(), true) + '-' + pad('00', $('#perfil_fechaMes').val(), true) + '-' + $('#perfil_fechaAno').val(),
@@ -147,12 +149,13 @@ document.addEventListener("deviceready", function() {
         };
 
         GPSTaller.editarPerfil(data, function (data) {
-            $(".loader").fadeOut();
+            // GPSTaller.alertClose();
             if (data[0].status == 'ok') {
-                alert(data[0].mensaje);
+                GPSTaller.alert(data[0].mensaje, true);
+                GPSTaller.visited = ['index', 'panel-administracion'];
                 GPSTaller.show('panel-administracion');
             } else {
-                alert(data[0].mensaje);
+                GPSTaller.alert(data[0].mensaje, true);
             }
         });
     });
@@ -160,7 +163,7 @@ document.addEventListener("deviceready", function() {
     $('#btn_asociarVehiculo').on('click', function(e){
         e.preventDefault();
 
-        $(".loader").fadeIn();
+        GPSTaller.alert();
 
         var data = {
             mail: GPSTaller.loggedUser,
@@ -178,12 +181,13 @@ document.addEventListener("deviceready", function() {
         };
 
         GPSTaller.asociarVehiculo(data, function(data){
-            $(".loader").fadeOut();
+            // GPSTaller.alertClose();
             if (data[0].status == 'ok') {
-                alert(data[0].mensaje);
+                GPSTaller.alert(data[0].mensaje, true);
+                GPSTaller.visited = ['index', 'panel-administracion'];
                 GPSTaller.show('panel-administracion');
             } else if (data[0].status == 'error') {
-                alert(data[0].mensaje);
+                GPSTaller.alert(data[0].mensaje, true);
             }
         });
     });
@@ -191,7 +195,7 @@ document.addEventListener("deviceready", function() {
     $('#btn_desvincular').on('click', function(e){
         e.preventDefault();
 
-        $(".loader").fadeIn();
+        GPSTaller.alert();
 
         var data = {
             mail: GPSTaller.loggedUser,
@@ -200,12 +204,13 @@ document.addEventListener("deviceready", function() {
         };
 
         GPSTaller.desvincularVehiculo(data, function(data){
-            $(".loader").fadeOut();
+            // GPSTaller.alertClose();
             if (data[0].status == 'ok') {
-                alert(data[0].mensaje);
+                GPSTaller.alert(data[0].mensaje, true);
+                GPSTaller.visited = ['index', 'panel-administracion'];
                 GPSTaller.show('panel-administracion');
             } else if (data[0].status == 'error') {
-                alert(data[0].mensaje);
+                GPSTaller.alert(data[0].mensaje, true);
             }
         });
     });
@@ -213,7 +218,7 @@ document.addEventListener("deviceready", function() {
     $('#btn_ingresarServicio').on('click', function(e){
         e.preventDefault();
 
-        $(".loader").fadeIn();
+        GPSTaller.alert();
 
         var data = {
             mail: GPSTaller.loggedUser,
@@ -226,12 +231,13 @@ document.addEventListener("deviceready", function() {
         };
 
         GPSTaller.ingresarServicio(data, function(data){
-            $(".loader").fadeOut();
+            // GPSTaller.alertClose();
             if(data[0].status == 'ok') {
-                alert(data[0].mensaje);
+                GPSTaller.alert(data[0].mensaje, true);
+                GPSTaller.visited = ['index', 'panel-administracion'];
                 GPSTaller.show('panel-administracion');
             } else {
-                alert(data[0].mensaje);
+                GPSTaller.alert(data[0].mensaje, true);
             }
         });
     });
@@ -239,7 +245,7 @@ document.addEventListener("deviceready", function() {
     $('#btn_solicitarCambios').on('click', function(e){
         e.preventDefault();
 
-        $(".loader").fadeIn();
+        GPSTaller.alert();
 
         var data = {
             mail: GPSTaller.loggedUser,
@@ -248,12 +254,13 @@ document.addEventListener("deviceready", function() {
         };
 
         GPSTaller.solicitarCambios(data, function(data){
-            $(".loader").fadeOut();
+            // GPSTaller.alertClose();
             if(data[0].status == 'ok') {
-                alert(data[0].mensaje);
+                GPSTaller.alert(data[0].mensaje, true);
+                GPSTaller.visited = ['index', 'panel-administracion'];
                 GPSTaller.show('panel-administracion');
             } else {
-                alert(data[0].mensaje);
+                GPSTaller.alert(data[0].mensaje, true);
             }
         });
     });
