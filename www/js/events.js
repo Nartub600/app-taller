@@ -74,7 +74,7 @@ document.addEventListener("deviceready", function() {
             $.each(data, function(i, e){
                 $('#perfil_provincia').append('<option value="' + e.id + '">' + e.text + '</option>');
             });
-            // $('#perfil_provincia').prop('disabled', false);
+            $('#perfil_provincia').prop('disabled', false);
         }
     });
 
