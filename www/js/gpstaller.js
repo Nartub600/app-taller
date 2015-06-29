@@ -12,12 +12,12 @@ GPSTaller = {
 
     show: function (page, data, die) {
 
-        var onlineStatus = checkConnection();
+        // var onlineStatus = checkConnection();
 
-        if (onlineStatus == false) {
-            GPSTaller.alert('Debe contar con conexión a internet', true);
-            return;
-        }
+        // if (onlineStatus == false) {
+        //     GPSTaller.alert('Debe contar con conexión a internet', true);
+        //     return;
+        // }
 
         if($('[page][id="' + page + '"]').is('[nofooter]')) {
             $('#footer').hide();
@@ -206,6 +206,7 @@ GPSTaller = {
                 }
             }
         }, 'autofit');
+        $('#map_canvas').height($('#search-map').height());
     },
 
     alert: function(message, button, title) {
