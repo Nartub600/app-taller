@@ -58,7 +58,7 @@ GPSTaller.verPerfil = function() {
             // }
 
             $('#perfil_cuit').val(data.usuario.cuit);
-            $('#perfil_iva').val(data.usuario.iva);
+            $('#perfil_iva option[value="' + data.usuario.iva + '"]').prop('selected', true);
             $('#perfil_horarioContacto').val(data.usuario.horarioContacto);
             $('#perfil_genero option[value="' + data.usuario.genero + '"]').prop('selected', true);
             $('#perfil_estadoCivil option[value="' + data.usuario.estadoCivil + '"]').prop('selected', true);
@@ -100,18 +100,18 @@ GPSTaller.verPerfil = function() {
 
 GPSTaller.verAsociar = function() {
     $('#asociar-dominio form input').val('');
-    $('#asociar-dominio form select option [value=""]').prop('selected', true);
+    // $('#asociar-dominio form select option').prop('selected', false);
+    $('#asociar-dominio form select option').first().prop('selected', true);
 }
 
 GPSTaller.verDesvincularDominio = function(data) {
-    $('#desvincular_dominio').text('');
+    // $('#desvincular_dominio').text('');
     $('#desvincular_dominio').text(data.dominio);
     $('#desvincular_mensaje').val('');
-
 }
 
 GPSTaller.verIngresarServicio = function(data) {
-    $('#ingresar_dominio').text('');
+    // $('#ingresar_dominio').text('');
     $('#ingresar_dominio').text(data.dominio);
     $('#ingresar-servicio form input').val('');
     $('#ingresar-servicio form select option').prop('selected', false);
@@ -187,7 +187,44 @@ document.addEventListener("deviceready", function() {
                 GPSTaller.visited = ['index', 'panel-administracion'];
                 GPSTaller.show('panel-administracion');
             } else if (data[0].status == 'error') {
-                GPSTaller.alert(data[0].mensaje, true);
+                if(data[0].code == '14') {
+                    GPSTaller.alert(data[0].mensaje, true);
+                    $('#myModalButtons').children().not('#btn_dismiss').remove();
+                    $('#btn_dismiss').before("<p id=\"btn_reclamar\" class=\"texto-centrado\"><a type=\"button\" class=\"btn btn-gps center-block ui-link\">Aceptar</a></p>");
+
+                    $('body').on('click', '#btn_reclamar', function(e){
+                        e.preventDefault();
+
+                        $.ajax({
+                            url: GPSTaller.urls.data,
+                            type: 'post',
+                            dataType: 'json',
+                            data: {
+                                mail: GPSTaller.loggedUser,
+                                hash: GPSTaller.hash,
+                                action: 'reclamarTitularidad',
+                                dominio: $('#asociar_dominio').val()
+                            },
+                            beforeSend: function() {
+                                GPSTaller.alert();
+                            },
+                            success: function(data) {
+                                if (data[0].status == 'ok') {
+                                    GPSTaller.alert(data[0].mensaje, true);
+                                    GPSTaller.visited = ['index'];
+                                    GPSTaller.show('index');
+                                } else {
+                                    GPSTaller.alert(data[0].mensaje, true);
+                                }
+                            },
+                            complete: function() {
+                                $('#myModalButtons').children().not('#btn_dismiss').remove();
+                            }
+                        });
+                    });
+                } else {
+                    GPSTaller.alert(data[0].mensaje, true);
+                }
             }
         });
     });

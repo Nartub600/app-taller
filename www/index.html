@@ -526,7 +526,13 @@
                                     <input id="perfil_cuit" type="text" class="form-control" placeholder="CUIT" />
                                 </div>
                                 <div class="form-group">
-                                    <input id="perfil_iva" type="text" class="form-control" placeholder="Cond. IVA" />
+                                    <select id="perfil_iva" class="form-control">
+                                        <option value="">Condición IVA</option>
+                                        <option>Consumidor final</option>
+                                        <option>Inscripto</option>
+                                        <option>Monotributo</option>
+                                        <option>Exento</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <input id="perfil_horarioContacto" type="text" class="form-control" placeholder="Horario de contacto" />
@@ -587,10 +593,10 @@
                                     <input id="asociar_vin" name="vin" type="text" class="form-control" placeholder="VIN" />
                                 </div>
                                 <div class="form-group">
-                                    <input id="asociar_motor" name="motor" type="number" class="form-control" placeholder="Nro. de motor" />
+                                    <input id="asociar_motor" name="motor" type="text" class="form-control" placeholder="Nro. de motor" />
                                 </div>
                                 <div class="form-group">
-                                    <input id="asociar_chasis" name="chasis" type="number" class="form-control" placeholder="Nro. de chasis" />
+                                    <input id="asociar_chasis" name="chasis" type="text" class="form-control" placeholder="Nro. de chasis" />
                                 </div>
                                 <div class="form-group">
                                     <select id="asociar_marca" name="marca" class="form-control">
@@ -609,13 +615,18 @@
                                 </div>
                                 <div class="form-group">
                                     <select id="asociar_gnc" class="form-control">
-                                        <option value="">---</option>
+                                        <option value="">GNC</option>
                                         <option value="0">Sin GNC</option>
                                         <option value="1">Con GNC</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input id="asociar_dispositivoRecupero" name="dispositivo_recupero" type="text" class="form-control" placeholder="Dispositivo de Recupero" />
+                                    <select id="asociar_dispositivoRecupero" name="dispositivo_recupero" class="form-control">
+                                        <option value="">Dispositivo de recupero</option>
+                                        <option>Lojack</option>
+                                        <option>Pointer</option>
+                                        <option>Ituran</option>
+                                    </select>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-1"></div>
@@ -1019,8 +1030,8 @@
                     <div class="modal-body">
                         <p id="myModalBody" class="texto-centrado"></p>
                     </div>
-                    <div class="modal-footer" id="myModalButton">
-                        <p class="texto-centrado"><a type="button" class="btn btn-gps center-block ui-link" data-dismiss="modal">Cerrar</a></p>
+                    <div class="modal-footer" id="myModalButtons">
+                        <p id="btn_dismiss" class="texto-centrado"><a type="button" class="btn btn-gps center-block ui-link" data-dismiss="modal">Cerrar</a></p>
                     </div>
                 </div>
             </div>

@@ -306,6 +306,7 @@ footer p {
 .row.footer-home {
     position: fixed;
     bottom: 0;
+    left: 0;
 }
 
 #settings {}
@@ -993,6 +994,7 @@ footer p {
     footer {
         position: fixed;
         bottom: 0;
+        left: 0;
     }
 }
 
@@ -1008,15 +1010,14 @@ footer p {
     .content-menu-login.social {
         max-width: 200px;
     }
-     footer p {
+
+    footer p {
         font-size: 10px;
         margin: 6% 3%;
     }
 }
 
 @media (max-width: 320px) {
-
-
     .content-mapa {
         height: 380px;
     }
@@ -1032,6 +1033,7 @@ footer p {
     footer {
         position: fixed;
         bottom: 0;
+        left: 0;
     }
 
 }
@@ -1039,5 +1041,6 @@ footer p {
     footer.nofix {
         position: relative;
         bottom: 0;
+        left: 0;
     }
 }

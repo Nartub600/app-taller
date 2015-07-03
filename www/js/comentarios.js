@@ -24,7 +24,7 @@ GPSTaller.comentarios = function (data) {
             $.each(data.comentarios, function(i, e){
                 $('#comentarios_lista').append("<div class=\"comentario\"><p class=\"titulo-comentario\">" + e.comentario + "<p class=\"datos-usuario-comentario\">" + e.nombre + " " + e.fecha + "<img class=\"img-rating-comentario\" src=\"img/rating-" + e.rating + ".png\" /></p><div class=\"line-02\"></div></div>");
             });
-            if(data.usuario.permiso == '2') {
+            if(data.permisos.code == '2') {
                 $('#comentarios_comentar').show();
             }
         }
@@ -54,7 +54,7 @@ document.addEventListener("deviceready", function() {
             data: {
                 action: 'comentar',
                 id: $('#comentarios_btn').attr('tallerID'),
-                mail: window.localStorage['user_email'],
+                mail: GPSTaller.loggedUser,
                 calificacion: $('#comentarios_rating').val(),
                 comentario: $('#comentarios_comentario').val()
             },

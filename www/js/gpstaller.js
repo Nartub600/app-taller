@@ -12,12 +12,12 @@ GPSTaller = {
 
     show: function (page, data, die) {
 
-        // var onlineStatus = checkConnection();
+        var onlineStatus = checkConnection();
 
-        // if (onlineStatus == false) {
-        //     GPSTaller.alert('Debe contar con conexión a internet', true);
-        //     return;
-        // }
+        if (onlineStatus == false) {
+            GPSTaller.alert('Debe contar con conexión a internet', true);
+            return;
+        }
 
         if($('[page][id="' + page + '"]').is('[nofooter]')) {
             $('#footer').hide();
@@ -206,7 +206,7 @@ GPSTaller = {
                 }
             }
         }, 'autofit');
-        $('#map_canvas').height($('#search-map').height());
+        // $('#map_canvas').height($('#search-map').innerHeight());
     },
 
     alert: function(message, button, title) {
@@ -216,9 +216,9 @@ GPSTaller = {
             $('#myModalBody').text('Un momento por favor');
         }
 
-        $('#myModalButton').hide();
+        $('#myModalButtons').hide();
         if (button) {
-            $('#myModalButton').show();
+            $('#myModalButtons').show();
         }
 
         if (title) {

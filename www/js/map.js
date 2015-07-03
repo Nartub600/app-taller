@@ -16,22 +16,23 @@ GPSTaller.talleresCercanos = function () {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             }, function(data) {
-            if (data != null) {
-                var points = [];
-                for (i = 0; i < data.length; i++) {
-                    points.push({
-                        latLng: [data[i].lat, data[i].lng],
-                        data: {
-                            tallerID: data[i].tallerID
-                        }
-                    });
+                if (data != null) {
+                    var points = [];
+                    for (i = 0; i < data.length; i++) {
+                        points.push({
+                            latLng: [data[i].lat, data[i].lng],
+                            data: {
+                                tallerID: data[i].tallerID
+                            }
+                        });
+                    }
+                    GPSTaller.alertClose();
+                    GPSTaller.showMap(points);
+                } else {
+                    GPSTaller.alert('No hay talleres cerca', true);
                 }
-                GPSTaller.alertClose();
-                GPSTaller.showMap(points);
-            } else {
-                GPSTaller.alert('No hay talleres cerca', true);
             }
-        });
+        );
     };
 
     if ($('#txt_search').val() != '') {
