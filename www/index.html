@@ -379,7 +379,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="row ajuste-alto"></div>
                 </div> <!-- #login -->
 
                 <div id="ayuda" page style="display: none;">
@@ -946,9 +946,24 @@
                             <p>Dominio: <span id="ingresar_dominio" class="rojo bold"></span> </p>
                             <form>
                                 <div class="form-group">
-                                    <input id="ingresar_dia" type="number" class="form-control" placeholder="Día*" min="1" max="31" />
-                                    <input id="ingresar_mes" type="number" class="form-control" placeholder="Mes*" min="1" max="12" />
-                                    <input id="ingresar_ano" type="number" class="form-control" placeholder="Año*" />
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <label class="label-form">Fecha</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-xs-4">
+                                            <input id="ingresar_dia" type="number" class="form-control" placeholder="Día*" min="1" max="31" />
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <input id="ingresar_mes" type="number" class="form-control" placeholder="Mes*" min="1" max="12" />
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <input id="ingresar_ano" type="number" class="form-control" placeholder="Año*" />
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <input id="ingresar_km" type="number" class="form-control" placeholder="Kilometros*" />
