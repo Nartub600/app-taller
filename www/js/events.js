@@ -26,8 +26,6 @@ function checkConnection() {
 document.addEventListener("deviceready", function() {
 // $(function(){
 
-    $.mobile.loading().hide();
-
     if (window.localStorage['user_email'] === undefined || window.localStorage['user_email'] === 'undefined' || window.localStorage['user_email'] === 'null') { // no hay usuario
         $('[auth]').hide();
         $('[noauth]').show();
@@ -87,10 +85,12 @@ document.addEventListener("deviceready", function() {
                 provinciaID: $('#perfil_provincia').val()
             },
             beforeSend: function() {
+                GPSTaller.alert();
                 $('#perfil_partido').html('<option value="">Partido</option>').prop('disabled', true);
                 $('#perfil_localidad').html('<option value="">Localidad</option>').prop('disabled', true);
             },
             success: function (data) {
+                GPSTaller.alertClose();
                 $.each(data, function(i, e){
                     $('#perfil_partido').append('<option value="' + e.id + '">' + e.text + '</option>');
                 });
@@ -109,9 +109,11 @@ document.addEventListener("deviceready", function() {
                 partidoID: $('#perfil_partido').val()
             },
             beforeSend: function() {
+                GPSTaller.alert();
                 $('#perfil_localidad').html('<option value="">Localidad</option>').prop('disabled', true);
             },
             success: function (data) {
+                GPSTaller.alertClose();
                 $.each(data[0].children, function(i, e){
                     $('#perfil_localidad').append('<option value="' + e.id + '">' + e.text + '</option>');
                 });
@@ -120,25 +122,43 @@ document.addEventListener("deviceready", function() {
         });
     });
 
-    $('#perfil_codigoPostal').autocomplete({
-        minLength: 4,
-        source: function(request, response) {
-            $.ajax({
-                url: 'https://www.gpstaller.com.ar/templates/codigosPostales.json.php',
-                type: 'get',
-                dataType: 'json',
-                data: {
-                    q: request.term
-                },
-                success: function(data) {
-                    response($.map(data, function(item){
-                        return {
-                            label: item.text,
-                            value: item.id
-                        };
-                    }));
-                }
-            });
+    // $('#perfil_codigoPostal').autocomplete({
+    //     minLength: 4,
+    //     source: function(request, response) {
+    //         $.ajax({
+    //             url: 'https://www.gpstaller.com.ar/templates/codigosPostales.json.php',
+    //             type: 'get',
+    //             dataType: 'json',
+    //             data: {
+    //                 q: request.term
+    //             },
+    //             success: function(data) {
+    //                 response($.map(data, function(item){
+    //                     return {
+    //                         label: item.text,
+    //                         value: item.id
+    //                     };
+    //                 }));
+    //             }
+    //         });
+    //     }
+    // });
+
+    $('#perfil_fechaNacimiento').on('blur', function(){
+        var input = $('#perfil_fechaNacimiento').val().split('-');
+        $('#perfil_fechaNacimientoReal').val(input[2] + '-' + input[1] + '-' + input[0]);
+    });
+
+    $('#ingresar_fecha').on('focus', function(){
+        $('#ingresar_fecha').attr('type', 'date');
+    });
+
+    $('#ingresar_fecha').on('blur', function(){
+        if($('#ingresar_fecha').val() != '') {
+            var input = $('#perfil_fechaNacimiento').val().split('-');
+            $('#perfil_fechaNacimientoReal').val(input[2] + '-' + input[1] + '-' + input[0]);
+        } else {
+            $('#ingresar_fecha').attr('type', 'text');
         }
     });
 
@@ -168,10 +188,12 @@ document.addEventListener("deviceready", function() {
                 marcaID: $('#asociar_marca').val()
             },
             beforeSend: function() {
+                GPSTaller.alert();
                 $('#asociar_modelo').html('<option value="">Modelo</option>').prop('disabled', true);
                 $('#asociar_version').html('<option value="">Versión</option>').prop('disabled', true);
             },
             success: function (data) {
+                GPSTaller.alertClose();
                 $.each(data, function(i, e){
                     $('#asociar_modelo').append('<option value="' + e.id + '">' + e.text + '</option>');
                 });
@@ -190,9 +212,11 @@ document.addEventListener("deviceready", function() {
                 modeloID: $('#asociar_modelo').val()
             },
             beforeSend: function() {
+                GPSTaller.alert();
                 $('#asociar_version').html('<option value="">Versión</option>').prop('disabled', true);
             },
             success: function (data) {
+                GPSTaller.alertClose();
                 $.each(data, function(i, e){
                     $('#asociar_version').append('<option value="' + e.id + '">' + e.text + '</option>');
                 });

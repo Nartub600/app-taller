@@ -1,7 +1,7 @@
 GPSTaller.detalle = function (data) {
     GPSTaller.alert();
 
-    $('#detalle_nombre').text();
+    $('#detalle_nombre').text('');
     $('#detalle_direccion').text('');
     $('#detalle_telefono').text('');
     $('#detalle_email').text('');

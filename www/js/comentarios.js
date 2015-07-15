@@ -3,6 +3,10 @@ GPSTaller.comentarios = function (data) {
 
     $('#comentarios_nombre').text('');
     $('#comentarios_lista').html('');
+    $('#comentarios_comentario').val('');
+    $('#comentarios_rating').val('');
+    $('#comentarios_comentar').hide();
+    $('[star]').find('img').attr('src', 'img/estrella-0.png');
 
     GPSTaller.search({
         tallerID: data.tallerID
@@ -21,11 +25,17 @@ GPSTaller.comentarios = function (data) {
         success: function(data) {
             GPSTaller.alertClose();
             $('#comentarios_btn').attr('tallerID', data.tallerID);
-            $.each(data.comentarios, function(i, e){
-                $('#comentarios_lista').append("<div class=\"comentario\"><p class=\"titulo-comentario\">" + e.comentario + "<p class=\"datos-usuario-comentario\">" + e.nombre + " " + e.fecha + "<img class=\"img-rating-comentario\" src=\"img/rating-" + e.rating + ".png\" /></p><div class=\"line-02\"></div></div>");
-            });
-            if(data.permisos.code == '2') {
+            if (data.comentarios) {
+                $.each(data.comentarios, function(i, e){
+                    $('#comentarios_lista').append("<div class=\"comentario\"><p class=\"titulo-comentario\">" + e.comentario + "<p class=\"datos-usuario-comentario\">" + e.nombre + " " + e.fecha + "<img class=\"img-rating-comentario\" src=\"img/rating-" + e.rating + ".png\" /></p><div class=\"line-02\"></div></div>");
+                });
+            } else {
+                $('#comentarios_lista').append("<p>Este taller no tiene comentarios</p>")
+            }
+            if(data.permisos[0].code == '200') {
                 $('#comentarios_comentar').show();
+            } else {
+                GPSTaller.alert(data.permisos.mensaje);
             }
         }
     });
@@ -46,6 +56,8 @@ document.addEventListener("deviceready", function() {
 
     $('#comentarios_btn').on('click', function(e) {
         e.preventDefault();
+
+        GPSTaller.alert();
 
         $.ajax({
             url: GPSTaller.urls.comments,

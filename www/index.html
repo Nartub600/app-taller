@@ -49,11 +49,15 @@
     </head>
     <body>
 
+        <div id="splash" style="display: none;">
+
+        </div>
+
         <!-- <div class="loader">
             <p>Cargando...</p>
         </div> -->
 
-        <div class="container">
+        <div class="container" style="display: none;">
 
             <div class="row" id="header">
 
@@ -90,7 +94,7 @@
                     <div class="row">
                         <div class="content-menu-home">
                             <div class="row">
-                                <a href="#" nav="search-map" online><img src="img/buscador-taller.png" /></a>
+                                <a href="#" nav="search-map"><img src="img/buscador-taller.png" /></a>
                             </div>
                             <div class="row">
                                 <a href="#" id="btn_historia" nav="login"><img src="img/historia-del-auto.png" /></a>
@@ -344,6 +348,7 @@
                                     </div>
                                     <div class="media-body">
                                         <input id="login_email" name="user" type="email" value="" />
+                                        <!-- fkraefft@ivirtual.la -->
                                     </div>
                                  </div>
                             </div>
@@ -354,6 +359,7 @@
                                     </div>
                                     <div class="media-body">
                                         <input id="login_password" name="password" type="password" value="" />
+                                        <!-- memi123 -->
                                     </div>
                                  </div>
                             </div>
@@ -389,7 +395,13 @@
                     </div>
                     <div class="row">
                         <div class="link-item">
-                            <a href="https://www.youtube.com/channel/UC9uB4dSMZrV776GKLeN_NuQ/videos" target="_blank"><p>Videos de Ayuda</p><div class="arrow-2"><img src="img/arrow.png"/></div><div class="arrow-logo"><img src="img/logo-yt.png"/></div></a>
+                            <a href="#" onclick="window.open('https://www.youtube.com/channel/UC9uB4dSMZrV776GKLeN_NuQ/videos', '_system'); return false;">
+                                <p>Videos de Ayuda</p>
+                                <div class="arrow-2"><img src="img/arrow.png"/></div>
+                                <div class="arrow-logo">
+                                    <img src="img/logo-yt.png"/>
+                                </div>
+                            </a>
                         </div>
                         <div class="link-item">
                             <p>Preguntas frecuentes</p>
@@ -414,13 +426,13 @@
                             <a href="#" nav="login"><p>Ingresar</p><div class="arrow"><img src="img/arrow.png"/></div></a>
                         </div>
                         <div class="link-item" auth >
-                            <a href="#" nav="mis-datos"><p>Editar Perfil</p><div class="arrow"><img src="img/arrow.png"/></div></a>
+                            <a href="#" nav="mis-datos"><p>Ver mis datos</p><div class="arrow"><img src="img/arrow.png"/></div></a>
                         </div>
                         <div class="link-item" auth >
                             <a href="#" nav="solicitarcontrasenia"><p>Cambiar la contraseña</p><div class="arrow"><img src="img/arrow.png"/></div></a>
                         </div>
                         <div class="link-item" auth >
-                            <a href="#" nav="asociar-dominio"><p>Editar información del auto</p><div class="arrow"><img src="img/arrow.png"/></div></a>
+                            <a href="#" nav="panel-administracion"><p>Ver historia clínica</p><div class="arrow"><img src="img/arrow.png"/></div></a>
                         </div>
                         <!-- <div class="link-item" auth>
                             <a href="#" nav="panel-administracion"><p>Panel de administración</p><div class="arrow"><img src="img/arrow.png"/></div></a>
@@ -478,14 +490,16 @@
                                     <input id="perfil_telefono" type="tel" class="form-control" placeholder="Teléfono" />
                                 </div>
                                 <div class="form-group">
+                                    <input id="perfil_fechaNacimiento" type="date" class="form-control" placeholder="Fecha de nacimiento" />
+                                    <input type="hidden" id="perfil_fechaNacimientoReal" />
+                                </div>
+                                <!-- <div class="form-group">
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <label class="label-form">Fecha de nacimiento</label>
                                         </div>
-
                                     </div>
                                     <div class="row">
-
                                         <div class="col-xs-4">
                                             <input id="perfil_fechaDia" type="number" class="form-control" placeholder="DD" min="1" max="31" />
                                         </div>
@@ -496,31 +510,28 @@
                                             <input id="perfil_fechaAno" type="number" class="form-control" placeholder="AAAA" />
                                         </div>
                                     </div>
-
-
-
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <input id="perfil_domicilio" type="text" class="form-control" placeholder="Domicilio" />
                                 </div>
                                 <div class="form-group">
-                                    <select id="perfil_provincia" class="form-control" disabled>
+                                    <select id="perfil_provincia" class="form-control">
                                         <option value="">Provincia</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select id="perfil_partido" class="form-control" disabled>
+                                    <select id="perfil_partido" class="form-control">
                                         <option value="">Partido</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select id="perfil_localidad" class="form-control" disabled>
+                                    <select id="perfil_localidad" class="form-control">
                                         <option value="">Localidad</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input id="perfil_codigoPostal" class="form-control" placeholder="Código Postal" />
-                                    <input type="hidden" id="perfil_codigoPostalID" />
+                                    <input id="perfil_codigoPostal" type="number" class="form-control" placeholder="Código Postal" />
+                                    <!-- <input type="hidden" id="perfil_codigoPostalID" /> -->
                                 </div>
                                  <div class="form-group">
                                     <input id="perfil_cuit" type="text" class="form-control" placeholder="CUIT" />
@@ -604,18 +615,18 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select id="asociar_modelo" name="modelo" class="form-control" disabled>
+                                    <select id="asociar_modelo" name="modelo" class="form-control">
                                         <option value="">Modelo</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select id="asociar_version" name="version" class="form-control" disabled>
+                                    <select id="asociar_version" name="version" class="form-control">
                                         <option value="">Version</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <select id="asociar_gnc" class="form-control">
-                                        <option value="">GNC</option>
+                                        <option value="">Combustible</option>
                                         <option value="0">Sin GNC</option>
                                         <option value="1">Con GNC</option>
                                     </select>
@@ -946,14 +957,16 @@
                             <p>Dominio: <span id="ingresar_dominio" class="rojo bold"></span> </p>
                             <form>
                                 <div class="form-group">
+                                    <input id="ingresar_fecha" type="text" class="form-control" placeholder="Fecha*" />
+                                    <input id="ingresar_fechaReal" type="hidden" />
+                                </div>
+                                <!-- <div class="form-group">
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <label class="label-form">Fecha</label>
                                         </div>
-
                                     </div>
                                     <div class="row">
-
                                         <div class="col-xs-4">
                                             <input id="ingresar_dia" type="number" class="form-control" placeholder="Día*" min="1" max="31" />
                                         </div>
@@ -964,7 +977,7 @@
                                             <input id="ingresar_ano" type="number" class="form-control" placeholder="Año*" />
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <input id="ingresar_km" type="number" class="form-control" placeholder="Kilometros*" />
                                 </div>

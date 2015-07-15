@@ -1,3 +1,24 @@
+var deviceType = (navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
+
+document.addEventListener("deviceready", function() {
+    if (deviceType == 'Android') {
+        if (window.orientation == 90 || window.orientation == -90) {
+            $('#splash').css('background-image', 'url(img/splash-land-xhdpi.png)');
+        } else {
+            $('#splash').css('background-image', 'url(img/splash-port-xhdpi.png)');
+        }
+        $('#splash').fadeIn(400, function(){
+            setTimeout(function(){
+                $('#splash').fadeOut(400, function(){
+                    $('.container').fadeIn();
+                });
+            }, 1000);
+        });
+    } else {
+        $('.container').fadeIn();
+    }
+});
+
 GPSTaller = {
 
     hash: '1f8393c163b12a7c87550866ba07444f31bc4012c501e4e006ab475e5cd2d06b',
@@ -5,7 +26,7 @@ GPSTaller = {
     urls: {
         access: 'https://www.gpstaller.com.ar/api/v1/access.json.php',
         search: 'https://www.gpstaller.com.ar/api/v1/talleres.json.php',
-        comments: 'https://www.gpstaller.com.ar/api/v1/comentariosTaller.json.php',
+        comments: 'https://www.gpstaller.com.ar/dev_v1/api/v1/comentariosTaller.json.php',
         faq: 'https://www.gpstaller.com.ar/api/v1/faq.json.php',
         data: 'https://www.gpstaller.com.ar/api/v1/data.json.php'
     },
@@ -19,7 +40,7 @@ GPSTaller = {
             return;
         }
 
-        if($('[page][id="' + page + '"]').is('[nofooter]')) {
+        if ($('[page][id="' + page + '"]').is('[nofooter]')) {
             $('#footer').hide();
         } else {
             $('#footer').show();
@@ -31,8 +52,9 @@ GPSTaller = {
             $('#btn_volver').show();
         }
 
-        $('[page]:visible').hide();
-        $('[page][id="' + page + '"]').show();
+        $('[page]:visible').fadeOut(400, function(){
+            $('[page][id="' + page + '"]').show();
+        });
 
         if (!$.isEmptyObject(data)) {
             var string = 'data';
@@ -227,7 +249,10 @@ GPSTaller = {
             $('#myModalLabel').text('GPS Taller');
         }
 
-        $('#mensajeroModal').modal('show');
+        if (!$('#mensajeroModal').is(':visible')) {
+            $('#mensajeroModal').modal('show');
+        }
+
     },
 
     alertClose: function() {
