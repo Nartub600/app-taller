@@ -600,6 +600,8 @@ footer p {
 .content-registro input, .content-registro select {
     font-size: 11px;
     color: #000;
+    padding: 0 5px;
+    width: 100%;
 }
 
 .content-registro.recuperar input {

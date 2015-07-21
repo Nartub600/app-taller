@@ -144,9 +144,17 @@ document.addEventListener("deviceready", function() {
     //     }
     // });
 
+    $('#perfil_fechaNacimiento').on('focus', function(){
+        $('#perfil_fechaNacimiento').attr('type', 'date');
+    });
+
     $('#perfil_fechaNacimiento').on('blur', function(){
-        var input = $('#perfil_fechaNacimiento').val().split('-');
-        $('#perfil_fechaNacimientoReal').val(input[2] + '-' + input[1] + '-' + input[0]);
+        if ($('#perfil_fechaNacimiento').val() != '') {
+            var input = $('#perfil_fechaNacimiento').val().split('-');
+            $('#perfil_fechaNacimientoReal').val(input[2] + '-' + input[1] + '-' + input[0]);
+        } else {
+            $('#perfil_fechaNacimiento').attr('type', 'text');
+        }
     });
 
     $('#ingresar_fecha').on('focus', function(){
