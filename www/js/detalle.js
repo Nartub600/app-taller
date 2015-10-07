@@ -31,8 +31,8 @@ GPSTaller.detalle = function (data) {
     });
 }
 
-document.addEventListener("deviceready", function() {
-// $(function(){
+// document.addEventListener("deviceready", function() {
+$(function(){
 
     $('body').on('click', '#detalle_comollego', function(e){
         e.preventDefault();
@@ -55,7 +55,7 @@ document.addEventListener("deviceready", function() {
                     GPSTaller.show('search-map', null, false);
                     $('#map_canvas').gmap3({
                         map: {
-                            mapTypeId: google.maps.MapTypeId.SATELLITE
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
                         },
                         directionsrenderer: {
                             options: {

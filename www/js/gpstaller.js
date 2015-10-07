@@ -52,9 +52,8 @@ GPSTaller = {
             $('#btn_volver').show();
         }
 
-        $('[page]:visible').fadeOut(400, function(){
-            $('[page][id="' + page + '"]').show();
-        });
+        $('[page]:visible').hide();
+        $('[page][id="' + page + '"]').show();
 
         if (!$.isEmptyObject(data)) {
             var string = 'data';
@@ -80,6 +79,37 @@ GPSTaller = {
             type: 'post',
             dataType: 'json',
             data: data,
+            beforeSend: function() {
+                if ($('#reg_email').val() == '') {
+                    GPSTaller.alert('Ingrese su email', true);
+                    return false;
+                }
+                if ($('#reg_firstname').val() == '') {
+                    GPSTaller.alert('Ingrese su nombre', true);
+                    return false;
+                }
+                if ($('#reg_lastname').val() == '') {
+                    GPSTaller.alert('Ingrese su apellido', true);
+                    return false;
+                }
+                if ($('#reg_password').val() == '') {
+                    GPSTaller.alert('Ingrese su contraseña', true);
+                    return false;
+                }
+                if ($('#reg_passconf').val() == '') {
+                    GPSTaller.alert('Ingrese la verificación de su contraseña', true);
+                    return false;
+                }
+                if ($('#reg_password').val() != $('#reg_passconf').val()) {
+                    GPSTaller.alert('Las contraseñas no coinciden', true);
+                    return false;
+                }
+                if ($('#reg_terms').prop('checked') == false) {
+                    GPSTaller.alert('Debe aceptar los términos y condiciones', true);
+                    return false;
+                }
+                return true;
+            },
             success: function (data) {
                 callback(data);
             }
@@ -94,6 +124,17 @@ GPSTaller = {
             type: 'post',
             dataType: 'json',
             data: data,
+            beforeSend: function() {
+                if ($('#login_email').val() == '') {
+                    GPSTaller.alert('Ingrese su email', true);
+                    return false;
+                }
+                if ($('#login_password').val() == '') {
+                    GPSTaller.alert('Ingrese su contraseña', true);
+                    return false;
+                }
+                return true;
+            },
             success: function (data) {
                 callback(data);
             }
@@ -109,6 +150,42 @@ GPSTaller = {
             dataType: 'json',
             data: data,
             success: function (data) {
+                callback(data);
+            }
+        });
+    },
+
+    cambiarContrasena: function(data, callback) {
+        data.action = 'nuevaContrasena';
+        data.hash = GPSTaller.hash;
+        data.mail = GPSTaller.loggedUser;
+
+        $.ajax({
+            url: GPSTaller.urls.access,
+            type: 'get',
+            dataType: 'json',
+            data: data,
+            beforeSend: function() {
+                if ($('#cambiar_oldPass').val() == '') {
+                    GPSTaller.alert('Ingrese su contraseña anterior', true);
+                    return false;
+                }
+                if ($('#cambiar_newPass').val() == '') {
+                    GPSTaller.alert('Ingrese su nueva contraseña', true);
+                    return false;
+                }
+                if ($('#cambiar_newPass2').val() == '') {
+                    GPSTaller.alert('Confirme su nueva contraseña', true);
+                    return false;
+                } else {
+                    if ($('#cambiar_newPass').val() != $('#cambiar_newPass2').val()) {
+                        GPSTaller.alert('Las contraseñas no coinciden', true);
+                        return false;
+                    }
+                }
+                return true;
+            },
+            success: function(data) {
                 callback(data);
             }
         });
@@ -149,6 +226,72 @@ GPSTaller = {
             type: 'post',
             dataType: 'json',
             data: data,
+            beforeSend: function() {
+                if ($('#perfil_fechaNacimiento').val() == '') {
+                //     GPSTaller.alert('Ingrese la fecha de nacimiento', true);
+                //     return false;
+                } else {
+                    var currentTime = new Date();
+                    // var fecha = $('#perfil_fechaNacimiento').val().split('-');
+                    // var day = fecha[0];
+                    // var month = fecha[1];
+                    // var year = fecha[2];
+                    // var fecha = new Date(year, month, day);
+                    var fecha = Date.parseExact($('#perfil_fechaNacimiento').val(), "dd-MM-yyyy");
+                    if (currentTime.getTime() < fecha.getTime()) {
+                        GPSTaller.alert('Ingrese una fecha válida', true);
+                        return false;
+                    }
+                }
+                // if ($('#perfil_empresa').val() == '') {
+                //     GPSTaller.alert('Ingrese la empresa', true);
+                //     return false;
+                // }
+                // if ($('#perfil_celular').val() == '') {
+                //     GPSTaller.alert('Ingrese el celular', true);
+                //     return false;
+                // }
+                // if ($('#perfil_telefono').val() == '') {
+                //     GPSTaller.alert('Ingrese el teléfono', true);
+                //     return false;
+                // }
+                // if ($('#perfil_horarioContacto').val() == '') {
+                //     GPSTaller.alert('Ingrese el horario de contacto', true);
+                //     return false;
+                // }
+                // if ($('#perfil_cuit').val() == '') {
+                //     GPSTaller.alert('Ingrese el CUIT', true);
+                //     return false;
+                // }
+                // if ($('#perfil_iva').val() == '') {
+                //     GPSTaller.alert('Ingrese la condición de IVA', true);
+                //     return false;
+                // }
+                // if ($('#perfil_domicilio').val() == '') {
+                //     GPSTaller.alert('Ingrese el domicilio', true);
+                //     return false;
+                // }
+                // if ($('#perfil_codigoPostal').val() == '') {
+                //     GPSTaller.alert('Ingrese el código postal', true);
+                //     return false;
+                // }
+                // if ($('#perfil_localidad').val() == '') {
+                //     GPSTaller.alert('Ingrese la localidad', true);
+                //     return false;
+                // }
+                // if ($('#perfil_genero').val() == '') {
+                //     GPSTaller.alert('Ingrese el género', true);
+                //     return false;
+                // }
+                // if ($('#perfil_estadoCivil').val() == '') {
+                //     GPSTaller.alert('Ingrese el estado civil', true);
+                //     return false;
+                // }
+                // if ($('#perfil_pagoSeguros').val() == '') {
+                //     GPSTaller.alert('Ingrese la forma de pago', true);
+                //     return false;
+                // }
+            },
             success: function (data) {
                 callback(data);
             }
@@ -164,6 +307,34 @@ GPSTaller = {
             type: 'post',
             dataType: 'json',
             data: data,
+            beforeSend: function() {
+                if ($('#asociar_dominio').val() == '') {
+                    GPSTaller.alert('Ingrese el dominio', true);
+                    return false;
+                }
+                if ($('#asociar_ano').val() == '') {
+                    GPSTaller.alert('Ingrese el año', true);
+                    return false;
+                }
+                var currentTime = new Date();
+                if (parseInt($('#asociar_ano').val()) > currentTime.getFullYear()) {
+                    GPSTaller.alert('El año es incorrecto', true);
+                    return false;
+                }
+                if ($('#asociar_marca').val() == '') {
+                    GPSTaller.alert('Seleccione la marca', true);
+                    return false;
+                }
+                if ($('#asociar_modelo').val() == '') {
+                    GPSTaller.alert('Seleccione el modelo', true);
+                    return false;
+                }
+                if ($('#asociar_version').val() == '') {
+                    GPSTaller.alert('Seleccione la versión', true);
+                    return false;
+                }
+                return true;
+            },
             success: function(data) {
                 callback(data);
             }
@@ -194,6 +365,34 @@ GPSTaller = {
             type: 'post',
             dataType: 'json',
             data: data,
+            beforeSend: function() {
+                if ($('#ingresar_fecha').val() == '') {
+                    GPSTaller.alert('Ingrese la fecha', true);
+                    return false;
+                } else {
+                    var currentTime = new Date();
+                    // var fecha = $('#ingresar_fecha').val().split('-');
+                    // var day = fecha[0];
+                    // var month = fecha[1];
+                    // var year = fecha[2];
+                    // var fecha = new Date(year, month, day);
+                    var fecha = Date.parseExact($('#ingresar_fecha').val(), "dd-MM-yyyy");
+                    // alert(fecha);
+                    if (currentTime.getTime() < fecha.getTime()) {
+                        GPSTaller.alert('Ingrese una fecha válida', true);
+                        return false;
+                    }
+                }
+                if ($('#ingresar_km').val() == '') {
+                    GPSTaller.alert('Ingrese los kilómetros', true);
+                    return false;
+                }
+                if ($('#ingresar_tipoServicio').val() == '') {
+                    GPSTaller.alert('Ingrese el tipo de servicio', true);
+                    return false;
+                }
+                return true;
+            },
             success: function(data) {
                 callback(data);
             }
@@ -209,6 +408,13 @@ GPSTaller = {
             type: 'post',
             dataType: 'json',
             data: data,
+            beforeSend: function() {
+                if ($('#solicitar_mensaje').val() == '') {
+                    GPSTaller.alert('Ingrese el mensaje', true);
+                    return false;
+                }
+                return true;
+            },
             success: function(data) {
                 callback(data);
             }
@@ -228,35 +434,50 @@ GPSTaller = {
                 }
             }
         }, 'autofit');
-        // $('#map_canvas').height($('#search-map').innerHeight());
     },
 
-    alert: function(message, button, title) {
-        if (message) {
-            $('#myModalBody').text(message);
-        } else {
-            $('#myModalBody').text('Un momento por favor');
+    alert: function (message, button, title) {
+        if (GPSTaller.modalTimer) {
+            clearTimeout(GPSTaller.modalTimer);
         }
 
-        $('#myModalButtons').hide();
-        if (button) {
-            $('#myModalButtons').show();
-        }
+        if (!$('#myModalButtons').is(':visible')) {
+            if (message) {
+                $('#myModalBody').text(message);
+            } else {
+                $('#myModalBody').text('Un momento por favor');
+            }
 
-        if (title) {
-            $('#myModalLabel').text(title);
-        } else {
-            $('#myModalLabel').text('GPS Taller');
+            if (title) {
+                $('#myModalLabel').text(title);
+            } else {
+                $('#myModalLabel').text('GPS Taller');
+            }
+
+            $('#myModalButtons').hide();
+            if (button) {
+                $('#myModalButtons').show();
+            }
         }
 
         if (!$('#mensajeroModal').is(':visible')) {
             $('#mensajeroModal').modal('show');
         }
 
+        if (!button) {
+            GPSTaller.modalTimer = setTimeout(function(){
+                if ($('#mensajeroModal').is(':visible')) {
+                    $('#mensajeroModal').modal('hide');
+                }
+            }, 10000);
+        }
+
     },
 
     alertClose: function() {
-        $('#mensajeroModal').modal('hide');
+        if (!$('#myModalButtons').is(':visible')) {
+            $('#mensajeroModal').modal('hide');
+        }
     }
 
 };
@@ -270,3 +491,14 @@ function pad(pad, str, padLeft) {
         return (str + pad).substring(0, pad.length);
     }
 }
+
+$.ajaxSetup({
+    timeout: 20000,
+    error: function (x, t, m) {
+        if (t === 'timeout') {
+            GPSTaller.alert('Error de conexión, vuelva a intentarlo por favor', true);
+        } else {
+            GPSTaller.alert('Error inesperado, vuelva a intentarlo por favor', true);
+        }
+    }
+});

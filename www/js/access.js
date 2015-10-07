@@ -16,12 +16,12 @@ document.addEventListener("deviceready", function() {
         }
 
         GPSTaller.registro(data, function(data) {
-            GPSTaller.alertClose();
+            // GPSTaller.alertClose();
             if(data[0].status == 'ok') {
                 GPSTaller.alert(data[0].mensaje, true);
                 GPSTaller.visited = ['index'];
                 GPSTaller.show('index');
-            } else {
+            } else if (data[0].status == 'error') {
                 GPSTaller.alert(data[0].mensaje, true);
             }
         });
@@ -52,6 +52,7 @@ document.addEventListener("deviceready", function() {
                 GPSTaller.show('panel-administracion');
             } else if (data[0].status == 'error') {
                 GPSTaller.alert(data[0].mensaje, true);
+                $('#login_password').val('');
             }
         });
     });
@@ -66,7 +67,8 @@ document.addEventListener("deviceready", function() {
         };
 
         GPSTaller.solicitarContrasena(data, function(data){
-            GPSTaller.alertClose();
+            // GPSTaller.alertClose();
+            $('#solicitarcontrasenia form')[0].reset();
             if (data[0].status == 'ok') {
                 GPSTaller.alert(data[0].mensaje, true);
                 GPSTaller.visited = ['index'];
@@ -81,13 +83,18 @@ document.addEventListener("deviceready", function() {
         e.preventDefault();
 
         window.localStorage['user_email'] = null;
+        GPSTaller.loggedUser = '';
         GPSTaller.visited = ['index'];
         $('[auth]').hide();
         $('[noauth]').show();
         $('#btn_historia').attr('nav', 'login');
+        GPSTaller.show('index');
         $('input').val('');
         $('option').selected = false;
-        GPSTaller.show('index');
+        $('input[type="checkbox"]').prop('checked', false);
+        $('form').each(function(i, e) {
+            e.reset();
+        });
     });
 
 });

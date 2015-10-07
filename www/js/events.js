@@ -29,6 +29,7 @@ document.addEventListener("deviceready", function() {
     if (window.localStorage['user_email'] === undefined || window.localStorage['user_email'] === 'undefined' || window.localStorage['user_email'] === 'null') { // no hay usuario
         $('[auth]').hide();
         $('[noauth]').show();
+        GPSTaller.loggedUser = '';
     } else { // hay usuario
         $('[auth]').show();
         $('[noauth]').hide();
@@ -90,11 +91,11 @@ document.addEventListener("deviceready", function() {
                 $('#perfil_localidad').html('<option value="">Localidad</option>').prop('disabled', true);
             },
             success: function (data) {
-                GPSTaller.alertClose();
                 $.each(data, function(i, e){
                     $('#perfil_partido').append('<option value="' + e.id + '">' + e.text + '</option>');
                 });
                 $('#perfil_partido').prop('disabled', false);
+                GPSTaller.alertClose();
             }
         });
     });
@@ -113,60 +114,48 @@ document.addEventListener("deviceready", function() {
                 $('#perfil_localidad').html('<option value="">Localidad</option>').prop('disabled', true);
             },
             success: function (data) {
-                GPSTaller.alertClose();
                 $.each(data[0].children, function(i, e){
                     $('#perfil_localidad').append('<option value="' + e.id + '">' + e.text + '</option>');
                 });
                 $('#perfil_localidad').prop('disabled', false);
+                GPSTaller.alertClose();
             }
         });
     });
 
-    // $('#perfil_codigoPostal').autocomplete({
-    //     minLength: 4,
-    //     source: function(request, response) {
-    //         $.ajax({
-    //             url: 'https://www.gpstaller.com.ar/templates/codigosPostales.json.php',
-    //             type: 'get',
-    //             dataType: 'json',
-    //             data: {
-    //                 q: request.term
-    //             },
-    //             success: function(data) {
-    //                 response($.map(data, function(item){
-    //                     return {
-    //                         label: item.text,
-    //                         value: item.id
-    //                     };
-    //                 }));
-    //             }
-    //         });
-    //     }
-    // });
-
     $('#perfil_fechaNacimiento').on('focus', function(){
-        $('#perfil_fechaNacimiento').attr('type', 'date');
+        $('#perfil_fechaNacimientoReal').trigger('focus');
     });
 
-    $('#perfil_fechaNacimiento').on('blur', function(){
-        if ($('#perfil_fechaNacimiento').val() != '') {
-            var input = $('#perfil_fechaNacimiento').val().split('-');
-            $('#perfil_fechaNacimientoReal').val(input[2] + '-' + input[1] + '-' + input[0]);
+    $('#perfil_fechaNacimientoReal').on('input', function(){
+        if ($('#perfil_fechaNacimientoReal').val() != '') {
+            // var fecha = $('#perfil_fechaNacimientoReal').val().split('-');
+            // $('#perfil_fechaNacimiento').val(fecha[2] + '-' + fecha[1] + '-' + fecha[0]);
+            var fecha = Date.parseExact($('#perfil_fechaNacimientoReal').val(), ["yyyy-MM-dd", "dd/MM/yyyy"]);
+            var anio = fecha.getFullYear();
+            var mes = pad('00', fecha.getMonth() + 1, true);
+            var dia = pad('00', fecha.getDate(), true);
+            $('#perfil_fechaNacimiento').val(dia + '-' + mes + '-' + anio);
         } else {
-            $('#perfil_fechaNacimiento').attr('type', 'text');
+            $('#perfil_fechaNacimiento').val('');
         }
     });
 
     $('#ingresar_fecha').on('focus', function(){
-        $('#ingresar_fecha').attr('type', 'date');
+        $('#ingresar_fechaReal').trigger('focus').trigger('click');
     });
 
-    $('#ingresar_fecha').on('blur', function(){
-        if($('#ingresar_fecha').val() != '') {
-            var input = $('#perfil_fechaNacimiento').val().split('-');
-            $('#perfil_fechaNacimientoReal').val(input[2] + '-' + input[1] + '-' + input[0]);
+    $('#ingresar_fechaReal').on('input', function(){
+        if ($('#ingresar_fechaReal').val() != '') {
+            // var fecha = $('#ingresar_fechaReal').val().split('-');
+            // $('#ingresar_fecha').val(fecha[2] + '-' + fecha[1] + '-' + fecha[0]);
+            var fecha = Date.parseExact($('#ingresar_fechaReal').val(), ["yyyy-MM-dd", "dd/MM/yyyy"]);
+            var anio = fecha.getFullYear();
+            var mes = pad('00', fecha.getMonth() + 1, true);
+            var dia = pad('00', fecha.getDate(), true);
+            $('#ingresar_fecha').val(dia + '-' + mes + '-' + anio);
         } else {
-            $('#ingresar_fecha').attr('type', 'text');
+            $('#ingresar_fecha').val('');
         }
     });
 
@@ -175,9 +164,9 @@ document.addEventListener("deviceready", function() {
         type: 'get',
         dataType: 'json',
         beforeSend: function() {
-            $('#asociar_marca').html('<option value="">Marca</option>');
-            $('#asociar_modelo').html('<option value="">Modelo</option>').prop('disabled', true);
-            $('#asociar_version').html('<option value="">Versión</option>').prop('disabled', true);
+            $('#asociar_marca').html('<option value="">Marca*</option>');
+            $('#asociar_modelo').html('<option value="">Modelo*</option>').prop('disabled', true);
+            $('#asociar_version').html('<option value="">Versión*</option>').prop('disabled', true);
         },
         success: function (data) {
             $.each(data, function(i, e){
@@ -197,15 +186,15 @@ document.addEventListener("deviceready", function() {
             },
             beforeSend: function() {
                 GPSTaller.alert();
-                $('#asociar_modelo').html('<option value="">Modelo</option>').prop('disabled', true);
-                $('#asociar_version').html('<option value="">Versión</option>').prop('disabled', true);
+                $('#asociar_modelo').html('<option value="">Modelo*</option>').prop('disabled', true);
+                $('#asociar_version').html('<option value="">Versión*</option>').prop('disabled', true);
             },
             success: function (data) {
-                GPSTaller.alertClose();
                 $.each(data, function(i, e){
                     $('#asociar_modelo').append('<option value="' + e.id + '">' + e.text + '</option>');
                 });
                 $('#asociar_modelo').prop('disabled', false);
+                GPSTaller.alertClose();
             }
         });
     });
@@ -221,19 +210,23 @@ document.addEventListener("deviceready", function() {
             },
             beforeSend: function() {
                 GPSTaller.alert();
-                $('#asociar_version').html('<option value="">Versión</option>').prop('disabled', true);
+                $('#asociar_version').html('<option value="">Versión*</option>').prop('disabled', true);
             },
             success: function (data) {
-                GPSTaller.alertClose();
                 $.each(data, function(i, e){
                     $('#asociar_version').append('<option value="' + e.id + '">' + e.text + '</option>');
                 });
                 $('#asociar_version').prop('disabled', false);
+                GPSTaller.alertClose();
             }
         });
     });
 
-    GPSTaller.alert('Para mejorar la presición de tu ubicación te recomendamos tener el GPS activado', true);
+    $('#footer').on('click', function(e){
+        e.preventDefault();
+
+        alert('20151007131225');
+    });
 
 }, false);
 

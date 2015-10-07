@@ -4,8 +4,9 @@ GPSTaller.comentarios = function (data) {
     $('#comentarios_nombre').text('');
     $('#comentarios_lista').html('');
     $('#comentarios_comentario').val('');
+    $('#comentarios_stars').val('');
     $('#comentarios_rating').val('');
-    $('#comentarios_comentar').hide();
+    $('#comentarios_form').hide();
     $('[star]').find('img').attr('src', 'img/estrella-0.png');
 
     GPSTaller.search({
@@ -23,7 +24,7 @@ GPSTaller.comentarios = function (data) {
             mail: GPSTaller.loggedUser || ''
         },
         success: function(data) {
-            GPSTaller.alertClose();
+            // GPSTaller.alertClose();
             $('#comentarios_btn').attr('tallerID', data.tallerID);
             if (data.comentarios) {
                 $.each(data.comentarios, function(i, e){
@@ -32,10 +33,15 @@ GPSTaller.comentarios = function (data) {
             } else {
                 $('#comentarios_lista').append("<p>Este taller no tiene comentarios</p>")
             }
-            if(data.permisos[0].code == '200') {
-                $('#comentarios_comentar').show();
-            } else {
-                GPSTaller.alert(data.permisos.mensaje);
+            switch (data.permisos[0].code) {
+                case 200:
+                    $('#comentarios_form').show();
+                    break;
+                case 0:
+                case 1:
+                case 2:
+                    GPSTaller.alert(data.permisos[0].mensaje, true);
+                    break;
             }
         }
     });
@@ -57,29 +63,35 @@ document.addEventListener("deviceready", function() {
     $('#comentarios_btn').on('click', function(e) {
         e.preventDefault();
 
-        GPSTaller.alert();
+        if (GPSTaller.loggedUser == '') {
+            GPSTaller.show('login');
+        } else {
+            GPSTaller.alert();
 
-        $.ajax({
-            url: GPSTaller.urls.comments,
-            type: 'post',
-            dataType: 'json',
-            data: {
-                action: 'comentar',
-                id: $('#comentarios_btn').attr('tallerID'),
-                mail: GPSTaller.loggedUser,
-                calificacion: $('#comentarios_rating').val(),
-                comentario: $('#comentarios_comentario').val()
-            },
-            success: function(data) {
-                if (data[0].status == 'ok') {
-                    GPSTaller.alert(data[0].mensaje, true);
-                    GPSTaller.visited = ['index'];
-                    GPSTaller.show('index');
-                } else {
-                    GPSTaller.alert(data[0].mensaje, true);
+            $.ajax({
+                url: GPSTaller.urls.comments,
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    hash: GPSTaller.hash,
+                    action: 'comentar',
+                    id: $('#comentarios_btn').attr('tallerID'),
+                    mail: GPSTaller.loggedUser,
+                    calificacion: $('#comentarios_rating').val(),
+                    comentario: $('#comentarios_comentario').val()
+                },
+                success: function(data) {
+                    if (data[0].status == 'ok') {
+                        GPSTaller.alert(data[0].mensaje, true);
+                        GPSTaller.visited = ['index'];
+                        GPSTaller.show('index');
+                    } else {
+                        GPSTaller.alert(data[0].mensaje, true);
+                    }
                 }
-            }
-        });
+            });
+        }
+
     });
 
 });

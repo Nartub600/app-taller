@@ -1,7 +1,4 @@
 GPSTaller.verPerfil = function() {
-    if(!$('#mensajeroModal').is(':visible')) {
-        GPSTaller.alert();
-    }
 
     $('#frm_perfil input').val('');
     $('#frm_perfil select option').prop('selected', false);
@@ -23,6 +20,11 @@ GPSTaller.verPerfil = function() {
             mail: GPSTaller.loggedUser,
             hash: GPSTaller.hash
         },
+        beforeSend: function() {
+            if (!$('#mensajeroModal').is(':visible')) {
+                GPSTaller.alert();
+            }
+        },
         success: function(data) {
             GPSTaller.alertClose();
             // $('#perfil_ID').val() = data.usuario.ID;
@@ -32,35 +34,31 @@ GPSTaller.verPerfil = function() {
             $('#perfil_celular').val(data.usuario.celular);
             $('#perfil_telefono').val(data.usuario.telefono);
 
-            if (data.usuario.fechaNacimiento) {
-                var fechaNacimiento = data.usuario.fechaNacimiento.split('-');
-                $('#perfil_fechaNacimiento').val(fechaNacimiento[2] + '-' + fechaNacimiento[1] + '-' + fechaNacimiento[0]);
-                $('#perfil_fechaNacimientoReal').val(data.usuario.fechaNacimiento);
-            } else {
-                $('#perfil_fechaNacimiento').attr('type', 'text').on('focus', function(){
-                    $('#perfil_fechaNacimiento').attr('type', 'date');
-                });
-            }
+            $('#perfil_fechaNacimiento').val(data.usuario.fechaNacimiento);
+            var fecha = data.usuario.fechaNacimiento.split('-');
+            $('#perfil_fechaNacimientoReal').val(fecha[2] + '-' + fecha[1] + '-' + fecha[0]);
 
             $('#perfil_domicilio').val(data.usuario.domicilio);
-            $('#perfil_codigoPostal').val(data.usuario.CodigoPostal);
+            $('#perfil_codigoPostal').val(data.usuario.codigoPostal);
 
-            if (data.usuario.provinciaID != '' && data.usuario.provinciaID != null) {
-                $('#perfil_provincia option[value="' + data.usuario.provinciaID + '"]').prop('selected', true);
-
-                if (data.usuario.partidoID != '' && data.usuario.partidoID != null) {
-                    $('#perfil_partido').html('<option value="' + data.usuario.partidoID + '">' + data.usuario.partido + '</option>');
-
-                    if (data.usuario.localidadID != '' & data.usuario.localidadID != null) {
-                        $('#perfil_localidad').html('<option value="' + data.usuario.localidadID + '">' + data.usuario.localidad + '</option>');
-                    } else {
-                        $('#perfil_localidad option').first().prop('selected', true);
-                    }
-                } else {
-                    $('#perfil_partido option').first().prop('selected', true);
-                }
-            } else {
+            if (data.usuario.provinciaID == '' || data.usuario.provinciaID == null || data.usuario.provinciaID == '0') {
                 $('#perfil_provincia').prop('disabled', false);
+            } else {
+                $('#perfil_provincia option[value="' + data.usuario.provinciaID + '"]').prop('selected', true);
+                $('#perfil_provincia').trigger('change');
+
+                if (data.usuario.partidoID == '' || data.usuario.partidoID == null || data.usuario.partidoID == '0') {
+                    // $('#perfil_partido option').first().prop('selected', true);
+                } else {
+                    $('#perfil_partido').html('<option value="' + data.usuario.partidoID + '">' + data.usuario.partido + '</option>').prop('disabled', false);
+                    $('#perfil_partido').trigger('change');
+
+                    if (data.usuario.localidadID == '' || data.usuario.localidadID != null || data.usuario.localidadID == '0') {
+                        // $('#perfil_localidad option').first().prop('selected', true);
+                    } else {
+                        $('#perfil_localidad').html('<option value="' + data.usuario.localidadID + '">' + data.usuario.localidad + '</option>').prop('disabled', false);
+                    }
+                }
             }
 
             // $('#perfil_partido option[value="' + data.usuario.partidoID + '"]').prop('selected', true);
@@ -74,7 +72,7 @@ GPSTaller.verPerfil = function() {
             // }
 
             $('#perfil_cuit').val(data.usuario.cuit);
-            $('#perfil_iva option[value="' + data.usuario.iva + '"]').prop('selected', true);
+            $('#perfil_iva option[value="' + data.usuario.condicionIva + '"]').prop('selected', true);
             $('#perfil_horarioContacto').val(data.usuario.horarioContacto);
             $('#perfil_genero option[value="' + data.usuario.genero + '"]').prop('selected', true);
             $('#perfil_estadoCivil option[value="' + data.usuario.estadoCivil + '"]').prop('selected', true);
@@ -93,8 +91,8 @@ GPSTaller.verPerfil = function() {
                     $('#dominiosRegistradosData').append("<div role=\"tabpanel\" class=\"tab-pane " + activeString + "\" id=\"dominio-" + ibis + "\"></div>");
                     $('#serviciosRegistradosData').append("<div role=\"tabpanel\" class=\"tab-pane " + activeString + "\" id=\"taller-" + ibis + "\"></div>");
 
-                    $('#dominio-' + ibis).append("<div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Marca:</strong> " + e.marca + "</p><p><strong>Año:</strong> " + e.ano + "</p></div><div class=\"col-xs-6\"><p><strong>Modelo:</strong> " + e.modelo + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Historia Clínica</strong> (Usuario).</p></div><div class=\"col-xs-6\"><a nav=\"ingresar-servicio\" data-dominio=\"" + e.dominio + "\" href=\"#\" class=\"link-nuevo-servicio\">Agregar nuevo servicio</a></div></div>");
-                    $('#taller-' + ibis).append("<div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Marca:</strong> " + e.marca + "</p><p><strong>Año:</strong> " + e.ano + "</p></div><div class=\"col-xs-6\"><p><strong>Modelo:</strong> " + e.modelo + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Historia Clínica</strong> (Taller).</p></div><div class=\"col-xs-6\"><a nav=\"ingresar-servicio\" data-dominio=\"" + e.dominio + "\" href=\"#\" class=\"link-nuevo-servicio\">Agregar nuevo servicio</a></div></div>");
+                    $('#dominio-' + ibis).append("<div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Marca:</strong> " + e.marca + "</p><p><strong>Año:</strong> " + e.ano + "</p></div><div class=\"col-xs-6\"><p><strong>Versión:</strong> " + e.version + "</p><p><strong>Modelo:</strong> " + e.modelo + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Color:</strong> " + e.color + "</p><p><strong>VIN:</strong> " + e.vin + "</p></div><div class=\"col-xs-6\"><p><strong>Motor:</strong> " + e.motor + "</p><p><strong>Chasis:</strong> " + e.chasis + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Combustible:</strong> " + e.combustible + "</p></div><div class=\"col-xs-6\"><p><strong>Recupero:</strong> " + e.dispositivoRecupero + "</p></div></div> <div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Historia Clínica</strong> (Usuario)</p></div><div class=\"col-xs-6\"><a nav=\"ingresar-servicio\" data-dominio=\"" + e.dominio + "\" href=\"#\" class=\"link-nuevo-servicio\">Agregar nuevo servicio</a></div></div>");
+                    $('#taller-' + ibis).append("<div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Marca:</strong> " + e.marca + "</p><p><strong>Año:</strong> " + e.ano + "</p></div><div class=\"col-xs-6\"><p><strong>Versión:</strong> " + e.version + "</p><p><strong>Modelo:</strong> " + e.modelo + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Color:</strong> " + e.color + "</p><p><strong>VIN:</strong> " + e.vin + "</p></div><div class=\"col-xs-6\"><p><strong>Motor:</strong> " + e.motor + "</p><p><strong>Chasis:</strong> " + e.chasis + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Combustible:</strong> " + e.combustible + "</p></div><div class=\"col-xs-6\"><p><strong>Recupero:</strong> " + e.dispositivoRecupero + "</p></div></div> <div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Historia Clínica</strong> (Taller)</p></div><div class=\"col-xs-6\"><a nav=\"ingresar-servicio\" data-dominio=\"" + e.dominio + "\" href=\"#\" class=\"link-nuevo-servicio\">Agregar nuevo servicio</a></div></div>");
 
                     var countusuario = 0;
                     var counttaller = 0;
@@ -125,30 +123,36 @@ GPSTaller.verPerfil = function() {
     });
 }
 
+GPSTaller.verRegistro = function() {
+    $('#registro form')[0].reset();
+}
+
+GPSTaller.verLogin = function() {
+    $('#login form')[0].reset();
+}
+
 GPSTaller.verAsociar = function() {
-    $('#asociar-dominio form input').val('');
-    // $('#asociar-dominio form select option').prop('selected', false);
-    $('#asociar-dominio form select option').prop('selected', false);
+    $('#asociar-dominio form')[0].reset();
+    $('#asociar_modelo').html('<option value="">Modelo*</option>').prop('disabled', true);
+    $('#asociar_version').html('<option value="">Versión*</option>').prop('disabled', true);
 }
 
 GPSTaller.verDesvincularDominio = function(data) {
     // $('#desvincular_dominio').text('');
     $('#desvincular_dominio').text(data.dominio);
-    $('#desvincular_mensaje').val('');
+    $('#desvincular-vehiculo form')[0].reset();
 }
 
 GPSTaller.verIngresarServicio = function(data) {
     // $('#ingresar_dominio').text('');
     $('#ingresar_dominio').text(data.dominio);
-    $('#ingresar-servicio form input').val('');
-    $('#ingresar-servicio form textarea').val('');
-    $('#ingresar-servicio form select option').prop('selected', false);
+    $('#ingresar-servicio form')[0].reset();
 }
 
 GPSTaller.verSolicitarCambios = function(data) {
-    $('#solicitar_mensaje').val('');
-    $('#solicitar_dominio').val('');
+    // $('#solicitar_dominio').val('');
     $('#solicitar_dominio').val(data.dominio);
+    $('#solicitar-cambios form')[0].reset();
 }
 
 document.addEventListener("deviceready", function() {
@@ -160,14 +164,14 @@ document.addEventListener("deviceready", function() {
         GPSTaller.alert();
 
         var data = {
-            fechaNacimiento: $('#perfil_fechaNacimientoReal').val(),
+            fechaNacimiento: $('#perfil_fechaNacimiento').val(),
             mail: $('#perfil_email').val(),
             empresa: $('#perfil_empresa').val(),
             celular: $('#perfil_celular').val(),
             telefono: $('#perfil_telefono').val(),
             horarioContacto: $('#perfil_horarioContacto').val(),
             cuit: $('#perfil_cuit').val(),
-            condIva: $('#perfil_iva').val(),
+            condicionIva: $('#perfil_iva').val(),
             domicilio: $('#perfil_domicilio').val(),
             codigoPostal: $('#perfil_codigoPostal').val(),
             provincia: $('#perfil_provincia').val(),
@@ -190,6 +194,30 @@ document.addEventListener("deviceready", function() {
         });
     });
 
+    $('#btn_cambiarContrasena').on('click', function(e){
+        e.preventDefault();
+
+        GPSTaller.alert();
+
+        data = {
+            contrasena: $('#cambiar_oldPass').val(),
+            nuevaContrasena: $('#cambiar_newPass').val(),
+            nuevaContrasena2: $('#cambiar_newPass2').val()
+        };
+
+        GPSTaller.cambiarContrasena(data, function(data){
+            // GPSTaller.alertClose();
+            $('#cambiarcontrasenia form')[0].reset();
+            if (data[0].status == 'ok') {
+                GPSTaller.alert(data[0].mensaje, true);
+                GPSTaller.visited = ['index'];
+                GPSTaller.show('index');
+            } else {
+                GPSTaller.alert(data[0].mensaje, true);
+            }
+        });
+    });
+
     $('#btn_asociarVehiculo').on('click', function(e){
         e.preventDefault();
 
@@ -206,7 +234,7 @@ document.addEventListener("deviceready", function() {
             marca: $('#asociar_marca').val(),
             modelo: $('#asociar_modelo').val(),
             version: $('#asociar_version').val(),
-            gnc: $('#asociar_gnc').val(),
+            combustible: $('#asociar_combustible').val(),
             dispositivoRecupero: $('#asociar_dispositivoRecupero').val()
         };
 
@@ -217,10 +245,10 @@ document.addEventListener("deviceready", function() {
                 GPSTaller.visited = ['index', 'panel-administracion'];
                 GPSTaller.show('panel-administracion');
             } else if (data[0].status == 'error') {
-                if(data[0].code == '14') {
-                    GPSTaller.alert(data[0].mensaje, true);
+                if (data[0].code == '14') {
                     $('#myModalButtons').children().not('#btn_dismiss').remove();
                     $('#btn_dismiss').before("<p id=\"btn_reclamar\" class=\"texto-centrado\"><a type=\"button\" class=\"btn btn-gps center-block ui-link\">Aceptar</a></p>");
+                    GPSTaller.alert(data[0].mensaje, true);
 
                     $('body').on('click', '#btn_reclamar', function(e){
                         e.preventDefault();
@@ -291,7 +319,7 @@ document.addEventListener("deviceready", function() {
             mail: GPSTaller.loggedUser,
             dominio: $('#ingresar_dominio').text(),
             km: $('#ingresar_km').val(),
-            fecha: $('#ingresar_fechaReal').val(),
+            fecha: $('#ingresar_fecha').val(),
             tipoServicio: $('#ingresar_tipoServicio').val(),
             detalle: $('#ingresar_detalle').val(),
             realizadoPor: $('#ingresar_realizadoPor').val()
