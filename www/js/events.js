@@ -225,7 +225,31 @@ document.addEventListener("deviceready", function() {
     $('#footer').on('click', function(e){
         e.preventDefault();
 
-        alert('20151007131225');
+        alert('20151014162104');
+    });
+
+    window.webintent.getUri(function(uri) {
+        var chunks = uri.split('gpstaller.com.ar/');
+        if (chunks[chunks.length - 1].search('verificationCode') != -1) {
+            var preQueryString = chunks[chunks.length - 1].split('?');
+            var queryString = preQueryString[preQueryString.length - 1];
+            // alert(queryString);
+            var queries = queryString.split('&');
+
+            $.each(queries, function(i,e){
+                alert(e);
+            });
+
+            // GPSTaller.activarCuenta(data, function(data) {
+            //     if(data[0].status == 'ok') {
+            //         GPSTaller.alert(data[0].mensaje, true);
+            //         GPSTaller.visited = ['index', 'panel-administracion'];
+            //         GPSTaller.show('panel-administracion');
+            //     } else {
+            //         GPSTaller.alert(data[0].mensaje, true);
+            //     }
+            // });
+        }
     });
 
 }, false);

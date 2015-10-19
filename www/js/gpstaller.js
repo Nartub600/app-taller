@@ -141,6 +141,18 @@ GPSTaller = {
         });
     },
 
+    activarCuenta: function(data, callback) {
+        $.ajax({
+            url: GPSTaller.urls.access,
+            type: 'get',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+                callback(data);
+            }
+        });
+    },
+
     solicitarContrasena: function (data, callback) {
         data.action = 'solicitarContrasena';
 

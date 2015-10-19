@@ -9,8 +9,10 @@ GPSTaller.comentarios = function (data) {
     $('#comentarios_form').hide();
     $('[star]').find('img').attr('src', 'img/estrella-0.png');
 
+    var tallerID = data.tallerID;
+
     GPSTaller.search({
-        tallerID: data.tallerID
+        tallerID: tallerID
     }, function(data){
         $('#comentarios_nombre').text(data[0].nombre);
     });
@@ -20,15 +22,15 @@ GPSTaller.comentarios = function (data) {
         type: 'get',
         dataType: 'json',
         data: {
-            id: data.tallerID,
+            id: tallerID,
             mail: GPSTaller.loggedUser || ''
         },
         success: function(data) {
             // GPSTaller.alertClose();
-            $('#comentarios_btn').attr('tallerID', data.tallerID);
+            $('#comentarios_btn').attr('tallerID', tallerID);
             if (data.comentarios) {
                 $.each(data.comentarios, function(i, e){
-                    $('#comentarios_lista').append("<div class=\"comentario\"><p class=\"titulo-comentario\">" + e.comentario + "<p class=\"datos-usuario-comentario\">" + e.nombre + " " + e.fecha + "<img class=\"img-rating-comentario\" src=\"img/rating-" + e.rating + ".png\" /></p><div class=\"line-02\"></div></div>");
+                    $('#comentarios_lista').append("<div class=\"comentario\"><p class=\"titulo-comentario\">" + e.comentario + "</p><p class=\"datos-usuario-comentario\">" + e.nombre + " " + e.fecha + "<img class=\"img-rating-comentario\" src=\"img/rating-" + e.rating + ".png\" /></p><div class=\"line-02\"></div></div>");
                 });
             } else {
                 $('#comentarios_lista').append("<p>Este taller no tiene comentarios</p>")
@@ -68,17 +70,30 @@ document.addEventListener("deviceready", function() {
         } else {
             GPSTaller.alert();
 
+            var data = {
+                hash: GPSTaller.hash,
+                action: 'comentar',
+                id: $('#comentarios_btn').attr('tallerID'),
+                mail: GPSTaller.loggedUser,
+                calificacion: $('#comentarios_rating').val(),
+                comentario: $('#comentarios_comentario').val()
+            };
+
             $.ajax({
                 url: GPSTaller.urls.comments,
-                type: 'post',
+                type: 'get',
                 dataType: 'json',
-                data: {
-                    hash: GPSTaller.hash,
-                    action: 'comentar',
-                    id: $('#comentarios_btn').attr('tallerID'),
-                    mail: GPSTaller.loggedUser,
-                    calificacion: $('#comentarios_rating').val(),
-                    comentario: $('#comentarios_comentario').val()
+                data: data,
+                beforeSend: function() {
+                    if ($('#comentarios_comentario').val() == '') {
+                        GPSTaller.alert('Ingrese su comentario', true);
+                        return false;
+                    }
+                    if ($('#comentarios_rating').val() == '') {
+                        GPSTaller.alert('Ingrese su calificación', true);
+                        return false;
+                    }
+                    return true;
                 },
                 success: function(data) {
                     if (data[0].status == 'ok') {

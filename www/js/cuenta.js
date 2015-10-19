@@ -329,8 +329,8 @@ document.addEventListener("deviceready", function() {
             // GPSTaller.alertClose();
             if(data[0].status == 'ok') {
                 GPSTaller.alert(data[0].mensaje, true);
-                GPSTaller.visited = ['index', 'panel-administracion'];
-                GPSTaller.show('panel-administracion');
+                GPSTaller.visited = ['index'];
+                GPSTaller.show('index');
             } else {
                 GPSTaller.alert(data[0].mensaje, true);
             }
