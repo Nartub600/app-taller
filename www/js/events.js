@@ -165,8 +165,10 @@ document.addEventListener("deviceready", function() {
         dataType: 'json',
         beforeSend: function() {
             $('#asociar_marca').html('<option value="">Marca*</option>');
-            $('#asociar_modelo').html('<option value="">Modelo*</option>').prop('disabled', true);
-            $('#asociar_version').html('<option value="">Versión*</option>').prop('disabled', true);
+            $('#asociar_modelo').html('<option value="">Modelo*</option>');
+            $('#asociar_modelo').prop('disabled', true);
+            $('#asociar_version').html('<option value="">Versión*</option>');
+            $('#asociar_version').prop('disabled', true);
         },
         success: function (data) {
             $.each(data, function(i, e){
@@ -186,8 +188,8 @@ document.addEventListener("deviceready", function() {
             },
             beforeSend: function() {
                 GPSTaller.alert();
-                $('#asociar_modelo').html('<option value="">Modelo*</option>').prop('disabled', true);
-                $('#asociar_version').html('<option value="">Versión*</option>').prop('disabled', true);
+                // $('#asociar_modelo').html('<option value="">Modelo*</option>').prop('disabled', true);
+                // $('#asociar_version').html('<option value="">Versión*</option>').prop('disabled', true);
             },
             success: function (data) {
                 $.each(data, function(i, e){
@@ -210,7 +212,7 @@ document.addEventListener("deviceready", function() {
             },
             beforeSend: function() {
                 GPSTaller.alert();
-                $('#asociar_version').html('<option value="">Versión*</option>').prop('disabled', true);
+                // $('#asociar_version').html('<option value="">Versión*</option>').prop('disabled', true);
             },
             success: function (data) {
                 $.each(data, function(i, e){
@@ -222,33 +224,36 @@ document.addEventListener("deviceready", function() {
         });
     });
 
-    $('#footer').on('click', function(e){
-        e.preventDefault();
+    // $('#footer').on('click', function(e){
+    //     e.preventDefault();
 
-        alert('20151014162104');
-    });
+    //     alert('20151130112430');
+    // });
 
     window.webintent.getUri(function(uri) {
         var chunks = uri.split('gpstaller.com.ar/');
         if (chunks[chunks.length - 1].search('verificationCode') != -1) {
-            var preQueryString = chunks[chunks.length - 1].split('?');
-            var queryString = preQueryString[preQueryString.length - 1];
-            // alert(queryString);
-            var queries = queryString.split('&');
+            // var preQueryString = chunks[chunks.length - 1].split('?');
+            // var queryString = preQueryString[preQueryString.length - 1];
+            // var queries = queryString.split('&');
 
-            $.each(queries, function(i,e){
-                alert(e);
-            });
+            // var data = {};
+            // var string = '';
 
-            // GPSTaller.activarCuenta(data, function(data) {
-            //     if(data[0].status == 'ok') {
-            //         GPSTaller.alert(data[0].mensaje, true);
-            //         GPSTaller.visited = ['index', 'panel-administracion'];
-            //         GPSTaller.show('panel-administracion');
-            //     } else {
-            //         GPSTaller.alert(data[0].mensaje, true);
-            //     }
+            // $.each(queries, function(i,e){
+            //     var query = e.split('=');
+            //     data[query[0]] = query[1];
             // });
+
+            GPSTaller.activarCuenta(uri, function(data) {
+                if(data[0].status == 'ok') {
+                    GPSTaller.alert(data[0].mensaje, true);
+                    GPSTaller.visited = ['index', 'panel-administracion'];
+                    GPSTaller.show('panel-administracion');
+                } else {
+                    GPSTaller.alert(data[0].mensaje, true);
+                }
+            });
         }
     });
 

@@ -7,6 +7,8 @@ GPSTaller.comentarios = function (data) {
     $('#comentarios_stars').val('');
     $('#comentarios_rating').val('');
     $('#comentarios_form').hide();
+    $('#comentarios_aviso').hide();
+    $('#div_btn_login').hide();
     $('[star]').find('img').attr('src', 'img/estrella-0.png');
 
     var tallerID = data.tallerID;
@@ -42,8 +44,12 @@ GPSTaller.comentarios = function (data) {
                 case 0:
                 case 1:
                 case 2:
-                    GPSTaller.alert(data.permisos[0].mensaje, true);
+                    // GPSTaller.alert(data.permisos[0].mensaje, true);
+                    $('#comentarios_aviso').show();
                     break;
+            }
+            if (!GPSTaller.loggedUser) {
+                $('#div_btn_login').show();
             }
         }
     });
@@ -68,8 +74,6 @@ document.addEventListener("deviceready", function() {
         if (GPSTaller.loggedUser == '') {
             GPSTaller.show('login');
         } else {
-            GPSTaller.alert();
-
             var data = {
                 hash: GPSTaller.hash,
                 action: 'comentar',
@@ -85,6 +89,7 @@ document.addEventListener("deviceready", function() {
                 dataType: 'json',
                 data: data,
                 beforeSend: function() {
+                    GPSTaller.alert();
                     if ($('#comentarios_comentario').val() == '') {
                         GPSTaller.alert('Ingrese su comentario', true);
                         return false;
@@ -98,8 +103,8 @@ document.addEventListener("deviceready", function() {
                 success: function(data) {
                     if (data[0].status == 'ok') {
                         GPSTaller.alert(data[0].mensaje, true);
-                        GPSTaller.visited = ['index'];
-                        GPSTaller.show('index');
+                        GPSTaller.visited = ['comentarios'];
+                        GPSTaller.show('comentarios');
                     } else {
                         GPSTaller.alert(data[0].mensaje, true);
                     }

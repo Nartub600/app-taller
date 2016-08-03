@@ -7,10 +7,9 @@ GPSTaller.verPerfil = function() {
     $('#perfil_localidad').html('<option value="">Localidad</option>').prop('disabled', true);
 
     $('#dominiosRegistradosTabs').html('');
-    $('#dominiosRegistradosData').html('');
-    $('#serviciosRegistradosTabs').html('');
-    $('#serviciosRegistradosData').html('');
+    $('#serviciosRegistrados').html('');
     $('#serviciosRegistrados').hide();
+    $('#info_dominios').hide();
 
     $.ajax({
         url: GPSTaller.urls.data,
@@ -79,48 +78,61 @@ GPSTaller.verPerfil = function() {
             $('#perfil_pagoSeguros option[value="' + data.usuario.pagoSeguros + '"]').prop('selected', true);
 
             if (data.vehiculos != '0') {
+                $('#info_dominios').show();
                 $('#administracionTitle').show();
                 $('#serviciosRegistrados').show();
                 $.each(data.vehiculos, function(i, e){
                     var ibis = i + 1;
-                    if (ibis == 1) { var activeString = 'active' } else { var activeString = '' }
+
+                    if (ibis == 1) {
+                        var activeString = 'active';
+                        // alert(e.dominio);
+                        $('#panel-administracion [nav="desvincular-vehiculo"]').data('dominio', e.dominio);
+                        $('#panel-administracion [nav="solicitar-cambios"]').data('dominio', e.dominio);
+                        $('#panel-administracion [nav="ingresar-servicio"]').data('dominio', e.dominio);
+                    } else {
+                        var activeString = '';
+                    }
 
                     $('#dominiosRegistradosTabs').append("<li role=\"presentation\" class=\"" + activeString + "\"><a href=\"#dominio-" + ibis + "\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">" + e.dominio + "</a></li>");
-                    $('#serviciosRegistradosTabs').append("<li role=\"presentation\" class=\"" + activeString + "\"><a href=\"#taller-" + ibis + "\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">" + e.dominio + "</a></li>")
+                    // $('#serviciosRegistradosTabs').append("<li role=\"presentation\" class=\"" + activeString + "\"><a href=\"#taller-" + ibis + "\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">" + e.dominio + "</a></li>")
 
-                    $('#dominiosRegistradosData').append("<div role=\"tabpanel\" class=\"tab-pane " + activeString + "\" id=\"dominio-" + ibis + "\"></div>");
-                    $('#serviciosRegistradosData').append("<div role=\"tabpanel\" class=\"tab-pane " + activeString + "\" id=\"taller-" + ibis + "\"></div>");
+                    // $('#dominiosRegistradosData').append("<div role=\"tabpanel\" class=\"tab-pane " + activeString + "\" id=\"dominio-" + ibis + "\"></div>");
+                    // $('#serviciosRegistradosData').append("<div role=\"tabpanel\" class=\"tab-pane " + activeString + "\" id=\"taller-" + ibis + "\"></div>");
 
-                    $('#dominio-' + ibis).append("<div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Marca:</strong> " + e.marca + "</p><p><strong>Año:</strong> " + e.ano + "</p></div><div class=\"col-xs-6\"><p><strong>Versión:</strong> " + e.version + "</p><p><strong>Modelo:</strong> " + e.modelo + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Color:</strong> " + e.color + "</p><p><strong>VIN:</strong> " + e.vin + "</p></div><div class=\"col-xs-6\"><p><strong>Motor:</strong> " + e.motor + "</p><p><strong>Chasis:</strong> " + e.chasis + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Combustible:</strong> " + e.combustible + "</p></div><div class=\"col-xs-6\"><p><strong>Recupero:</strong> " + e.dispositivoRecupero + "</p></div></div> <div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Historia Clínica</strong> (Usuario)</p></div><div class=\"col-xs-6\"><a nav=\"ingresar-servicio\" data-dominio=\"" + e.dominio + "\" href=\"#\" class=\"link-nuevo-servicio\">Agregar nuevo servicio</a></div></div>");
-                    $('#taller-' + ibis).append("<div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Marca:</strong> " + e.marca + "</p><p><strong>Año:</strong> " + e.ano + "</p></div><div class=\"col-xs-6\"><p><strong>Versión:</strong> " + e.version + "</p><p><strong>Modelo:</strong> " + e.modelo + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Color:</strong> " + e.color + "</p><p><strong>VIN:</strong> " + e.vin + "</p></div><div class=\"col-xs-6\"><p><strong>Motor:</strong> " + e.motor + "</p><p><strong>Chasis:</strong> " + e.chasis + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Combustible:</strong> " + e.combustible + "</p></div><div class=\"col-xs-6\"><p><strong>Recupero:</strong> " + e.dispositivoRecupero + "</p></div></div> <div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Historia Clínica</strong> (Taller)</p></div><div class=\"col-xs-6\"><a nav=\"ingresar-servicio\" data-dominio=\"" + e.dominio + "\" href=\"#\" class=\"link-nuevo-servicio\">Agregar nuevo servicio</a></div></div>");
+                    // $('#dominio-' + ibis).append("<div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Marca:</strong> " + e.marca + "</p><p><strong>Año:</strong> " + e.ano + "</p></div><div class=\"col-xs-6\"><p><strong>Versión:</strong> " + e.version + "</p><p><strong>Modelo:</strong> " + e.modelo + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Color:</strong> " + e.color + "</p><p><strong>VIN:</strong> " + e.vin + "</p></div><div class=\"col-xs-6\"><p><strong>Motor:</strong> " + e.motor + "</p><p><strong>Chasis:</strong> " + e.chasis + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Combustible:</strong> " + e.combustible + "</p></div><div class=\"col-xs-6\"><p><strong>Recupero:</strong> " + e.dispositivoRecupero + "</p></div></div> <div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Historia Clínica</strong> (Usuario)</p></div><div class=\"col-xs-6\"><a nav=\"ingresar-servicio\" data-dominio=\"" + e.dominio + "\" href=\"#\" class=\"link-nuevo-servicio\">Agregar nuevo servicio</a></div></div>");
+                    // $('#taller-' + ibis).append("<div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Marca:</strong> " + e.marca + "</p><p><strong>Año:</strong> " + e.ano + "</p></div><div class=\"col-xs-6\"><p><strong>Versión:</strong> " + e.version + "</p><p><strong>Modelo:</strong> " + e.modelo + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Color:</strong> " + e.color + "</p><p><strong>VIN:</strong> " + e.vin + "</p></div><div class=\"col-xs-6\"><p><strong>Motor:</strong> " + e.motor + "</p><p><strong>Chasis:</strong> " + e.chasis + "</p></div></div><div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Combustible:</strong> " + e.combustible + "</p></div><div class=\"col-xs-6\"><p><strong>Recupero:</strong> " + e.dispositivoRecupero + "</p></div></div> <div class=\"row ajuste-grid\"><div class=\"col-xs-6\"><p><strong>Historia Clínica</strong> (Taller)</p></div><div class=\"col-xs-6\"><a nav=\"ingresar-servicio\" data-dominio=\"" + e.dominio + "\" href=\"#\" class=\"link-nuevo-servicio\">Agregar nuevo servicio</a></div></div>");
 
-                    var countusuario = 0;
-                    var counttaller = 0;
+                    // var countusuario = 0;
+                    // var counttaller = 0;
 
+                    $('#serviciosRegistrados').append("<div class=\"tab-pane " + activeString + "\" id=\"dominio-" + ibis + "\"><h3>SERVICIOS REGISTRADOS POR USUARIO</h3><div class=\"serviciosUsuario\"></div><h3>SERVICIOS REGISTRADOS POR TALLERES DE LA RED</h3><div class=\"serviciosTaller\"></div></div>");
                     if(e.servicios != '0') {
                         $.each(e.servicios, function(i, e){
                             if(e.tipo == 'usuario') {
-                                countusuario = countusuario + 1;
-                                if(countusuario == 1) {
-                                    $('#dominio-' + ibis).append("<div class=\"row content-background-listado\"><div class=\"col-xs-4\"><p>Fecha</p></div><div class=\"col-xs-4\"><p>Kilómetros</p></div><div class=\"col-xs-4\"><p>Servicio</p></div></div>");
-                                }
-                                $('#dominio-' + ibis).append("<div class=\"row content-background-listado descripciones\"><div class=\"col-xs-4\"><p>" + e.fecha + "</p></div><div class=\"col-xs-4\"><p>" + e.kilometros + "</p></div><div class=\"col-xs-4\"><p>" + e.servicioTipo + "</p><p>Relizado por: " + e.servicioRealizadoPor + "</p></div></div>");
+                                $('#dominio-' + ibis + ' .serviciosUsuario').append("<div style=\"width: 100%;\" class=\"row\"><div class=\"padding-top col-xs-4\"><p class=\"pcentrado\">" + e.fecha.replace(/-/g, '/') + "</p><p class=\"pcentrado\">" + e.kilometros + " km.</p></div><div class=\"col-xs-8\"><h4 class=\"padding-bottom bold\">" + e.servicioTipo + "</h4><p class=\"nomargin\"><span class=\"bold\">Realizado por:</span> " + e.servicioRealizadoPor + "</p><p class=\"nomargin\"><span class=\"bold\">Detalle:</span> " + e.servicioDetalle + "</p></div></div>");
                             } else if(e.tipo == 'taller') {
-                                counttaller = counttaller + 1;
-                                if(counttaller == 1) {
-                                    $('#taller-' + ibis).append("<div class=\"row content-background-listado\"><div class=\"col-xs-4\"><p>Fecha</p></div><div class=\"col-xs-4\"><p>Kilómetros</p></div><div class=\"col-xs-4\"><p>Servicio</p></div></div>");
-                                }
-                                $('#taller-' + ibis).append("<div class=\"row content-background-listado descripciones\"><div class=\"col-xs-4\"><p>" + e.fecha + "</p></div><div class=\"col-xs-4\"><p>" + e.kilometros + "</p></div><div class=\"col-xs-4\"><p>" + e.servicioTipo + "</p><p>Relizado por: " + e.servicioRealizadoPor + "</p></div></div>");
+                                $('#dominio-' + ibis + ' .serviciosTaller').append("<div style=\"width: 100%;\" class=\"row\"><div class=\"padding-top col-xs-4\"><p class=\"pcentrado\">" + e.fecha.replace(/-/g, '/') + "</p><p class=\"pcentrado\">" + e.kilometros + " km.</p></div><div class=\"col-xs-8\"><h4 class=\"padding-bottom bold\">" + e.servicioTipo + "</h4><p class=\"nomargin\"><span class=\"bold\">Realizado por:</span> " + e.servicioRealizadoPor + "</p><p class=\"nomargin\"><span class=\"bold\">Detalle:</span> " + e.servicioDetalle + "</p></div></div>");
                             }
                         });
                     }
 
-                    $('#dominio-' + ibis).append("<div class=\"row\"><div class=\"col-xs-6\"><button data-dominio=\"" + e.dominio + "\" nav=\"desvincular-vehiculo\" class=\"btn btn-gps btn-reducido center-block btn-registrarme btn_desvincularDominio\">Desvincular <br>dominio</button></div><div class=\"col-xs-6\"><button nav=\"solicitar-cambios\" data-dominio=\"" + e.dominio + "\" class=\"btn btn-gps btn-reducido center-block btn-registrarme btn_cambioDatos\">Solicitar <br>Cambio de Datos</button></div></div>");
+                    $('#dominiosRegistradosTabs a').on('click', function(e){
+                        // e.stopImmediatePropagation();
+                        // alert($(e.target).data('dominio'));
+                        $('#panel-administracion [nav="desvincular-vehiculo"]').data('dominio', $(e.target).text());
+                        $('#panel-administracion [nav="solicitar-cambios"]').data('dominio', $(e.target).text());
+                        $('#panel-administracion [nav="ingresar-servicio"]').data('dominio', $(e.target).text());
+                        // alert($(e.target).data('dominio'));
+                    });
+
+                    // $('#dominio-' + ibis).append("<div class=\"row\"><div class=\"col-xs-6\"><button data-dominio=\"" + e.dominio + "\" nav=\"desvincular-vehiculo\" class=\"btn btn-gps btn-reducido center-block btn-registrarme btn_desvincularDominio\">Desvincular <br>dominio</button></div><div class=\"col-xs-6\"><button nav=\"solicitar-cambios\" data-dominio=\"" + e.dominio + "\" class=\"btn btn-gps btn-reducido center-block btn-registrarme btn_cambioDatos\">Solicitar <br>Cambio de Datos</button></div></div>");
 
                 });
             }
         }
     });
+
 }
 
 GPSTaller.verRegistro = function() {
@@ -133,8 +145,10 @@ GPSTaller.verLogin = function() {
 
 GPSTaller.verAsociar = function() {
     $('#asociar-dominio form')[0].reset();
-    $('#asociar_modelo').html('<option value="">Modelo*</option>').prop('disabled', true);
-    $('#asociar_version').html('<option value="">Versión*</option>').prop('disabled', true);
+    $('#asociar_modelo').html('<option value="">Modelo*</option>');
+    $('#asociar_modelo').prop('disabled', true);
+    $('#asociar_version').html('<option value="">Versión*</option>');
+    $('#asociar_version').prop('disabled', true);
 }
 
 GPSTaller.verDesvincularDominio = function(data) {
@@ -329,8 +343,8 @@ document.addEventListener("deviceready", function() {
             // GPSTaller.alertClose();
             if(data[0].status == 'ok') {
                 GPSTaller.alert(data[0].mensaje, true);
-                GPSTaller.visited = ['index'];
-                GPSTaller.show('index');
+                GPSTaller.visited = ['panel-administracion'];
+                GPSTaller.show('panel-administracion');
             } else {
                 GPSTaller.alert(data[0].mensaje, true);
             }

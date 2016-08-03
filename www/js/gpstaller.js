@@ -26,7 +26,7 @@ GPSTaller = {
     urls: {
         access: 'https://www.gpstaller.com.ar/api/v1/access.json.php',
         search: 'https://www.gpstaller.com.ar/api/v1/talleres.json.php',
-        comments: 'https://www.gpstaller.com.ar/dev_v1/api/v1/comentariosTaller.json.php',
+        comments: 'https://www.gpstaller.com.ar/api/v1/comentariosTaller.json.php',
         faq: 'https://www.gpstaller.com.ar/api/v1/faq.json.php',
         data: 'https://www.gpstaller.com.ar/api/v1/data.json.php'
     },
@@ -141,12 +141,12 @@ GPSTaller = {
         });
     },
 
-    activarCuenta: function(data, callback) {
+    activarCuenta: function(url, callback) {
         $.ajax({
-            url: GPSTaller.urls.access,
-            type: 'get',
+            url: url,
+            type: 'post',
             dataType: 'json',
-            data: data,
+            // data: data,
             success: function(data) {
                 callback(data);
             }

@@ -8,7 +8,7 @@ function navigationHandler(e) {
     GPSTaller.visited.push(next);
 
     if (next != actual) {
-        GPSTaller.show(next, $(e.target).data());
+        GPSTaller.show(next, $(this).data());
     }
 }
 
@@ -36,12 +36,6 @@ document.addEventListener("deviceready", function() {
     $('#btn_guardar').on('click', function(e){
         e.preventDefault();
         $('#btn_volver_settings').trigger('click');
-    });
-
-    $('#btn_asegura').on('click', function(e){
-        e.preventDefault();
-
-        GPSTaller.alert('Esta sección estará disponible próximamente', true);
     });
 
 }, false);
